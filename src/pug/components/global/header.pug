@@ -1,0 +1,33 @@
+//header
+// HEADER :: START
+header.header
+  .container
+    .header__wrapper
+      a(href="/").header__logo
+        svg.ico.ico-mono-logo
+          use(xlink:href='#ico-mono-logo')
+      ul.header__menu
+        li
+          a(href="/team") Team
+        li
+          a(href="/blog") Orca Blog
+        li
+          a(href="/waitlist") Giveaway
+      .header__cta
+        a(href="#subscribe" js-scrollto).btn.btn-primary Join Orca Beta
+
+      .header__hamburger
+        .hamburger.hamburger--squeeze(js-hamburger)
+          .hamburger-box
+            .hamburger-inner
+
+// MOBILE NAVI
+.mobile-navi
+  .mobile-navi__wrapper
+    ul.mobile-navi__menu
+      li
+        a(href="/team") Team
+      li
+        a(href="/blog") Orca Blog
+      li
+        a(href="/waitlist") Giveaway

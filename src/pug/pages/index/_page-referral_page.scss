@@ -1,0 +1,8 @@
+.page-referral_page {
+  .btn-primary {
+    background: linear-gradient(96.32deg, #EE49A0 8.07%, #D747E3 94.97%);
+    &:hover {
+      background: linear-gradient(96.32deg, darken($color: #EE49A0, $amount: 10) 8.07%, darken($color: #D747E3, $amount: 10) 94.97%);
+    }
+  }
+}

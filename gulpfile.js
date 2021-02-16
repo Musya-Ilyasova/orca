@@ -138,7 +138,7 @@ exports.scripts = scripts;
 
 // can't dry this functions
 function img() {
-  return src("src/images/**/*")
+  return src("src/img/**/*")
     .pipe(
       glp.cache(
         glp.imagemin({
@@ -176,7 +176,7 @@ function img() {
         })
       )
     )
-    .pipe(dest("dist/images"));
+    .pipe(dest("dist/img"));
 };
 
 exports.img = img;
@@ -275,7 +275,7 @@ function svg() {
         gulpIf(
           "*.scss",
           dest("./src/sass/global/helpers/sprite"),
-          dest("./dist/images/sprite")
+          dest("./dist/img/sprite")
         )
       )
   );

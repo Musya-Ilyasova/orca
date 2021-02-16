@@ -4,20 +4,29 @@ section.rewarded
       span.rewarded__title_main £19k+ 
       | worth of shares.
     span.rewarded__subtitle Follow 4 simple steps to be the next one to cash in:
-  .rewarded-slider-container 
-    .rewarded-slider 
-      .rewarded-slider-item.swiper-slide
-        span.rewarded-slider-item__circle 
-        h3.rewarded-slider-item__title Get started
-        p.rewarded-slider-item__text Download Orca and open a GIA account just in a few minutes
-      .rewarded-slider-item.swiper-slide
-        span.rewarded-slider-item__circle 
-        h3.rewarded-slider-item__title Get started
-        p.rewarded-slider-item__text Download Orca and open a GIA account just in a few minutes
-      .rewarded-slider-item.swiper-slide
-        span.rewarded-slider-item__circle 
-        h3.rewarded-slider-item__title Get started
-        p.rewarded-slider-item__text Download Orca and open a GIA account just in a few minutes
+    .rewarded-slider-container 
+      .rewarded-slider.swiper-wrapper 
+        .rewarded-slider-item.swiper-slide
+          span.rewarded-slider-item__circle 
+            +icon('rewarded-circle-1')
+          h3.rewarded-slider-item__title Get started
+          p.rewarded-slider-item__text Download Orca and open a GIA account just in a few minutes
+        .rewarded-slider-item.swiper-slide
+          span.rewarded-slider-item__circle 
+            +icon('rewarded-circle-2')
+          h3.rewarded-slider-item__title Purchase 
+          p.rewarded-slider-item__text Purchase 3 different assets of your choice
+        .rewarded-slider-item.swiper-slide
+          span.rewarded-slider-item__circle 
+            +icon('rewarded-circle-3')
+          h3.rewarded-slider-item__title Share
+          p.rewarded-slider-item__text Send your referral link to your friend
+        .rewarded-slider-item.swiper-slide
+          span.rewarded-slider-item__circle 
+            +icon('rewarded-circle-4')
+          h3.rewarded-slider-item__title Get your free stocks
+          p.rewarded-slider-item__text Wait until your friend meet the conditions, then you both get a free stock
+      .swiper-pagination.rewarded-slider-pagination
 
 
       

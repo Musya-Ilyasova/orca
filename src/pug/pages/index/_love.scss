@@ -1,5 +1,11 @@
 .love {
-  padding-top: 70px;
+  padding-top: 65px;
+  @include media($TABLET) {
+    padding-top: 120px;
+  }
+  @include media($DESKTOP) {
+    padding-top: 102px;
+  }
   &__title {
     margin-bottom: 40px;
     font-size: 32px;
@@ -9,9 +15,13 @@
     }
   }
   &-list{
+    max-width: 337px;
+    margin: 0 auto;
     @include media($TABLET) {
       display: flex;
       justify-content: space-between;
+      margin: 0;
+      max-width: 100%;
     }
     &-item {
       display: flex;

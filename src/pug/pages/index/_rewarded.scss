@@ -1,7 +1,7 @@
 .rewarded {
   padding: 57px 0 45px;
   @include media($DESKTOP) {
-    padding: 88px 0 103px;
+    padding: 20px 0 103px;
   }
   &__title {
     max-width: 664px;
@@ -18,6 +18,8 @@
   &__subtitle {
     font-size: 18px;
     max-width: 577px;
+    line-height: 1.6;
+    display: inline-block;
     @include media($TABLET) {
       font-size: 24px;
     }
@@ -44,6 +46,9 @@
   }
   &-pagination {
     margin-top: 44px;
+    @include media($TABLET) {
+      display: none;
+    }
   }
   &-item {
     background: #171717;
@@ -110,7 +115,7 @@
       font-size: 16px;
       line-height: 1.75;
       @include media($TABLET) {
-        max-width: 237px;
+        max-width: 203px;
       }
     }
   }

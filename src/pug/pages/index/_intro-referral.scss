@@ -1,48 +1,43 @@
 .intro-referral  {
-  height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-top: 30px;
   padding-bottom: 30px;
   margin: 0 auto;
   position: relative;
-  max-width: 1120px;
+  max-width: 1200px;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 107px;
-  min-height: 877px;
   max-height: 926px;
-
   @include media($TABLET) {
     padding-left: 40px;
     padding-right: 40px;
     margin-top: 0;
+    flex-direction: row;
   }
   @include media($DESKTOP) {
     padding-top: 50px;
     padding-bottom: 50px;
+  }
+  @include media($HD) {
     overflow: visible;
+    margin-top: 75px;
   }
   &_content {
     z-index: 2;
     position: relative;
     width: 100%;
-    min-height: 550px;
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media(min-width: 360px) {
+    @include media($TABLET) {
       min-height: 480px;
-    }
-
-    @media(min-width: 650px) {
       width: 50%;
+      flex: 1;
     }
-
     &_logo {
       flex: 1;
       svg {
@@ -68,21 +63,21 @@
       font-weight: 800;
       margin-bottom: 10px;
 
-      @media(min-width: 375px) {
-        max-width: 350px;
-      }
-
       @include media($TABLET) {
         font-size: 50px;
         line-height: 60px;
         font-weight: 700;
+        max-width: 459px;
+        margin-top: 30px;
       }
 
       @include media($DESKTOP) {
-        max-width: 420px;
         font-size: 60px;
         line-height: 73px;
         letter-spacing: -1px;
+      }
+      @include media($HD) {
+        margin-top: 0;
       }
     }
 
@@ -92,7 +87,7 @@
       font-size: 18px;
       line-height: 26px;
       font-weight: 400;
-      margin-bottom: 60px;
+      margin-bottom: 16px;
 
       @include media($TABLET) {
         max-width: 450px;
@@ -104,49 +99,11 @@
         font-size: 20px;
         max-width: 530px;
       }
+      .main {
+        color: $referral-main;
+      }
     }
     &_action {
-      &_btn-store {
-        width: 100%;
-        max-width: 335px;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #3A65E5;
-        border-radius: 6px;
-        color: #ffffff;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 22px;
-        text-decoration: none;
-        margin-bottom: 24px;
-        transition: background 0.3s;
-        &_icon {
-          width: 20px;
-          height: 20px;
-          margin-right: 10px;
-        }
-
-        &.appstore {
-          display: flex !important;
-
-          .intro_content_action_btn-store_icon {
-            margin-top: -5px;
-            background: url('../images/icons/appstore.svg') no-repeat center center;
-          }
-        }
-
-        &.google-play {
-          display: flex !important;
-
-          .intro_content_action_btn-store_icon {
-            margin-top: -1px;
-            // background: url('../images/icons/google_play.svg') no-repeat center center;
-          }
-        }
-      }
-
       &_text-link {
         z-index: 2;
         position: relative;
@@ -193,7 +150,6 @@
             padding: 18px 148px 18px 24px;
           }
         }
-
 
         &_btn {
           z-index: 2;
@@ -290,10 +246,9 @@
   }
 
   &_image {
-    display: none;
+    display: flex;
     position: relative;
-
-    @media(min-width: 650px) {
+    @media(min-width: 768px) {
       z-index: 2;
       width: 50%;
       display: flex;
@@ -310,26 +265,29 @@
     }
     &_inner {
       position: relative;
-      height: calc(100vh - 80px);
-      min-height: 550px;
       width: 100%;
+      @include media($TABLET) {
+        height: calc(100vh - 80px);
+        min-height: 550px;
+        right: 0;
+      }
       @include media($DESKTOP) {
         right: -10%;
         height: calc(83vh - 80px);
       }
     }
     img {
-      position: absolute;
-      left: -2%;
-      top: 0;
       height: 100%;
       width: 100%;
       max-width: 772px;
       object-fit: contain;
       @include media($TABLET) {
         left: 0;
+        position: absolute;
+        left: -2%;
+        top: 0;
+        display: block;
       }
-
       @include media($HD) {
         width: auto;
         left: -31%;
@@ -338,14 +296,31 @@
 
     &_gifts {
       z-index: 1;
+      display: none;
+      @include media($TABLET) {
+        display: block;
+      }
     }
 
     &_logotypes {
       z-index: 2;
+      display: none;
+      @include media($TABLET) {
+        display: block;
+      }
     }
 
     &_guys {
       z-index: 2;
+      display: none;
+      @include media($TABLET) {
+        display: block;
+      }
+    }
+    &_guys_mobile {
+      @include media($TABLET) {
+        display: none !important;
+      }
     }
   }
 }

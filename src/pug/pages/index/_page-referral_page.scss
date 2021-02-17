@@ -8,11 +8,13 @@
   .container {
     padding-left: 20px;
     padding-right: 20px;
-    max-width: 1120px;
+    max-width: 1200px;
     @include media($TABLET) {
       padding-left: 40px;
       padding-right: 40px;
-
     }
   }
 }
+
+$referral-main: #EE49A0;
+$referral-yellow: #FFD028;

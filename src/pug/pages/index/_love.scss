@@ -1,0 +1,76 @@
+.love {
+  padding-top: 70px;
+  &__title {
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 1.3;
+    @include media($TABLET) {
+      font-size: 40px;
+    }
+  }
+  &-list{
+    @include media($TABLET) {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      @include media($TABLET) {
+        width: 31%;
+        max-width: 263px;
+      }
+      &__img {
+        margin-right: 24px;
+        @include media($TABLET) {
+          height: 120px;
+          width: auto;
+          margin-bottom: 24px;
+        }
+        &[alt="Emma"] {
+          width: 71px;
+          margin-right: 37px;
+        }
+        &[alt="Thomas"] {
+          width: 94px;
+          margin-right: 21px;
+        }
+        &[alt="Samuel"] {
+          width: 91px;
+          margin-right: 24px;
+          &~.love-list-item__title {
+            margin-bottom: 12px;
+            @include media($TABLET) {
+              &~.love-list-item__text {
+                max-width: 224px;
+              }
+            }
+          }
+          
+        }
+      } 
+      &__title {
+        margin-bottom: 25px;
+        font-size: 24px;
+        @include media($TABLET) {
+          display: block;
+          width: 100%;
+          margin-bottom: 8px;
+        }
+      }
+      &__text {
+        line-height: 1.9;
+        @include media($TABLET) {
+          min-height: 210px;
+          margin: 0;
+        }
+        @include media($DESKTOP) {
+          min-height: 150px;
+
+        }
+      }
+    }
+  }
+}

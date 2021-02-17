@@ -1,5 +1,8 @@
 .rewarded {
   padding: 57px 0 45px;
+  @include media($DESKTOP) {
+    padding: 88px 0 103px;
+  }
   &__title {
     max-width: 664px;
     line-height: 1.3;
@@ -14,6 +17,7 @@
   }
   &__subtitle {
     font-size: 18px;
+    max-width: 577px;
     @include media($TABLET) {
       font-size: 24px;
     }
@@ -21,7 +25,19 @@
 }
 
 .rewarded-slider {
-  margin-top: 45px;
+  margin-top: 80px;
+  @include media($TABLET) {
+    margin-top: 76px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+  }
+  @include media($DESKTOP) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 36px;
+  }
   &-container {
     width: 100%;
     overflow: hidden;
@@ -37,16 +53,50 @@
     height: 320px;
     width: 260px;
     overflow: hidden;
+    @include media($TABLET) {
+      width: 100%;
+      background: transparent;
+      padding: 0;
+      height: auto;
+    }
     &__circle {
-      background: radial-gradient(64.58% 64.58% at 33.33% 30.56%, #EE49A0 0%, #802576 100%);
-      border-radius: 50%;
       display: block;
-      width: 72px;
-      height: 72px;
       margin-bottom: 20px;
+      position: relative;
+      @include media($TABLET) {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto;
+        grid-column-gap: 16px;
+      }
+      &_top {
+        &:after {
+          content: "";
+          @include media($TABLET) {
+            width: 100%;
+            background: url('../img/dashed-top.svg') no-repeat;
+            background-size: contain;
+            margin-top: 10px;
+          }
+        }
+      }
+      &_bottom {
+        &:after {
+          content: "";
+          @include media($TABLET) {
+            width: 100%;
+            background: url('../img/dashed-bottom.svg') no-repeat;
+            background-size: contain;
+            background-position: bottom;
+            margin-bottom: 10px;
+          }
+        }
+      }
       .icon{
-        width: 100%;
-        height: 100%;
+        width: 72px;
+        height: 72px;
+        background: radial-gradient(64.58% 64.58% at 33.33% 30.56%, #EE49A0 0%, #802576 100%);
+        border-radius: 50%;
         fill: none;
       }
     }
@@ -59,6 +109,9 @@
     &__text {
       font-size: 16px;
       line-height: 1.75;
+      @include media($TABLET) {
+        max-width: 237px;
+      }
     }
   }
 }

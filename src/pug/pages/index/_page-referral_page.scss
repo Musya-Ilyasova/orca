@@ -8,6 +8,7 @@
   .container {
     padding-left: 20px;
     padding-right: 20px;
+    max-width: 1120px;
     @include media($TABLET) {
       padding-left: 40px;
       padding-right: 40px;

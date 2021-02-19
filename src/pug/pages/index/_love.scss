@@ -46,6 +46,11 @@
         &[alt="Thomas"] {
           width: 94px;
           margin-right: 21px;
+          @include media($TABLET) {
+            &~.love-list-item__text {
+              max-width: 224px;
+            }
+          }
         }
         &[alt="Samuel"] {
           width: 91px;
@@ -58,7 +63,6 @@
               }
             }
           }
-          
         }
       } 
       &__title {

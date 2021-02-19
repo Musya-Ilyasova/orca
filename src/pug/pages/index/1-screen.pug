@@ -2,14 +2,14 @@ section.intro-referral
   .intro-referral_content
     h1.intro-referral_content_title Claim your free shares on Orca
     p.intro-referral_content_description Orca, a new kind of investment app, has a referral programme that rewards users with free shares. Your smooth investing experience 
-      span.main begins now.       
-    .intro-referral_content_action 
-      .intro-referral_content_action_text-link
-        p.intro-referral_content_action_text-link_title Enter your phone number and get sent a link to download the app
-        input.intro-referral_content_action_text-link_input(type="text" pattern="[0–9]")
-        .intro-referral_content_action_text-link_btn 
-            span.small Sent
-            span Text Me a Link
+      span.main begins now.      
+    .subscribe.referral-subscribe#subscribe
+      .subscribe__form
+        .subscribe__form-label Enter your phone number and get sent a link to download the app
+        form(action="#" method="post").subscribe__form-box.js-validate-form
+          .subscribe__input-placeholder +44
+          input(type="tel" placeholder="" name="phone")
+          button(type="subscribe").btn.btn-primary Text Me a Link
   .intro-referral_image
     .intro-referral_image_inner
       img.intro-referral_image_guys_mobile(src="img/guys-mobile.png" alt="")

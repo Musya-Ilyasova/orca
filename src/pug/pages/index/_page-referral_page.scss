@@ -14,6 +14,50 @@
       padding-right: 40px;
     }
   }
+  .referral-subscribe {
+    margin: 10px 0;
+    display: none;
+    @include media($TABLET) {
+      display: block;
+      width: 100%;
+      max-width: none;
+    }
+    .subscribe__form {
+      background: hsl(0, 0%, 8%);
+      margin: 0;
+      padding: 31px 39px;
+      border-radius: 8px;
+      @include media($TABLET) {
+        width: 100%;
+        max-width: none;
+      }
+    }
+  }    
+}
+
+.page-referral_page_text_link_success {
+  .referral-subscribe {
+    margin: 10px 0;
+    display: none;
+    @include media($TABLET) {
+      display: block;
+      width: 100%;
+      max-width: none;
+    }
+    .subscribe__form {
+      background: hsl(0, 0%, 8%);
+      margin: 0;
+      padding: 31px 39px;
+      border-radius: 8px;
+      @include media($TABLET) {
+        width: 100%;
+        max-width: none;
+      }
+    }
+    .subscribe__box {
+      padding: 29px 50px 32px 60px;
+    }
+  }    
 }
 
 $referral-main: #EE49A0;

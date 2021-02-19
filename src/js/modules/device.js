@@ -1,35 +1,3 @@
-var link_ios = 'https://apple.com';
-var link_android = 'https://googleplay.com';
-var link_desktop = 'https://google.com';
-
-
-// Detect device
-// var device = '';
-// var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-// if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-//   device = 'ios';
-// }
-// else if(/android/i.test(userAgent)) {
-//   device = 'android';
-// }
-// else {
-//   device = 'desktop';
-// }
-// device = 'desktop';
-
-// Set Store
-// if(device === 'ios') {
-//   $('.intro-referral_content_action_btn-store') .attr('href', link_ios) .addClass('appstore')
-// }
-
-// if(device === 'android') {
-//   $('.intro-referral_content_action_btn-store') .attr('href', link_android) .addClass('google-play')
-// }
-
-// if(device === 'desktop') {
-//   $('.intro-referral_content_action_text-link').css('display', 'flex');
-// }
-
 // Add formatter to input
 addFormatter($('.intro-referral_content_action_text-link_input'), regexPrefix(/^\ + 44/, '+44'))// Add allowed keys to input
 $('.intro-referral_content_action_text-link_input').on('keypress', inputAllowedKeys);

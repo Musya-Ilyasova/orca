@@ -1,0 +1,58 @@
+.page-isa_page {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1200px;
+    @include media($TABLET) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+  .isa-subscribe {
+    margin: 10px 0;
+    display: none;
+    @include media($TABLET) {
+      display: block;
+      width: 100%;
+      max-width: 516px;
+    }
+    .subscribe__form {
+      background: hsl(0, 0%, 8%);
+      margin: 0;
+      padding: 35px 39px;
+      border-radius: 8px;
+      @include media($TABLET) {
+        width: 100%;
+        max-width: none;
+      }
+    }
+  }    
+}
+
+.page-isa_page_text_link_success {
+  .isa-subscribe {
+    margin: 10px 0;
+    display: none;
+    @include media($TABLET) {
+      display: block;
+      width: 100%;
+      max-width: none;
+    }
+    .subscribe__form {
+      background: hsl(0, 0%, 8%);
+      margin: 0;
+      padding: 31px 39px;
+      border-radius: 8px;
+      @include media($TABLET) {
+        width: 100%;
+        max-width: none;
+      }
+    }
+    .subscribe__box {
+      padding: 29px 50px 32px 60px;
+    }
+  }    
+}
+
+$referral-main: #EE49A0;
+$referral-yellow: #FFD028;

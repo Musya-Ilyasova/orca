@@ -1,8 +1,8 @@
 .advantages-isa {
   background-color: #141414;
-  padding: 20px 0;
+  padding: 20px 0 35px;
   @include media($TABLET) {
-    padding: 70px 0 40px;
+    padding: 70px 0 50px;
   }
   @include media($DESKTOP) {
     padding: 70px 0 86px;
@@ -31,7 +31,7 @@
       flex-wrap: wrap;
       max-width: 100%;
       justify-content: space-between;
-      margin: 89px 0 0;
+      margin: 76px 0 0;
     }
     &-item {
       margin-bottom: 60px;
@@ -48,6 +48,8 @@
         line-height: 1.9;
         flex: 1;
         margin: 0;
+        font-size: 18px;
+        padding-right: 5px;
         @include media($TABLET) {
           font-size: 20px;
         }

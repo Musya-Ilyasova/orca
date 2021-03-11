@@ -1,4 +1,10 @@
-.page-isa_page {
+.page-isa {
+  .header__cta .btn-primary {
+    display: none;
+    @include media($TABLET) {
+      display: inline-block;
+    }
+  }
   .container {
     padding-left: 20px;
     padding-right: 20px;

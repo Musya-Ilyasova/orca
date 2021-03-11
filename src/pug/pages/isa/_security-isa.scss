@@ -1,0 +1,47 @@
+.security-isa {
+  padding-top: 0;
+  @include media($TABLET) {
+    padding-top: 130px;
+  }
+  &__text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #E3E3E3;
+    margin-bottom: 63px;
+    @include media($TABLET) {
+      display: none;
+    }
+    a {
+      color: #307bf6;
+    }
+  }
+  &-item {
+    margin-bottom: 65px;
+    @include media($TABLET) {
+      display: flex;
+      align-items: center;
+      margin-bottom: 74px;
+    }
+    .icon {
+      margin-bottom: 16px;
+      width: 134px;
+      height: 45px;
+      @include media($TABLET) {
+        margin-right: 53px;
+        width: 179px;
+        height: 60px;
+        margin-bottom: 0;
+      }
+    }
+    &__text {
+      line-height: 1.85;
+      color: #E3E3E3;
+      font-size: 14px;
+      margin: 0;
+      @include media($TABLET) {
+        flex: 1;
+      }
+    }
+  }
+
+}

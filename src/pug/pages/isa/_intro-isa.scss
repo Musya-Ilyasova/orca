@@ -11,13 +11,13 @@
     padding-left: 40px;
     padding-right: 40px;
     flex-direction: row;
-    margin-top: 255px;
+    margin-top: 183px;
   }
   @include media($DESKTOP) {
-    padding-bottom: 50px;
+    padding-bottom: 60px;
   }
   @include media($HD) {
-    padding-bottom: 180px;
+    padding-bottom: 61px;
   }
   &_content {
     z-index: 2;
@@ -30,6 +30,22 @@
       width: 60%;
       flex: 1;
       justify-content: flex-start;
+    }
+    &_mintext {
+      max-width: 209px;
+      color: #8B8B8B;
+      line-height: 1.5;
+      margin: 50px auto 20px;
+      letter-spacing: -0.01em;
+      text-align: center;
+      @include media($TABLET) {
+        max-width: 100%;
+        margin: 20px 0;
+        text-align: left;
+      }
+      a {
+        color: #307BF6;
+      }
     }
     img {
       margin: 0 auto 60px;
@@ -54,7 +70,6 @@
         max-width: 496px;
         margin: 20px 0;
         text-align: left;
-
       }
       @include media($DESKTOP) {
         font-size: 60px;
@@ -68,7 +83,7 @@
     }
 
     &_description {
-      max-width: 350px;
+      max-width: 359px;
       color: #ffffff;
       font-size: 18px;
       line-height: 26px;
@@ -112,7 +127,7 @@
     height: 420px;
     padding-left: 60px;
     padding-right: 60px;
-    margin: 42px auto 0;
+    margin: 10px auto 0;
     width: 100%;
     @include media($TABLET) {
       z-index: 2;
@@ -120,13 +135,14 @@
       min-width: 215px;
       display: flex;
       justify-content: center;
-      height: 700px;
+      height: 720px;
       padding: 0;
-      margin-top: -60px;
+      margin-top: 0;
       margin-left: 34px;
     }
     @include media($DESKTOP) {
       width: 30%;
+      margin-top: -10px;
       min-width: 360px;
     }
     &_inner {

@@ -1,5 +1,11 @@
 .shares-isa {
-  padding: 30px 0;
+  padding: 70px 0;
+  overflow: hidden;
+  width: 100%;
+  @include media($DESKTOP) {
+    padding: 170px 0 200px;
+  }
+  
   &__title {
     margin: 30px auto;
     font-size: 32px;
@@ -16,13 +22,93 @@
       font-size: 72px;
     }
   }
-  &-slider {
+  div.shares-isa-slider {
     margin-top: 60px;
+    align-items: center;
+    @include media($TABLET) {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 100px;
+    }
+    @include media($DESKTOP) {
+      margin-left: -20px;
+      margin-right: -20px;
+      width: calc(100% + 40px);
+    }
+    &-container {
+      .swiper-pagination {
+        margin-top: 60px;
+        @include media($TABLET) {
+          display: none;
+        }
+      }
+    }
     &-item {
+      width: 222px;
+      height: 475px;
+      max-width: 325px;
+      max-height: 590px;
+      
+      @include media($TABLET) {
+        width: 32%;
+        height: auto;
+        max-height: 100%;
+      }
       &__title {
-        line-height: 2.1;
         font-size: 16px;
         font-weight: 600;
+        margin-top: auto;
+        line-height: 2.1;
+        text-align: center;
+        transition-property: opacity;
+        transition-delay: 0.4s;
+        transition-duration: 0.2s;
+        @include media($TABLET) {
+          margin-top: 20px;
+        }
+        @include media($DESKTOP) {
+          font-size: 18px;
+        }
+      }
+      &__img {
+        transition: padding 0.4s linear;
+        display: flex;
+        align-items: center;
+        height: 420px;
+        box-sizing: border-box;
+        @include media($TABLET) {
+          padding: 0;
+          height: auto;
+        }
+      }
+      img {
+        width: 100%;
+        @include media($TABLET) {
+          padding: 0;
+          height: auto;
+          margin: 0 auto;
+          object-fit: contain;
+          max-height: 420px;
+        }
+        @include media($DESKTOP) {
+          max-height: 560px;
+        }
+      }
+    }
+    
+    .swiper-slide:not(.swiper-slide-active) {
+      .shares-isa-slider-item__img {
+        padding: 30px;
+        @include media($TABLET) {
+          padding: 0;
+        }
+      }
+      .shares-isa-slider-item__title {
+        opacity: 0;
+        transition: opacity 0 ease;
+        @include media($TABLET) {
+          opacity: 1;
+        }
       }
     }
   }

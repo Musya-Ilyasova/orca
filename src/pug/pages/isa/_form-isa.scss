@@ -1,0 +1,30 @@
+.form-isa {
+  padding-top: 30px;
+  &-subscribe.isa-subscribe {
+    @include media($TABLET) {
+      max-width: 100%;
+      .subscribe__form {
+        background: transparent;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .subscribe__box {
+        padding: 40px 60px;
+      }
+    }
+  }
+  .p-regular {
+    a {
+      color: #307bf6;
+    }
+  }
+  &__text {
+    max-width: 836px;
+    line-height: 1.94;
+    font-size: 18px;
+    margin-bottom: 30px;
+    @include media($TABLET) {
+      margin-top: 60px;
+    }
+  }
+}

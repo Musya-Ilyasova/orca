@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   @@include('modules/svg.js');
   @@include('modules/polyfills.js');
+  @@include('modules/faq.js');
 });
 if(document.body.classList.contains("page-referral_page")) { 
   // INTRO SECTION

@@ -132,6 +132,30 @@ function scripts() {
 
 exports.scripts = scripts;
 
+function scriptsFront() {
+  return src("src/js/front.js")
+    .pipe(
+      include({
+        prefix: "@@",
+        basepath: "@file",
+      })
+    )
+    .pipe(
+      glp.babel({
+        presets: ["@babel/env"],
+      })
+    )
+    .pipe(strip())
+    .pipe(dest("dist/js/"))
+    .pipe(
+      browserSync.reload({
+        stream: true,
+      })
+    );
+}
+
+exports.scripts = scripts;
+
 /////////////////////////////////////////////////
 //---------------------IMG---------------------//
 /////////////////////////////////////////////////
@@ -403,7 +427,7 @@ exports.serve = serve;
 
 exports.default = series(
   parallel(copy, img, imgUpload, svg),
-  parallel(pug, scriptsLibs, scripts, sass),
+  parallel(pug, scriptsLibs, scripts, sass, scriptsFront),
   parallel(observe, serve)
 );
 
@@ -414,5 +438,5 @@ exports.default = series(
 exports.build = series(
   clear,
   parallel(copy, img, imgUpload, svg),
-  parallel(pug, scriptsLibs, scripts, sass)
+  parallel(pug, scriptsLibs, scripts, sass, scriptsFront)
 );

@@ -1,0 +1,30 @@
+
+section.chart
+  .chart-loading.container.container--1120
+    .chart-loading__animation
+      #loadingAnimation
+      #svgContainer
+    span.chart-loading__text Generating Portfolio
+  .container.container--1120.chart-content
+    h1.chart__title
+      span
+      |’s ISA Portfolio
+    span.chart-datatime On&nbsp;
+      span.chart-datatime__date
+      span.chart-datatime__time
+    .chart-results
+      .chart-results-details
+        span.chart-results-details__arrow
+          +icon('chart-arrow')
+        span.chart-results-details__percent
+          span 23.14
+          | %
+        span.chart-results-details__period
+      .chart-results-changes
+        .chart-results-changes-box#chartContainer
+          canvas#myChart(width="100%" height="100%")
+        ul.chart-results-changes-gap
+
+
+
+

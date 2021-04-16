@@ -1,9 +1,0 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="256.000000pt" height="256.000000pt" viewBox="0 0 320 320"
- preserveAspectRatio="xMidYMid meet">
-<circle cx="160" cy="160" r="160" fill="#363636"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M160 281C226.826 281 281 226.826 281 160C281 93.1735 226.826 39 160 39C93.1735 39 39 93.1735 39 160C39 226.826 93.1735 281 160 281ZM195.357 160.786C215.318 160.786 231.5 144.604 231.5 124.643C231.5 104.682 215.318 88.4999 195.357 88.4999C175.396 88.4999 159.214 104.682 159.214 124.643C159.214 144.604 175.396 160.786 195.357 160.786Z" fill="#FAFAFA"/>
-</svg>

@@ -1,8 +1,12 @@
 @import "global/helpers/helpers";
-// @import "global/libs/libs";
+
+
+@import "global/libs/libs";
 @import "global/components/components";
 // @import "../pug/pages/ui/_ui"; //remove before prod
 // @import "../pug/pages/index/_1-screen";
+@import "../pug/components/global/_headerLogo";
+
 @import "../pug/pages/index/_page-referral_page";
 @import "../pug/pages/index/_intro-referral";
 @import "../pug/pages/index/_rewarded";
@@ -26,3 +30,8 @@
 
 
 @import "../pug/pages/faq/_help-centre";
+
+
+@import "../pug/pages/sharing/page-allocation";
+@import "../pug/pages/sharing/chart";
+

@@ -82,7 +82,12 @@ exports.sass = sass;
 
 function scriptsLibs() {
   return src([
-    "node_modules/jquery/dist/jquery.min.js",
+    // "node_modules/@juggle/resize-observer/lib/ResizeObservation.js",
+    "node_modules/chart.js/dist/chart.min.js",
+    "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js",
+    "node_modules/swiper/swiper-bundle.min.js",
+    "node_modules/lottie-web/build/player/lottie.min.js"
+    // "node_modules/jquery/dist/jquery.min.js",
     //'node_modules/object-fit-images/dist/ofi.min.js',
     //'node_modules/svg4everybody/dist/svg4everybody.min.js',
     //'node_modules/jquery-validation/dist/jquery.validate.min.js',
@@ -132,8 +137,9 @@ function scripts() {
 
 exports.scripts = scripts;
 
-function scriptsFront() {
-  return src("src/js/front.js")
+
+function scriptsDontmin() {
+  return src("src/js/main.js")
     .pipe(
       include({
         prefix: "@@",
@@ -145,6 +151,12 @@ function scriptsFront() {
         presets: ["@babel/env"],
       })
     )
+    // .pipe(glp.uglify())
+    // .pipe(
+    //   glp.rename({
+    //     extname: ".min.js",
+    //   })
+    // )
     .pipe(strip())
     .pipe(dest("dist/js/"))
     .pipe(
@@ -155,6 +167,7 @@ function scriptsFront() {
 }
 
 exports.scripts = scripts;
+
 
 /////////////////////////////////////////////////
 //---------------------IMG---------------------//
@@ -397,9 +410,9 @@ exports.clearCache = clearCache;
 /////////////////////////////////////////////////
 
 function observe() {
+  watch("src/js/**/*.js", series(scripts));
   watch("src/pug/**/*.pug", series(pug));
   watch(["src/sass/**/*.scss", "src/pug/**/*.scss"], series(sass));
-  watch("src/js/**/*.js", series(scripts));
   watch("src/images/**/*", series(img));
   watch("src/upload/**/*", series(imgUpload));
   watch("src/svg/**/*.svg", series(svg));
@@ -427,7 +440,7 @@ exports.serve = serve;
 
 exports.default = series(
   parallel(copy, img, imgUpload, svg),
-  parallel(pug, scriptsLibs, scripts, sass, scriptsFront),
+  parallel(pug, scriptsLibs, scripts, sass),
   parallel(observe, serve)
 );
 
@@ -438,5 +451,5 @@ exports.default = series(
 exports.build = series(
   clear,
   parallel(copy, img, imgUpload, svg),
-  parallel(pug, scriptsLibs, scripts, sass, scriptsFront)
+  parallel(pug, scriptsLibs, scripts, sass, scriptsDontmin)
 );

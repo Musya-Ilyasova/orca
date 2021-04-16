@@ -1,0 +1,135 @@
+.page-allocation {
+  .headerLogo {
+    padding: 46px 0;
+    .logo {
+      width: 110px;
+      height: 58px;
+      display: block;
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .getapp__btn {
+    background: linear-gradient(90deg, #5579F7 0%, #762FE6 100%);
+    &:hover, &:active {
+      background: linear-gradient(90deg, #222d54 0%, #762FE6 100%);
+    }
+  }
+  main {
+    @include media($TABLET) {
+      display: grid;
+      grid-template-columns: 1fr 250px;
+      grid-template-rows: auto;
+      grid-column-gap: 20px;
+      padding: 40px 40px 0;
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    @include media($DESKTOP) {
+      grid-template-columns: 1fr 300px;
+      grid-template-rows: auto;
+      grid-column-gap: 91px;
+    }
+  }
+  .page-allocation-aside {
+    display: none;
+    @include media($TABLET) {
+      display: block;
+    }
+    &__wrapper {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      position: sticky;
+      top: 0;
+      padding: 28px 16px 33px;
+      text-align: center;
+      background: #141414;
+      height: auto;
+      border-radius: 6px;
+    }
+    &__img {
+      width: 100px;
+      height: auto;
+    }
+    &__text {
+      font-size: 14px;
+      line-height: 20px;
+      &_main {
+        color: $referral-main;
+      }
+    }
+    .subscribe__form-box {
+      height: auto;
+      .btn-primary {
+        position: static;
+        margin-top: 18px;
+        width: 100%;
+        background: linear-gradient(90deg, #5579F7 0%, #762FE6 100%);
+        &:hover, &:active {
+          background: linear-gradient(90deg, #222d54 0%, #762FE6 100%);
+        }
+      }
+      input {
+        padding: 0 67px;
+        height: 56px;
+        line-height: 56px;
+      }
+    }
+    .subscribe__input-placeholder {
+      top: 29px;
+    }
+  }
+
+  .page-allocation-rewarded {
+    padding: 100px 0 69px;
+    @include media($TABLET) {
+      padding: 80px 0;
+    }
+    .container {
+      @include media($TABLET) {
+        padding: 0;
+      }
+    }
+    .rewarded-slider {
+      width: auto;
+      @include media($TABLET) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-column-gap: 20px;
+      }
+    }
+  }
+}
+.page-allocation-footer {
+  color: #8D8D93;
+  margin-bottom: 40px;
+  max-width: 483px;
+
+  .container {
+    @include media($TABLET) {
+      padding: 0;
+    }
+  }
+  &__title {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    @include media($TABLET) {
+      font-size: 16px;
+    }
+
+  }
+  &__text {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    @include media($TABLET) {
+      font-size: 16px;
+    }
+  }
+}
+

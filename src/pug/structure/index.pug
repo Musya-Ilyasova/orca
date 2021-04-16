@@ -1,0 +1,17 @@
+include ../mixins/mixins
+doctype html
+html(lang="ru")
+  include ../components/global/head
+  body.page-allocation
+    include ../components/global/headerLogo
+    //main
+    main
+      .shares-page__wrapper
+        include ../pages/sharing/chart
+        include ../pages/sharing/rewarded
+        include ../pages/sharing/disclosure
+      include ../pages/sharing/aside
+    include ../components/global/footer
+    include ../components/global/scripts
+    //- script(src='js/front.js')
+    //- script(src='js/sharing.js')

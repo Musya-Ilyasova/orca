@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
 .icon-logo {
-  background-image: url("../img/sprite.593d39a05a5d.png");
+  background-image: url('../img/sprite.png');
   background-position: 0 0;
   background-repeat: no-repeat;
   width: 300px;
@@ -14,7 +14,7 @@ only screen and(min-resolution:2dppx),
 only screen and(min-resolution:192dpi) {
   .icon-logo {
     background-size: 300px 70px;
-    background-image: url("../img/sprite@2x.c5ee32268b04.png")
+    background-image: url('../img/sprite@2x.png')
   }
 }
 .ico-mono-apple {
@@ -1578,11 +1578,6 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
   box-sizing: border-box;
   outline: none
 }
-body:not(.is-ready) * {
-  -webkit-transition: none !important;
-  -o-transition: none !important;
-  transition: none !important
-}
 a {
   color: inherit
 }
@@ -3141,7 +3136,7 @@ button:focus {
 }
 .footer__socials li {
   display: inline-block;
-  margin-right: 32px
+  margin-right: 30px
 }
 .footer__socials a {
   display: inline-block;
@@ -3397,7 +3392,8 @@ button:focus {
   padding-right: 40px
 }
 .header__logo .ico {
-  font-size: 32px
+  font-size: 32px;
+  height: 58px
 }
 .header__menu {
   -webkit-box-flex: 0;
@@ -3426,7 +3422,7 @@ button:focus {
   transition: color 0.25s ease-in-out
 }
 .header__menu a:hover {
-  color: tomato
+  color: #8fff00
 }
 .header__cta {
   margin-left: auto;

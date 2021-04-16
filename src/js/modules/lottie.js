@@ -41,7 +41,14 @@ function animOut() {
   anim = lottie.loadAnimation(animItem3);
 }
 setTimeout(animPulse, 700);
-document.querySelector('#svgContainer').addEventListener('click', function() {
+// document.querySelector('#svgContainer').addEventListener('click', function() {
+
+// });
+
+let generation = document.querySelector('.chart-loading__text');
+generation.addEventListener('click', function() {
   animOut();
   animation.destroy();
-});
+  document.querySelector('.chart-content').classList.toggle('visibilyty');
+  document.querySelector('.chart-loading').classList.toggle('opacity');
+})

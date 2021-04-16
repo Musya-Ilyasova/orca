@@ -265,12 +265,6 @@ function buildRewardedSlider() {
   })();
 }
 
-let generation = document.querySelector('.chart-loading__text');
-generation.addEventListener('click', function() {
-  document.querySelector('.chart-content').classList.toggle('visibilyty');
-  document.querySelector('.chart-loading').classList.toggle('opacity');
-})
-
 
 
 if(document.body.classList.contains("page-allocation")) {

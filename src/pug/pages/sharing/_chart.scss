@@ -120,26 +120,6 @@
       margin-top: 40px;
     }
   }
-
-  &-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition-property: max-height, opacity;
-    transition-delay: 0.2s, 0s;
-    transition-duration: 0.2s, 0.2s;
-    transition-timing-function: ease;
-    &:first-child {
-      max-height: 600px;
-    }
-    &.visibilyty {
-      max-height: 600px;
-      opacity: 1;
-      transition-delay: 0s, 0.2s;
-      transition-duration: 0.2s, 0.2s;
-      transition-timing-function: ease-in-out;
-    }
-  }
 }
 
 .chart-results-changes {

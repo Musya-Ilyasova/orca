@@ -1,13 +1,14 @@
 section.breakdown
-  .container.container--1120.chart-content
+  .container.container--1120.content
     .breakdown__title ISA Portfolio Breakdown
-    .breakdown-donut-wrapper
+    .breakdown-donut
       ul.breakdown-donut-list
         li
-          a.breakdown-donut-list__item(href="") Sectors
+          a.breakdown-donut-list__item(href="").active Sectors
         li
           a.breakdown-donut-list__item(href="") Type
       .breakdown-donut-box
+        canvas#myDonut(width="100%" height="100%")
       .breakdown-donut-volums
         .breakdown-donut-volums__title
           span Sector

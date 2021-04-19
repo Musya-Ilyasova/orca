@@ -49,6 +49,7 @@ let generation = document.querySelector('.chart-loading__text');
 generation.addEventListener('click', function() {
   animOut();
   animation.destroy();
-  document.querySelector('.chart-content').classList.toggle('visibilyty');
+  let content = document.querySelectorAll('.content');
+  content.forEach(item=> item.classList.toggle('visibilyty'))
   document.querySelector('.chart-loading').classList.toggle('opacity');
 })

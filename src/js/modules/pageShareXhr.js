@@ -14,6 +14,7 @@ function pageShareXhr() {
     sharedFieldInner(shareObj);
     linkGapToggle(shareObj);
     addChartBox(shareObj);
+    addDonutBox(shareObj);
   };
   shareXhr.onerror = function () {
     console.error("An error occurred during request");
@@ -212,7 +213,7 @@ function addChartBox(shareRequest) {
   });
 };
 
-
+@@include('donut.js');
 
 function linkGapToggle(shareRequest) {
   let linkGap = document.querySelectorAll('.chart-results-changes-gap-item__link');

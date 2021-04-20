@@ -15,6 +15,7 @@ function pageShareXhr() {
     linkGapToggle(shareObj);
     addChartBox(shareObj);
     addDonutBox(shareObj);
+    addSectors(shareObj)
   };
   shareXhr.onerror = function () {
     console.error("An error occurred during request");
@@ -245,7 +246,6 @@ function buildRewardedSlider() {
       if (breakpoint.matches === true) {
         if (rewardedSlider !== undefined)
           rewardedSlider.destroy(true, true);
-
         return;
       } else if (breakpoint.matches === false) {
         return enableTopSwiper();

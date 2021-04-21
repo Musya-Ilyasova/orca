@@ -1,0 +1,86 @@
+.stocks {
+  &__title {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 36px;
+  }
+  &__subtitle {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  &-tags {
+    display: flex;
+    min-width: 1010px;
+    overflow-x: scroll;
+    margin-bottom: 49px;
+    &-wrapper {
+      max-width: 100%;
+    }
+    &-item {
+      margin-right: 15px;
+      &__link {
+        display: inline-block;
+        padding: 0 12px;
+        height: 33px;
+        line-height: 31px;
+        color: #8346E9;
+        border: 1px solid #8346E9;
+        border-radius: 60px;
+        transition: 0.2s ease;
+        &:hover, &.active {
+          background: #8346E9;
+          color: white;
+        }
+      }
+    }
+  }
+  &-list, .stocks-list_etf {
+    display: flex;
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 34px;
+      width: 76px;
+      height: 101px;
+      margin-right: 76px;
+      &__img {
+        width: 48px;
+        height: 48px;
+        border-radius: 100%;
+        margin-bottom: 8px;
+      }
+      &__title {
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 4px;
+        text-align: center;
+        max-height: 26px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        &.long {
+          position: relative;
+          cursor: pointer;
+          &:after {
+            content: "...";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #000;
+            line-height: 13px;
+            padding: 0 5px;
+          }
+        }
+      }
+      &__percent {
+        color: #34C759;
+        font-size: 11px;
+        line-height: 13px;
+        &.down {
+          color: #EA5555;
+        }
+      }
+    }
+  }
+}

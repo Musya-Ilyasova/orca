@@ -434,6 +434,13 @@
         "change_percent": 2.4841
       },
       {
+        "logo": "https://storage.googleapis.com/orca-marketdata-media/logos/IOSEVR1s120x120_1607693890.png",
+        "name": "EVRAZ",
+        "type": "ETF",
+        "industry": "Materials",
+        "change_percent": 2.4841
+      },
+      {
         "logo": "https://storage.googleapis.com/orca-marketdata-media/logos/IOSFRES1s120x120_1607693927.png",
         "name": "Fresnillo",
         "type": "EQUITY",
@@ -553,6 +560,25 @@
             "name": "Consumer Discretionary",
             "count": 1,
             "percent": 2.02
+          },
+          {
+            "name": "Communication Services",
+            "count": 3,
+            "percent": 20.54
+          },
+          {
+            "name": "Financials",
+            "count": 1,
+            "percent": 20.43
+          }, {
+            "name": "Consumer Discretionary",
+            "count": 1,
+            "percent": 2.02
+          },
+          {
+            "name": "Communication Services",
+            "count": 3,
+            "percent": 20.54
           }
         ]
       }, {

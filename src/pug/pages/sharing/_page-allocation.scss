@@ -11,6 +11,9 @@
       }
     }
   }
+  .container {
+    padding: 0 16px;
+  }
   .getapp__btn {
     background: linear-gradient(90deg, #5579F7 0%, #762FE6 100%);
     &:hover, &:active {
@@ -31,8 +34,14 @@
     @include media($DESKTOP) {
       grid-template-columns: 1fr 300px;
       grid-template-rows: auto;
+      grid-column-gap: 45px;
+    }
+    @include media($HD) {
+      grid-template-columns: 1fr 300px;
+      grid-template-rows: auto;
       grid-column-gap: 91px;
     }
+
   }
   .content {
     max-height: 0;

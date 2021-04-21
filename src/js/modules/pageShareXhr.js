@@ -15,7 +15,8 @@ function pageShareXhr() {
     linkGapToggle(shareObj);
     addChartBox(shareObj);
     addDonutBox(shareObj);
-    addSectors(shareObj)
+    addSectors(shareObj);
+    filterStocks(shareObj);
   };
   shareXhr.onerror = function () {
     console.error("An error occurred during request");
@@ -266,6 +267,7 @@ function buildRewardedSlider() {
   })();
 }
 
+@@include('stocks.js');
 
 
 if(document.body.classList.contains("page-allocation")) {

@@ -53,7 +53,6 @@ function addDonutBox(shareRequest) {
 function addSectors(shareRequest) {
   let sectorsList = document.querySelector('.breakdown-donut-volums-list');
   let partsList = shareRequest.breakdowns[0].parts;
-  console.log(partsList);
   for (let i=0; i<=partsList.length-1; i++) {
     let li = document.createElement('li');
     li.classList.add('breakdown-donut-volums-list-item');
@@ -72,9 +71,18 @@ function addSectors(shareRequest) {
     sectorsList.appendChild(li);
     li.style.borderColor=colors[i];
   }
-
-
-
+  showAll(sectorsList);
 }
 
+function showAll(partList) {
+  let btn = document.querySelector('.breakdown-donut-volums__btn');
+  if (partList.childNodes.length>5) {
+    partList.style.height = "324px";
+    btn.style.display = "block";
+  }
+  btn.addEventListener('click', function() {
+    partList.style.height = "";
+    this.style.display = "";
+  })
+}
 

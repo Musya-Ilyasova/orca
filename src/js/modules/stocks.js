@@ -13,32 +13,127 @@ function filterStocks(shareRequest) {
       etfObj.push(symbol)
     };
   };
-  addStocks(stocksObj);
+  addStocks(stocksObj, stocksList);
+  addStocks(etfObj, etfList);
+  addStocksTags(stocksObj);
+  toggleStocksTags(stocksObj)
 }
 
-function addStocks(listObj) {
+function addStocks(listObj, appendList) {
   if(Object.keys(listObj).length>0) {
-    console.log(listObj);
+    let i=0;
     for (i in listObj) {
       let li = document.createElement('li');
       li.classList.add('stocks-list-item')
       let img = document.createElement('img');
-      img.src = stocksObj[i].logo;
+      img.src = listObj[i].logo;
+      img.classList.add('stocks-list-item__img');
       let title = document.createElement('span');
       title.classList.add('stocks-list-item__title');
-      title.innerText = stocksObj[i].name;
+      title.innerText = listObj[i].name;
       let percent= document.createElement('span');
       percent.classList.add('stocks-list-item__percent');
       if(listObj[i].change_percent<0) {
         percent.classList.add('down');
       };
-      if() {
-        
-      }
-
-      percent.innerText = listObj[i].change_percent;
+      percent.innerText = (Math.round(listObj[i].change_percent*100)/100) + '%';
+      li.appendChild(img);
+      li.appendChild(title);
+      li.appendChild(percent);
+      if(appendList.dataset.list == "EQUITY") {
+        li.setAttribute("data-industry", listObj[i].industry);
+      };
+      appendList.appendChild(li);
     }
+  } else {
+    hideEtf(appendList);
   }
 }
+function hideEtf(appendList) {
+  appendList.style.display="none";
+  let listVal = appendList.dataset.list;
+  let listTitle = document.querySelector(`.stocks__subtitle[data-title="${listVal}"]`)
+  listTitle.style.display="none";
+}
+function showEtf(appendList) {
+  appendList.style.display="";
+  let listVal = appendList.dataset.list;
+  let listTitle = document.querySelector(`.stocks__subtitle[data-title="${listVal}"]`)
+  listTitle.style.display="";
+}
+
+function addStocksTags(stocksObj) {
+  let i=0;
+  let industry = [];
+  for(i in stocksObj) {
+    industry.push(stocksObj[i].industry);
+  }
+  industry = industry.filter(function (e, i, industry) {
+    return industry.lastIndexOf(e) === i;
+  });
+  let stocksTags = document.querySelector('.stocks-tags');
+  for(i=0; i<=industry.length-1; i++) {
+    let li = document.createElement('li');
+    li.classList.add('stocks-tags-item');
+    let a = document.createElement('a');
+    a.innerText = industry[i];
+    a.classList.add('stocks-tags-item__link');
+    li.appendChild(a);
+    stocksTags.appendChild(li);
+  }
+  tagsWidth(stocksTags);
+}
+
+function tagsWidth(stocksTags) {
+  let stockTagsWidth = stocksTags.scrollWidth;
+  if (window.innerWidth < 768) {
+    stocksTags.style.width=stockTagsWidth + 20 + 'px';
+  } else {
+    stocksTags.style.width="";
+  }
+  window.addEventListener('resize', function(event){
+    if (window.innerWidth < 768) {
+      stocksTags.style.width=stockTagsWidth + 20 + 'px';
+    } else {
+      stocksTags.style.width="";
+    }
+  });
+}
+
+
+function toggleStocksTags(stocksObj) {
+  let tag = document.querySelectorAll('.stocks-tags-item__link');
+  let stockListItem = document.querySelectorAll('.stocks-list-item');
+  let etfList = document.querySelector('.stocks-list_etf');
+  tag.forEach((item) => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      tag.forEach((i) => {
+        i.classList.remove('active');
+      });
+      item.classList.add('active');
+      if(item.dataset.category === 'all'){
+        stockListItem.forEach((i) => {
+          i.style.display = '';
+        });
+        if(etfList.hasChildNodes()) {
+          showEtf(etfList);
+        };
+      } else {
+        if(etfList.hasChildNodes()) {
+          hideEtf(etfList);
+        };
+        stockListItem.forEach((i) => {
+          if(item.innerText===i.dataset.industry) {
+            i.style.display = '';
+          }else {
+            i.style.display = 'none';
+          }
+        });
+      };
+    });
+  });
+}
+
 
 

@@ -1,23 +1,64 @@
 .stocks {
+  .container {
+    @include media($TABLET) {
+      padding: 0;
+    }
+  }
   &__title {
     font-size: 24px;
     line-height: 24px;
     margin-bottom: 36px;
+    @include media($TABLET) {
+      font-size: 32px;
+    }
+    @include media($DESKTOP) {
+      margin-bottom: 48px;
+    }
   }
   &__subtitle {
     display: inline-block;
     margin-bottom: 20px;
+    @include media($TABLET) {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
   }
   &-tags {
     display: flex;
-    min-width: 1010px;
-    overflow-x: scroll;
-    margin-bottom: 49px;
+    width: auto;
+    overflow: hidden;
+    max-height: 33px;
+    padding-left: 15px;
+    padding-right: 15px;
+    @include media($TABLET) {
+      padding: 0;
+      width: 100%;
+      flex-wrap: wrap;
+      max-height: none;
+    }
     &-wrapper {
-      max-width: 100%;
+      max-width: calc(100% + 30px);
+      overflow: hidden;
+      overflow-x: scroll;
+      padding-bottom: 19px;
+      margin-bottom: 30px;
+      margin-left: -15px;
+      margin-right: -15px;
+      @include media($TABLET) {
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+        margin-bottom: 28px;
+      }
     }
     &-item {
       margin-right: 15px;
+      @include media($TABLET) {
+        margin-bottom: 15px;
+      }
+      @include media($HD) {
+        margin-bottom: 24px;
+      }
       &__link {
         display: inline-block;
         padding: 0 12px;
@@ -27,6 +68,11 @@
         border: 1px solid #8346E9;
         border-radius: 60px;
         transition: 0.2s ease;
+        white-space: nowrap;
+        @include media($TABLET) {
+          height: 35px;
+          line-height: 33px;
+        }
         &:hover, &.active {
           background: #8346E9;
           color: white;
@@ -36,6 +82,7 @@
   }
   &-list, .stocks-list_etf {
     display: flex;
+    flex-wrap: wrap;
     &-item {
       display: flex;
       flex-direction: column;
@@ -43,12 +90,22 @@
       margin-bottom: 34px;
       width: 76px;
       height: 101px;
-      margin-right: 76px;
+      margin-right: 9px;
+      @include media($TABLET) {
+        width: 70px;
+        height: 153px;
+        margin-right: 50px;
+      }
       &__img {
         width: 48px;
         height: 48px;
         border-radius: 100%;
         margin-bottom: 8px;
+        @include media($TABLET) {
+          width: 70px;
+          height: 70px;
+          margin-bottom: 12px;
+        }
       }
       &__title {
         font-size: 12px;
@@ -59,6 +116,12 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: inline-block;
+        @include media($TABLET) {
+          font-size: 14px;
+          line-height: 24px;
+          letter-spacing: -0.01em;
+          max-height: 48px;
+        }
         &.long {
           position: relative;
           cursor: pointer;
@@ -77,10 +140,39 @@
         color: #34C759;
         font-size: 11px;
         line-height: 13px;
+        @include media($TABLET) {
+          font-size: 14px;
+        }
         &.down {
           color: #EA5555;
         }
       }
+    }
+    &_etf {
+      .stocks-list-item {
+        position: relative;
+        &:after {
+          content: "ETF";
+          position: absolute;
+          top: 0px;
+          right: 10px;
+          background: #FBA500;
+          padding: 0 5px;
+          border-radius: 3;
+          font-size: 8px;
+          height: 15px;
+          line-height: 15px;
+          @include media($TABLET) {
+            font-size: 12px;
+            height: 22px;
+            line-height: 22px;
+            top: -4px;
+            right: -4px;
+            padding: 0 7px;
+          }
+        }
+      }
+
     }
   }
 }

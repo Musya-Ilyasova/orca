@@ -51,9 +51,6 @@
     transition-delay: 0.2s, 0s;
     transition-duration: 0.2s, 0.2s;
     transition-timing-function: ease;
-    &:first-child {
-      max-height: 600px;
-    }
     &.visibilyty {
       max-height: 1600px;
       opacity: 1;

@@ -25,7 +25,7 @@ function addDonutBox(shareRequest) {
             label: function(context) {
               context.dataset.fill=false;
               var label = context.label || '';
-              return label = Math.floor(context.parsed * 100) / 100 + '%';
+              return label = Math.round(context.parsed * 100) / 100 + '%';
             },
           },
           // backgroundColor: 'rgba(0, 0, 0, 0.0)',
@@ -64,7 +64,7 @@ function addSectors(shareRequest) {
     spanAssets.innerText = partsList[i].count + " assets";
     let spanVolume= document.createElement('span');
     spanVolume.classList.add('breakdown-donut-volums-list-item__volume');
-    spanVolume.innerText = Math.floor(partsList[i].percent) + "%";
+    spanVolume.innerText = Math.round(partsList[i].percent) + "%";
     li.appendChild(spanTitle);
     li.appendChild(spanVolume);
     li.appendChild(spanAssets);

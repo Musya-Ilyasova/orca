@@ -1,5 +1,8 @@
 .breakdown {
-  padding: 80px 0;
+  &.visibilyty{
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
   .container {
     @include media($TABLET) {
       padding: 0;
@@ -63,7 +66,8 @@
       }
     }
     &-box {
-      width: 100%;
+      width: 70%;
+      margin: 0 auto;
       height: 296px;
       @include media($DESKTOP) {
         grid-column-start: 1;
@@ -85,7 +89,7 @@
         grid-row-end: 3;
       }
       &-title {
-        margin-top: 50px;
+        margin-top: 20px;
         display: flex;
         justify-content: space-between;
         padding-bottom: 5px;

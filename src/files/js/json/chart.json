@@ -434,16 +434,16 @@
         "change_percent": 2.4841
       },
       {
-        "logo": "https://storage.googleapis.com/orca-marketdata-media/logos/IOSEVR1s120x120_1607693890.png",
-        "name": "EVRAZ",
-        "type": "ETF",
+        "logo": "https://storage.googleapis.com/orca-marketdata-media/logos/IOSFRES1s120x120_1607693927.png",
+        "name": "Fresnillo",
+        "type": "EQUITY",
         "industry": "Materials",
-        "change_percent": 2.4841
+        "change_percent": 1.894
       },
       {
         "logo": "https://storage.googleapis.com/orca-marketdata-media/logos/IOSFRES1s120x120_1607693927.png",
         "name": "Fresnillo",
-        "type": "EQUITY",
+        "type": "ETF",
         "industry": "Materials",
         "change_percent": 1.894
       },

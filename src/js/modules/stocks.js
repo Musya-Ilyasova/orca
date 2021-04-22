@@ -16,7 +16,8 @@ function filterStocks(shareRequest) {
   addStocks(stocksObj, stocksList);
   addStocks(etfObj, etfList);
   addStocksTags(stocksObj);
-  toggleStocksTags(stocksObj)
+  toggleStocksTags(stocksObj);
+  overflowTitlesStocks();
 }
 
 function addStocks(listObj, appendList) {
@@ -133,7 +134,31 @@ function toggleStocksTags(stocksObj) {
       };
     });
   });
-}
+};
+
+function overflowTitlesStocks() {
+  let title = document.querySelectorAll('.stocks-list-item__title'),
+  size = 12;
+  title.forEach((i)=>{
+    let newTitle = i.innerText;
+    let temporary = i.innerText;
+    if(newTitle.length > size){
+      i.classList.add('long');
+      newTitle = newTitle.slice(0, size) + '...';
+      i.innerText=newTitle;
+      i.addEventListener('mouseover', function(){
+        i.innerText = temporary;
+        i.style.overflow="visible";
+        i.style.width="125px";
+      });
+      i.addEventListener('mouseout', function(){
+        i.innerText=newTitle;
+        i.style.overflow="hidden";
+        i.style.width="";
+      })
+    };
+  });
+};
 
 
 

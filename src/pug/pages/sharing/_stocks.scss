@@ -69,6 +69,7 @@
         border-radius: 60px;
         transition: 0.2s ease;
         white-space: nowrap;
+        cursor: pointer;
         @include media($TABLET) {
           height: 35px;
           line-height: 33px;
@@ -112,10 +113,10 @@
         line-height: 14px;
         margin-bottom: 4px;
         text-align: center;
-        max-height: 26px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: inline-block;
+        max-height: 27px;
+        width: auto;
+        display: inline-flex;
+        transition: 0.2s ease;
         @include media($TABLET) {
           font-size: 14px;
           line-height: 24px;
@@ -125,15 +126,8 @@
         &.long {
           position: relative;
           cursor: pointer;
-          &:after {
-            content: "...";
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: #000;
-            line-height: 13px;
-            padding: 0 5px;
-          }
+          text-align: center;
+          overflow: hidden;
         }
       }
       &__percent {

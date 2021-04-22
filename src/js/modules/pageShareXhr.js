@@ -204,7 +204,7 @@ function addChartBox(shareRequest) {
       labels: labels,
       datasets: [{
         type: 'line',
-        fill: true,
+        fill: 'start',
         data: dates,
         backgroundColor: gradientFill,
         borderColor: gradientStroke,

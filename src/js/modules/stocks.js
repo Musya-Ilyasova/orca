@@ -143,18 +143,18 @@ function overflowTitlesStocks() {
     let newTitle = i.innerText;
     let temporary = i.innerText;
     if(newTitle.length > size){
+      let span  = document.createElement('span');
+      span.innerText = temporary;
+      span.classList.add('tooltip');
       i.classList.add('long');
       newTitle = newTitle.slice(0, size) + '...';
       i.innerText=newTitle;
+      i.appendChild(span);
       i.addEventListener('mouseover', function(){
-        i.innerText = temporary;
-        i.style.overflow="visible";
-        i.style.width="125px";
+        span.style.opacity='1';
       });
       i.addEventListener('mouseout', function(){
-        i.innerText=newTitle;
-        i.style.overflow="hidden";
-        i.style.width="";
+        span.style.opacity='';
       })
     };
   });

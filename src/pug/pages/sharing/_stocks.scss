@@ -1,5 +1,7 @@
 .stocks {
+  overflow: visible !important;
   .container {
+    overflow: visible;
     @include media($TABLET) {
       padding: 0;
     }
@@ -89,13 +91,15 @@
       flex-direction: column;
       align-items: center;
       margin-bottom: 34px;
-      width: 76px;
+      width: 75px;
       height: 101px;
       margin-right: 9px;
       @include media($TABLET) {
-        width: 70px;
         height: 153px;
-        margin-right: 50px;
+        margin-right: 20px;
+      }
+      @include media($DESKTOP) {
+        margin-right: 40px;
       }
       &__img {
         width: 48px;
@@ -124,10 +128,40 @@
           max-height: 48px;
         }
         &.long {
-          position: relative;
           cursor: pointer;
           text-align: center;
-          overflow: hidden;
+          position: relative;
+          .tooltip {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            right: 0;
+            transform: translate(-50%, -110%);
+            z-index: 5;
+            line-height: 1.2;
+            background: rgba($color: #8346e9, $alpha: 0.8);
+            padding: 3px;
+            width: 95px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border-radius: 4px;
+            @include media($TABLET) {
+              padding: 4px;
+              width: 110px;
+            }
+            &:after {
+              content: '';
+              position: absolute;
+              border: 5px solid transparent;
+              border-top: 8px solid rgba($color: #8346e9, $alpha: 0.8);
+              bottom: -12px;
+              left: 0;
+              right: 0;
+              margin: 0 auto;
+              width: 0;
+              height: 0;
+            }
+          }
         }
       }
       &__percent {
@@ -166,7 +200,6 @@
           }
         }
       }
-
     }
   }
 }

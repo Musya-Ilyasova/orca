@@ -14,7 +14,9 @@ function pageShareXhr() {
     sharedFieldInner(shareObj);
     linkGapToggle(shareObj);
     addChartBox(shareObj);
+    collectDonutObj(shareObj)
     addDonutBox(shareObj);
+    toggleDonutLink(shareObj);
     addSectors(shareObj);
     filterStocks(shareObj);
   };

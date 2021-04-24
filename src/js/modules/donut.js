@@ -1,11 +1,13 @@
-let data = [];
-let other = [];
+let data;
+let other;
 let myDonut;
 let breakdown = 0;
 
 let colors=['#5579f7', '#e965cb', '#ff7688', '#ffab58', '#dfc84f', '#acca53', '#73c866', '#0bc381', '#b26ee7', '#ff66a9', '#ff8f6b', '#f7c655', '#c6c94f', '#91c95b', '#50c673', '#0bc381'] ;
 
 function collectDonutObj(shareRequest) {
+  data=[];
+  other=[];
   let breakdownsParts = shareRequest.breakdowns[breakdown].parts;
   for(let i=0; i<=breakdownsParts.length-1; i++){
     if(breakdownsParts[i].percent<7){
@@ -29,7 +31,9 @@ function collectDonutObj(shareRequest) {
   } else if(dataSum+otherSum-100>0) {
     otherSum+dataSum+otherSum-100;
   }
-  data.push(otherSum);
+  if(otherSum>0) {
+    data.push(otherSum);
+  };
   data.sort(function(a,b) {
     return b-a;
   });
@@ -88,7 +92,6 @@ function addSectors(shareRequest) {
     percent: 0,
   };
   let partsObj = shareRequest.breakdowns[breakdown].parts;
-
   for(let i =0; i<=partsObj.length-1; i++) {
     if(partsObj[i].percent<7) {
       otherItem.count+=partsObj[i].count;
@@ -98,7 +101,10 @@ function addSectors(shareRequest) {
     };
   };
 
-  partsList.push(otherItem);
+  if(otherItem.count>0) {
+    partsList.push(otherItem);
+  };
+
   cash.percent = shareRequest.breakdowns[0].cash.percent;
   partsList.push(cash);
   partsList=partsList.sort(function (a, b){
@@ -110,6 +116,7 @@ function addSectors(shareRequest) {
   for (let i=0; i<=partsList.length-1; i++) {
     let li = document.createElement('li');
     li.classList.add('breakdown-donut-volums-list-item');
+    li.setAttribute('data-nameBreakdown', shareRequest.breakdowns[breakdown].name);
     let spanTitle = document.createElement('span');
     spanTitle.classList.add('breakdown-donut-volums-list-item__title');
     spanTitle.innerText = partsList[i].name;
@@ -133,6 +140,16 @@ function addSectors(shareRequest) {
   showAll(sectorsList);
 }
 
+function removeSectors() {
+  let sectorsList = document.querySelector('.breakdown-donut-volums-list');
+  let li  = sectorsList.querySelectorAll('li');
+  li.forEach(i=>sectorsList.removeChild(i));
+}
+
+
+
+
+
 function showAll(partList) {
   let btn = document.querySelector('.breakdown-donut-volums__btn');
   if (partList.childNodes.length>5) {
@@ -146,7 +163,7 @@ function showAll(partList) {
 }
 
 
-function toggleDonutLink(breakdownsParts) {
+function toggleDonutLink(shareRequest) {
   let donutLink = document.querySelectorAll('.breakdown-donut-list__item');
   donutLink.forEach((item)=> {
     item.addEventListener('click', function(e) {
@@ -157,11 +174,10 @@ function toggleDonutLink(breakdownsParts) {
       breakdown=Number(this.dataset.breakdown);
       this.classList.add('active');
       myDonut.destroy();
-      addSectors(breakdownsParts);
-      // sharedFieldInner(shareRequest);
-      // dataTimeInner(shareRequest);
-      // myChart.destroy();
-      // addChartBox(shareRequest);
+      removeSectors();
+      addSectors(shareRequest);
+      collectDonutObj(shareRequest);
+      addDonutBox(shareRequest);
     })
   });
 }

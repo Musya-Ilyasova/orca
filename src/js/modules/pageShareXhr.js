@@ -16,8 +16,8 @@ function pageShareXhr() {
     addChartBox(shareObj);
     collectDonutObj(shareObj)
     addDonutBox(shareObj);
-    toggleDonutLink(shareObj);
     addSectors(shareObj);
+    toggleDonutLink(shareObj);
     filterStocks(shareObj);
   };
   shareXhr.onerror = function () {
@@ -107,8 +107,8 @@ function addChartBox(shareRequest) {
           annotations: [{
             type: 'line',
             mode: 'horizontal',
-            yMin: datesLastValue,
-            yMax: datesLastValue,
+            yMin: 0,
+            yMax: 0,
             value: 5,
             borderColor: '#EA8D01',
             borderWidth: 1,

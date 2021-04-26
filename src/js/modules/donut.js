@@ -9,6 +9,7 @@ function collectDonutObj(shareRequest) {
   data=[];
   other=[];
   let breakdownsParts = shareRequest.breakdowns[breakdown].parts;
+
   for(let i=0; i<=breakdownsParts.length-1; i++){
     if(breakdownsParts[i].percent<7){
       other.push(breakdownsParts[i].percent);
@@ -34,6 +35,7 @@ function collectDonutObj(shareRequest) {
   if(otherSum>0) {
     data.push(otherSum);
   };
+
   data.sort(function(a,b) {
     return b-a;
   });
@@ -92,16 +94,26 @@ function addSectors(shareRequest) {
     percent: 0,
   };
   let partsObj = shareRequest.breakdowns[breakdown].parts;
+  let countOther = 0;
   for(let i =0; i<=partsObj.length-1; i++) {
     if(partsObj[i].percent<7) {
-      otherItem.count+=partsObj[i].count;
-      otherItem.percent+=partsObj[i].percent;
-    } else {
-      partsList.push(partsObj[i]);
-    };
+      countOther++;
+    }
   };
 
-  if(otherItem.count>0) {
+  if(countOther<=1) {
+    for(let i =0; i<=partsObj.length-1; i++) {
+      partsList.push(partsObj[i]);
+    };
+  } else if(countOther>1) {
+    for(let i =0; i<=partsObj.length-1; i++) {
+      if(partsObj[i].percent<7) {
+        otherItem.count+=partsObj[i].count;
+        otherItem.percent+=partsObj[i].percent;
+      } else {
+        partsList.push(partsObj[i]);
+      };
+    };
     partsList.push(otherItem);
   };
 
@@ -146,13 +158,14 @@ function removeSectors() {
   li.forEach(i=>sectorsList.removeChild(i));
 }
 
-
-
-
-
 function showAll(partList) {
   let btn = document.querySelector('.breakdown-donut-volums__btn');
+  // let items = document.querySelectorAll('.breakdown-donut-volums-list-item');
+
   if (partList.childNodes.length>5) {
+    // for(let i=0;i<=5; i++) {
+    //   console.log(items[i].height);
+    // }
     partList.style.height = "324px";
     btn.style.display = "block";
   }

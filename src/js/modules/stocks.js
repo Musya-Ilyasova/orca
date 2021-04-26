@@ -112,6 +112,9 @@ function toggleStocksTags(stocksObj) {
       tag.forEach((i) => {
         i.classList.remove('active');
       });
+      if(this.hasClass('active')) {
+
+      }
       item.classList.add('active');
       if(item.dataset.category === 'all'){
         stockListItem.forEach((i) => {

@@ -60,7 +60,6 @@ function addGap(shareRequest) {
   period = gapList.querySelector('li .chart-results-changes-gap-item__link.active').dataset.gap;
 }
 
-
 function addChartBox(shareRequest) {
   let ctx = document.getElementById('myChart').getContext('2d');
   let gradientFill = ctx.createLinearGradient(0, 0, 0, 330);

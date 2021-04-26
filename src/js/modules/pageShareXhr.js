@@ -38,7 +38,9 @@ function sharedFieldInner(shareRequest) {
 
 function dataTimeInner(shareRequest) {
   let a = new Date(shareRequest.created);
-  let thisTime = " " + a.toLocaleTimeString().slice(0, 4) + a.toLocaleTimeString().slice(7);
+  let thisTime = " " + a.toLocaleTimeString("en-US", {hour12:true}).slice(0, 5) + a.toLocaleTimeString().slice(7);
+  console.log(a.toLocaleTimeString("en-US", {hour12:true}).slice(0, 4));
+  // let thisTime = " " + a.toLocaleTimeString().slice(0, 4) + a.toLocaleTimeString().slice(7);
   document.querySelector('.chart-datatime__date').textContent = a.toLocaleDateString();
   document.querySelector('.chart-datatime__time').textContent = thisTime;
 }
@@ -236,7 +238,6 @@ function linkGapToggle(shareRequest) {
     })
   })
 }
-
 
 // rewarded-slider
 function buildRewardedSlider() {

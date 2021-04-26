@@ -145,6 +145,7 @@
       max-width: 100%;
       min-width: 100%;
       min-height: 100%;
+      touch-action: none;
     }
     .anychart-ui-support {
       fill: linear-gradient(90deg, #5579F7 0%, #762FE6 100%);

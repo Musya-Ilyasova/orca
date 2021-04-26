@@ -160,14 +160,18 @@ function removeSectors() {
 
 function showAll(partList) {
   let btn = document.querySelector('.breakdown-donut-volums__btn');
-  // let items = document.querySelectorAll('.breakdown-donut-volums-list-item');
-
+  let items = document.querySelectorAll('.breakdown-donut-volums-list-item');
+  let height=0;
   if (partList.childNodes.length>5) {
-    // for(let i=0;i<=5; i++) {
-    //   console.log(items[i].height);
-    // }
-    partList.style.height = "324px";
+    for(let i=0;i<=4; i++) {
+      height += items[i].offsetHeight + 20;
+    }
+    partList.style.height = height + "px";
     btn.style.display = "block";
+  }else {
+    partList.style.height = "";
+    btn.style.display = "";
+
   }
   btn.addEventListener('click', function() {
     partList.style.height = "";

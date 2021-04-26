@@ -16,7 +16,7 @@ function filterStocks(shareRequest) {
   addStocks(stocksObj, stocksList);
   addStocks(etfObj, etfList);
   addStocksTags(stocksObj);
-  toggleStocksTags(stocksObj);
+  toggleStocksTags();
   overflowTitlesStocks();
 }
 
@@ -101,22 +101,19 @@ function tagsWidth(stocksTags) {
   });
 }
 
-
-function toggleStocksTags(stocksObj) {
+function toggleStocksTags() {
   let tag = document.querySelectorAll('.stocks-tags-item__link');
   let stockListItem = document.querySelectorAll('.stocks-list-item');
   let etfList = document.querySelector('.stocks-list_etf');
+  let itemAll = document.querySelector('[data-category="all"]');
   tag.forEach((item) => {
     item.addEventListener('click', function(e) {
       e.preventDefault();
-      tag.forEach((i) => {
-        i.classList.remove('active');
-      });
-      if(this.hasClass('active')) {
-
-      }
-      item.classList.add('active');
-      if(item.dataset.category === 'all'){
+      if(item.classList.contains('active')) {
+        tag.forEach((i) => {
+          i.classList.remove('active');
+        });
+        itemAll.classList.add('active');
         stockListItem.forEach((i) => {
           i.style.display = '';
         });
@@ -124,16 +121,29 @@ function toggleStocksTags(stocksObj) {
           showEtf(etfList);
         };
       } else {
-        if(etfList.hasChildNodes()) {
-          hideEtf(etfList);
-        };
-        stockListItem.forEach((i) => {
-          if(item.innerText===i.dataset.industry) {
-            i.style.display = '';
-          }else {
-            i.style.display = 'none';
-          }
+        tag.forEach((i) => {
+          i.classList.remove('active');
         });
+        item.classList.add('active');
+        if(item.dataset.category === 'all'){
+          stockListItem.forEach((i) => {
+            i.style.display = '';
+          });
+          if(etfList.hasChildNodes()) {
+            showEtf(etfList);
+          };
+        } else {
+          if(etfList.hasChildNodes()) {
+            hideEtf(etfList);
+          };
+          stockListItem.forEach((i) => {
+            if(item.innerText===i.dataset.industry) {
+              i.style.display = '';
+            }else {
+              i.style.display = 'none';
+            }
+          });
+        };
       };
     });
   });

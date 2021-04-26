@@ -76,9 +76,13 @@
           height: 35px;
           line-height: 33px;
         }
-        &:hover, &.active {
+        &:hover {
+          box-shadow: 1px 1px 4px 1px #8346e9;
+        }
+        &.active {
           background: #8346E9;
           color: white;
+          box-shadow: 1px 1px 4px 1px transparent;
         }
       }
     }

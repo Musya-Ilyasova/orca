@@ -50,6 +50,6 @@ generation.addEventListener('click', function() {
   animOut();
   animation.destroy();
   let content = document.querySelectorAll('.content');
-  content.forEach(item=> item.classList.toggle('visibilyty'))
+  content.forEach(item=> item.classList.toggle('visibility'))
   document.querySelector('.chart-loading').classList.toggle('opacity');
 })

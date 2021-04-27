@@ -55,26 +55,34 @@ function addDonutBox(shareRequest) {
         }
       },
       animation: {
-        onComplete: function () {
+        onProgress: function () {
           let ctx2 = this.ctx;
-          let midX = this.width*0.43;
-          let midY = this.height/2;
-          console.log(this);
-          ctx2.font= 20+"px Inter";
-          // ctx2.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
-          ctx2.textAlign = 'left';
-          ctx2.textBaseline = 'bottom';
+          let midX = this.width-20;
+          let midY = this.height+25;
+          let cut = Number(this.options.cutout.replace('%',''))/100;
 
-          console.log(this.ctx.startAngle);
+          let start_angle=4.4,
+          total_value = 100;
           this.data.datasets.forEach(function(dataset) {
-            console.log(dataset);
-            for (var i = 0; i < dataset.data.length; i++) {
-              // var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
-              //     left = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.left;
-              ctx2.fillStyle = 'white'; // label color
-
-              var label = dataset.data[i]+'%';
-              ctx2.fillText(label, midX, midY);
+            for (let i = 0; i < dataset.data.length; i++) {
+              let val = dataset.data[i];
+              if (val>7) {
+                let slice_angle = 2 * Math.PI * val / total_value;
+                let pieRadius = Math.min(midX/2, midY/2);
+                let labelX =midX/2 + midY/4 * Math.cos(start_angle + slice_angle/2);
+                let labelY = midY/2 + midY/4 * Math.sin(start_angle + slice_angle/2);
+            
+                var offset = (pieRadius * cut) / 2-5;
+                labelX = midX/2 + (offset + pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
+                labelY = midY/2 + (offset + pieRadius / 2) * Math.sin(start_angle + slice_angle/2); 
+    
+                var labelText = Math.round(100 * val / total_value);
+                ctx2.fillStyle = "white";
+                ctx2.font = "bold 20px Inter";
+                ctx2.fillText(labelText+"%", labelX,labelY);
+                start_angle += slice_angle;
+                console.log(start_angle);
+              }
             }
           });
         }

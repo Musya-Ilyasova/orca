@@ -50,6 +50,7 @@
     "anychart": "^8.9.0",
     "chart.js": "^3.1.0",
     "chartjs-plugin-annotation": "^1.0.0",
+    "chartjs-plugin-datalabels": "^1.0.0",
     "jquery": "^3.6.0",
     "lottie-web": "^5.7.8",
     "polyfill-library": "^3.104.0",

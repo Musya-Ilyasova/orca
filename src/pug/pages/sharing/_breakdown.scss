@@ -69,6 +69,7 @@
       width: 70%;
       margin: 0 auto;
       height: 296px;
+      overflow: visible;
       @include media($DESKTOP) {
         grid-column-start: 1;
         grid-row-end: 2;
@@ -80,6 +81,7 @@
         max-height: 100%;
         max-width: 100%;
         touch-action: none;
+        overflow: visible;
       }
     }
     &-volums {

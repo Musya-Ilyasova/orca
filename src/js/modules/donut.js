@@ -3,6 +3,7 @@ let other;
 let myDonut;
 let breakdown = 0;
 
+
 let colors=['#5579f7', '#e965cb', '#ff7688', '#ffab58', '#dfc84f', '#acca53', '#73c866', '#0bc381', '#b26ee7', '#ff66a9', '#ff8f6b', '#f7c655', '#c6c94f', '#91c95b', '#50c673', '#0bc381'] ;
 
 function collectDonutObj(shareRequest) {
@@ -47,12 +48,44 @@ function addDonutBox(shareRequest) {
   myDonut = new Chart(ctx2, {
     options: {
       responsive: true,
+      layout: {
+        padding: {
+          top: 10,
+          bottom: 10
+        }
+      },
+      animation: {
+        onComplete: function () {
+          let ctx2 = this.ctx;
+          let midX = this.width*0.43;
+          let midY = this.height/2;
+          console.log(this);
+          ctx2.font= 20+"px Inter";
+          // ctx2.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+          ctx2.textAlign = 'left';
+          ctx2.textBaseline = 'bottom';
+
+          console.log(this.ctx.startAngle);
+          this.data.datasets.forEach(function(dataset) {
+            console.log(dataset);
+            for (var i = 0; i < dataset.data.length; i++) {
+              // var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+              //     left = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.left;
+              ctx2.fillStyle = 'white'; // label color
+
+              var label = dataset.data[i]+'%';
+              ctx2.fillText(label, midX, midY);
+            }
+          });
+        }
+      },
       plugins: {
         legend: {
           display: false,
         },
         tooltip: {
           usePointStyle: true,
+          displayColors: false,
           callbacks: {
             label: function(context) {
               context.dataset.fill=false;
@@ -74,7 +107,7 @@ function addDonutBox(shareRequest) {
         backgroundColor: labels,
         backgroundOpacity: 1,
         borderColor: 'transparent',
-        showTooltips: false,
+        hoverOffset: 4
       }],
       labels: labels,
     },

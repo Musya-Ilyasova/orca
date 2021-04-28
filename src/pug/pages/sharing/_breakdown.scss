@@ -80,8 +80,14 @@
       #myDonut  {
         max-height: 100%;
         max-width: 100%;
+        height: 100%;
+        width: 100%;
         touch-action: none;
         overflow: visible;
+        .highcharts-background {
+          background: transparent;
+          fill: transparent;
+        }
       }
     }
     &-volums {

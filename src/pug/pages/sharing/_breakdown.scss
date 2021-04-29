@@ -88,6 +88,9 @@
           background: transparent;
           fill: transparent;
         }
+        .highcharts-point {
+          stroke-width: 0;
+        }
       }
     }
     &-volums {

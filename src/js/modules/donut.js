@@ -4,6 +4,7 @@ let myDonut;
 let breakdown = 0;
 let names = [];
 let partsList = [];
+let donutMap = new Object();
 let colors=['#5579f7', '#e965cb', '#ff7688', '#ffab58', '#dfc84f', '#acca53', '#73c866', '#0bc381', '#b26ee7', '#ff66a9', '#ff8f6b', '#f7c655', '#c6c94f', '#91c95b', '#50c673', '#0bc381'] ;
 
 function collectDonutObj(shareRequest) {
@@ -42,120 +43,13 @@ function collectDonutObj(shareRequest) {
   });
 }
 
-function addDonutBox(shareRequest) {
-  let ctx2 = document.getElementById("myDonut").getContext("2d");
-  let labels = colors.slice(0, data.length);
-  myDonut = new Chart(ctx2, {
-    options: {
-      responsive: true,
-      layout: {
-        padding: {
-          top: 10,
-          bottom: 10
-        }
-      },
-      events: [],
-      showTooltips: false,
-      animation: {
-        onComplete: function () {
-          let ctx2 = this.ctx;
-          let midX = this.width-20;
-          let midY = this.height+25;
-          let cut = Number(this.options.cutout.replace('%',''))/100;
 
-          let start_angle=4.4,
-          slice_angle=0,
-          total_value = 100;
-          this.data.datasets.forEach(function(dataset) {
-            for (let i = 0; i < dataset.data.length; i++) {
-              let val = dataset.data[i];
-              if (val>7) {
-                slice_angle = 2 * Math.PI * val / total_value;
-                let pieRadius = Math.min(midX/2, midY/2);
-                let labelX =midX/2 + midY/4 * Math.cos(start_angle + slice_angle/2);
-                let labelY = midY/2 + midY/4 * Math.sin(start_angle + slice_angle/2);
-                var offset = (pieRadius * cut) / 2-5;
-                labelX = midX/2 + (offset + pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
-                labelY = midY/2 + (offset + pieRadius / 2) * Math.sin(start_angle + slice_angle/2);
-                var labelText = Math.round(100 * val / total_value);
-                ctx2.fillStyle = "white";
-                ctx2.font = "bold 21px Inter";
-                if ((start_angle<5 || start_angle>9) && slice_angle>2) {
-                  labelY+=20;
-                } else if(start_angle>9 && slice_angle<0.8) {
-                  labelY-=10;
-                } else if(start_angle>9 && slice_angle>0.8 && slice_angle<2) {
-                  labelY-=20;
-                } else if(start_angle>5 && start_angle<=7 && slice_angle<2) {
-                  labelX-=25;
-
-
-                } else if(start_angle>7 && start_angle<=9 && slice_angle<2) {
-                  labelX-=15;
-                  labelY+=20;
-                } else if(start_angle>7 && start_angle<=9 && slice_angle>=2) {
-                  labelX+=10;
-                  labelY+=10;
-                };
-                if(start_angle<5 && slice_angle>3) {
-                  labelY-=10;
-                  labelX-=20;
-                } else if(start_angle>7 && start_angle<=9 && slice_angle<2) {
-                  labelY-=35;
-                } else if(start_angle>7 && start_angle<=9 && slice_angle>=2) {
-                  labelY-=45;
-                } else if(start_angle>9 && slice_angle<2) {
-                  labelY+=10;
-                };
-
-                ctx2.fillText(labelText+"%", labelX, labelY);
-                start_angle += slice_angle;
-              }
-            }
-          });
-        }
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          enabled: false,
-        },
-        // tooltip: {
-        //   // usePointStyle: true,
-        //   // displayColors: false,
-        //   // callbacks: {
-        //   //   label: function(context) {
-        //   //     context.dataset.fill=false;
-        //   //     var label = context.label || '';
-        //   //     return label = Math.round(context.parsed * 100) / 100 + '%';
-        //   //   },
-        //   // },
-        //   intersect: false,
-        //   displayColors: false,
-        // },
-      },
-      cutout: "47%",
-    },
-    type: 'doughnut',
-    data: {
-      datasets: [{
-        data: data,
-        backgroundColor: labels,
-        backgroundOpacity: 1,
-        borderColor: 'transparent',
-        // hoverOffset: 4
-      }],
-      labels: labels,
-    },
-  });
-}
 
 
 function addSectors(shareRequest) {
   let sectorsList = document.querySelector('.breakdown-donut-volums-list');
   partsList = [];
+  names=[];
   let otherItem = {
     name: 'Other',
     count: 0,
@@ -195,9 +89,8 @@ function addSectors(shareRequest) {
     if (a.percent > b.percent) return -1;
     return 0;
   });
-
   for (let i=0; i<=partsList.length-1; i++) {
-    // names.push(partsList[i].name);
+    names.push(partsList[i].name);
     let li = document.createElement('li');
     li.classList.add('breakdown-donut-volums-list-item');
     li.setAttribute('data-nameBreakdown', shareRequest.breakdowns[breakdown].name);
@@ -223,66 +116,66 @@ function addSectors(shareRequest) {
   showAll(sectorsList);
 }
 
-// function addDonutBox(shareRequest) {
-
-//   let labels = colors.slice(0, data.length);
-//   Highcharts.chart('myDonut', {
-//     chart: {
-//       plotBackgroundColor: 'black',
-//       plotBorderWidth: null,
-//       plotShadow: false,
-//       type: 'pie'
-//     },
-//     exporting: {
-//       enabled: false
-//     },
-//     title: {
-//       text: null,
-//     },
-//     tooltip: {
-//       formatter: function () {
-//         var point = this.points[0].point;
-//           // cats = point.series.xAxis.categories;
-//         console.log(point);
-//         var catIndex = point.index,
-//           currCat = cats[catIndex],  //..or simply "this.x"
-//           nextCat = cats[catIndex+1] || '';
-//         var s = '<b>' + currCat + ' - ' + nextCat + '</b>';
-//         $.each(this.points, function () {
-//           s += '<br/>' + this.series.name + ': ' + this.y + 'm';
-//         });
-//         return s;
-//       }
-//       // pointFormat: '{names}: <b>{data[i]}%</b>'
-//     },
-//     accessibility: {
-//       point: {
-//         valueSuffix: '%'
-//       }
-//     },
-//     credits: {
-//       enabled: false
-//     },
-//     plotOptions: {
-//       pie: {
-//         allowPointSelect: true,
-//         cursor: 'pointer',
-//         dataLabels: {
-//           enabled: false
-//         },
-//         shadow: false,
-//         showInLegend: false
-//       }
-//     },
-//     series: [{
-//       name: 'Persent',
-//       colorByPoint: true,
-//       innerSize: '43%',
-//       data: data,
-//       colors: labels,
-//       categories: names,
-//     }]
-// })};
+function addDonutBox(shareRequest) {
+  donutMap = [];
+  let labels = colors.slice(0, data.length);
+  for(let i=0; i<=data.length-1; i++) {
+    donutMap.push({
+      name: names[i],
+      y: data[i],
+      color: labels[i]
+    });
+  };
+  Highcharts.chart('myDonut', {
+    chart: {
+      plotBackgroundColor: 'black',
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie',
+      borderColor: null
+    },
+    exporting: {
+      enabled: false
+    },
+    title: {
+      text: null,
+    },
+    tooltip: {
+      pointFormat: 'Persent: <b>{point.y}%</b>'
+    },
+    accessibility: {
+      point: {
+        valueSuffix: '%'
+      }
+    },
+    credits: {
+      enabled: false
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+        shadow: false,
+        showInLegend: false
+      }
+    },
+    series: [{
+      name: 'Persent',
+      colorByPoint: true,
+      innerSize: '43%',
+      data: donutMap,
+      colors: labels,
+      dataLabels: {
+        formatter: function () {
+          return this.y > 5 ? this.point.name : null;
+        }
+      }
+    }]
+  });
+}
 
 
 
@@ -331,5 +224,116 @@ function toggleDonutLink(shareRequest) {
     })
   });
 }
+
+
+// function addDonutBox(shareRequest) {
+//   let ctx2 = document.getElementById("myDonut").getContext("2d");
+//   let labels = colors.slice(0, data.length);
+//   myDonut = new Chart(ctx2, {
+//     options: {
+//       responsive: true,
+//       layout: {
+//         padding: {
+//           top: 10,
+//           bottom: 10
+//         }
+//       },
+//       events: [],
+//       showTooltips: false,
+//       animation: {
+//         onComplete: function () {
+//           let ctx2 = this.ctx;
+//           let midX = this.width-20;
+//           let midY = this.height+25;
+//           let cut = Number(this.options.cutout.replace('%',''))/100;
+
+//           let start_angle=4.4,
+//           slice_angle=0,
+//           total_value = 100;
+//           this.data.datasets.forEach(function(dataset) {
+//             for (let i = 0; i < dataset.data.length; i++) {
+//               let val = dataset.data[i];
+//               if (val>7) {
+//                 slice_angle = 2 * Math.PI * val / total_value;
+//                 let pieRadius = Math.min(midX/2, midY/2);
+//                 let labelX =midX/2 + midY/4 * Math.cos(start_angle + slice_angle/2);
+//                 let labelY = midY/2 + midY/4 * Math.sin(start_angle + slice_angle/2);
+//                 var offset = (pieRadius * cut) / 2-5;
+//                 labelX = midX/2 + (offset + pieRadius / 2) * Math.cos(start_angle + slice_angle/2);
+//                 labelY = midY/2 + (offset + pieRadius / 2) * Math.sin(start_angle + slice_angle/2);
+//                 var labelText = Math.round(100 * val / total_value);
+//                 ctx2.fillStyle = "white";
+//                 ctx2.font = "bold 21px Inter";
+//                 if ((start_angle<5 || start_angle>9) && slice_angle>2) {
+//                   labelY+=20;
+//                 } else if(start_angle>9 && slice_angle<0.8) {
+//                   labelY-=10;
+//                 } else if(start_angle>9 && slice_angle>0.8 && slice_angle<2) {
+//                   labelY-=20;
+//                 } else if(start_angle>5 && start_angle<=7 && slice_angle<2) {
+//                   labelX-=25;
+
+
+//                 } else if(start_angle>7 && start_angle<=9 && slice_angle<2) {
+//                   labelX-=15;
+//                   labelY+=20;
+//                 } else if(start_angle>7 && start_angle<=9 && slice_angle>=2) {
+//                   labelX+=10;
+//                   labelY+=10;
+//                 };
+//                 if(start_angle<5 && slice_angle>3) {
+//                   labelY-=10;
+//                   labelX-=20;
+//                 } else if(start_angle>7 && start_angle<=9 && slice_angle<2) {
+//                   labelY-=35;
+//                 } else if(start_angle>7 && start_angle<=9 && slice_angle>=2) {
+//                   labelY-=45;
+//                 } else if(start_angle>9 && slice_angle<2) {
+//                   labelY+=10;
+//                 };
+
+//                 ctx2.fillText(labelText+"%", labelX, labelY);
+//                 start_angle += slice_angle;
+//               }
+//             }
+//           });
+//         }
+//       },
+//       plugins: {
+//         legend: {
+//           display: false,
+//         },
+//         tooltip: {
+//           enabled: false,
+//         },
+//         // tooltip: {
+//         //   // usePointStyle: true,
+//         //   // displayColors: false,
+//         //   // callbacks: {
+//         //   //   label: function(context) {
+//         //   //     context.dataset.fill=false;
+//         //   //     var label = context.label || '';
+//         //   //     return label = Math.round(context.parsed * 100) / 100 + '%';
+//         //   //   },
+//         //   // },
+//         //   intersect: false,
+//         //   displayColors: false,
+//         // },
+//       },
+//       cutout: "47%",
+//     },
+//     type: 'doughnut',
+//     data: {
+//       datasets: [{
+//         data: data,
+//         backgroundColor: labels,
+//         backgroundOpacity: 1,
+//         borderColor: 'transparent',
+//         // hoverOffset: 4
+//       }],
+//       labels: labels,
+//     },
+//   });
+// }
 
 

@@ -1,3 +1,5 @@
+$sharing-main: #5677F7;
+
 .page-allocation {
   .headerLogo {
     padding: 46px 0;
@@ -75,6 +77,9 @@
       background: #141414;
       height: auto;
       border-radius: 6px;
+      @include media($TABLET) {
+        top: 30px;
+      }
     }
     &__img {
       width: 100px;
@@ -84,7 +89,7 @@
       font-size: 14px;
       line-height: 20px;
       &_main {
-        color: $referral-main;
+        color: $sharing-main;
       }
     }
     .subscribe__form-box {
@@ -112,12 +117,18 @@
   .page-allocation-rewarded {
     padding: 100px 0 69px;
     @include media($TABLET) {
-      padding: 80px 0;
+      padding: 130px 0;
     }
     .container {
       @include media($TABLET) {
         padding: 0;
       }
+    }
+    .rewarded__title_main {
+      color: #8346E9;
+    }
+    .rewarded-slider-item__circle .icon {
+      background: radial-gradient(51.27% 57.64% at 28.47% 29.17%, #5579F7 0%, #762FE6 100%);
     }
     .rewarded-slider {
       width: auto;

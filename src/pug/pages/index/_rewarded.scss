@@ -12,7 +12,7 @@
       font-size: 40px;
     }
     &_main {
-      color: $referral-main;
+      color: #8346E9;
     }
   }
   &__subtitle {
@@ -23,7 +23,7 @@
     @include media($TABLET) {
       font-size: 24px;
     }
-  } 
+  }
 }
 
 .rewarded-slider {

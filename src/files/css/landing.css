@@ -757,7 +757,7 @@ table {
   }
 }
 .rewarded__title_main {
-  color: #EE49A0
+  color: #8346E9;
 }
 .rewarded__subtitle {
   font-size: 18px;
@@ -836,7 +836,7 @@ table {
 @media(min-width: 48em) {
   .rewarded .rewarded-slider-item__circle_top:after {
     width: 100%;
-    background: url("/static/landing/img/dashed-top.54dd0e023a92.svg") no-repeat;
+    background: url("../img/dashed-top.svg") no-repeat;
     background-size: contain;
     margin-top: 10px
   }
@@ -847,7 +847,7 @@ table {
 @media(min-width: 48em) {
   .rewarded .rewarded-slider-item__circle_bottom:after {
     width: 100%;
-    background: url("/static/landing/img/dashed-bottom.6fde3d1bf9b2.svg") no-repeat;
+    background: url("../img/dashed-bottom.svg") no-repeat;
     background-size: contain;
     background-position: bottom;
     margin-bottom: 10px
@@ -856,7 +856,7 @@ table {
 .rewarded .rewarded-slider-item__circle .icon {
   width: 72px;
   height: 72px;
-  background: radial-gradient(64.58% 64.58% at 33.33% 30.56%, #EE49A0 0%, #802576 100%);
+  background: radial-gradient(51.27% 57.64% at 28.47% 29.17%, #5579F7 0%, #762FE6 100%);
   border-radius: 50%;
   fill: none
 }

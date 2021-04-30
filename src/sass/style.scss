@@ -23,17 +23,15 @@
 @import "../pug/pages/isa/_form-isa";
 @import "../pug/pages/isa/_security-isa";
 
-
-
 @import "../pug/pages/link/_invite-link";
 
-
-
 @import "../pug/pages/faq/_help-centre";
-
 
 @import "../pug/pages/sharing/page-allocation";
 @import "../pug/pages/sharing/chart";
 @import "../pug/pages/sharing/breakdown";
 @import "../pug/pages/sharing/stocks";
 
+
+// collections
+@import "../pug/pages/collections/first-screen";

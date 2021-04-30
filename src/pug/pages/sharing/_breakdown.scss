@@ -91,6 +91,26 @@
         .highcharts-point {
           stroke-width: 0;
         }
+        .highcharts-text-outline {
+          fill: white !important;
+          color: white !important;
+          text {
+            fill: white !important;
+            color: white !important;
+          }
+          tspan {
+            fill: white !important;
+            color: white !important;
+          }
+        }
+        .highcharts-text-outline, .donutPersent {
+          stroke-width: 0;
+          fill: white;
+          text {
+            fill: white;
+          }
+        }
+
       }
     }
     &-volums {

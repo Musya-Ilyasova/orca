@@ -132,7 +132,26 @@ function addDonutBox(shareRequest) {
       plotBorderWidth: null,
       plotShadow: false,
       type: 'pie',
-      borderColor: null
+      borderColor: null,
+      events: {
+        load: function() {
+          const series = this.series[0];
+          const points = series.data;
+          const chart = this;
+          // points.forEach(function(point) {
+          //     if (point.y > 7) {
+          //     const myOffset = 50;
+          //     const {x: centerX, y: centerY} = point.graphic.attr();
+          //     const {x, y} = point.dataLabel.attr();
+          //     const angle = point.angle;
+          //     point.dataLabel.attr({
+          //       x: x + Math.cos(angle) * myOffset,
+          //       y: y + Math.sin(angle) * myOffset
+          //     });
+          //   }
+          // });
+        }
+      }
     },
     exporting: {
       enabled: false
@@ -156,10 +175,12 @@ function addDonutBox(shareRequest) {
         allowPointSelect: true,
         cursor: 'pointer',
         dataLabels: {
-          enabled: false
+          enabled: true,
+          distance: -40,
+          format: '{y} %',
+          className : 'donutPersent'
         },
         shadow: false,
-        showInLegend: false
       }
     },
     series: [{

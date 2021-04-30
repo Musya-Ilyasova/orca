@@ -1,0 +1,96 @@
+.collections-first {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../img/collections-back.png);
+  @include media($TABLET) {
+    background-image: url(../img/collections-back-desktop.png);
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 320px;
+    margin: 0 auto;
+    @include media($TABLET) {
+      max-width: 1110px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(2, auto);
+      grid-row-gap: 176px;
+      padding: 0 40px;
+      width: 100%;
+    }
+  }
+  &__title {
+    font-size: 0;
+    text-align: center;
+    @include media($TABLET) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+    }
+    img {
+      width: 245px;
+      height: 47px;
+      object-fit: contain;
+      @include media($TABLET) {
+        width: 322px;
+        height: 62px;
+      }
+      @include media($DESKTOP) {
+        width: 422px;
+        height: 81px;
+      }
+    }
+  }
+  &__text {
+    max-width: 320px;
+    padding: 0 30px;
+    text-align: center;
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 700;
+    margin: 13vh 0;
+    @include media($TABLET) {
+      text-align: left;
+      margin: 0;
+      max-width: 350px;
+      padding: 0;
+      line-height: 1.2;
+    }
+    @include media($DESKTOP) {
+      font-size: 42px;
+    }
+  }
+  &-links {
+    display: none;
+    @include media($TABLET) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      text-align: center;
+      width: 230px;
+      margin-top: auto;
+      margin-left: auto;
+    }
+    span {
+      font-size: 23px;
+      margin-bottom: 20px;
+      display: inline-block;
+      width: 100%;
+      letter-spacing: -1px;
+
+    }
+    img {
+      width: 107px;
+
+    }
+  }
+}

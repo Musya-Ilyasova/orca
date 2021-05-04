@@ -64,5 +64,32 @@
       }
     }
   }
-}
+  &-container {
+    position: relative;
+  }
+  &-arrows {
+    position: absolute;
+    bottom: 121px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+  }
+  &-prev, &-next {
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    .icon {
+      width: 34px;
+      height: 15px;
+    }
+    &.swiper-button-disabled {
+      opacity: 0.6;
+      cursor: none;
+    }
+  }
 
+}

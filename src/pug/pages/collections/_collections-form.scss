@@ -1,0 +1,45 @@
+.collections-form {
+  display: none;
+  @include media($TABLET) {
+    display: block;
+    background: url(../img/collections-back-desktop.png) no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    padding: 97px 0 122px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 28px;
+    max-width: 651px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+}
+
+.collection-subscribe {
+  margin: 30px auto 0;
+  width: 438px;
+  color: white;  .subscribe__form {
+    margin: 0;
+  }
+  .subscribe__form-label {
+    color: white;
+    line-height: 24px;
+  }
+  input {
+    background: white;
+    color: #151515;
+  }
+  .subscribe__input-placeholder {
+    color: #151515;
+  }
+  .btn-primary {
+    color: #151515;
+    background: transparent;
+    border: 2px solid #000000;
+  }
+  .subscribe__form-box {
+    margin-top: 19px;
+  }
+}

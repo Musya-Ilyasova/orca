@@ -2,12 +2,14 @@
   padding: 0 20px;
   @include media($TABLET) {
     padding: 0 40px;
-
   }
 }
 
 .invest-ideas {
   padding: 80px 0;
+  @include media($DESKTOP) {
+    padding: 160px 0;
+  }
   &__title {
     font-size: 32px;
     font-weight: 700;

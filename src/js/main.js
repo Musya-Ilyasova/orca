@@ -1,4 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  @@include('modules/pageShareXhr.js');
-  @@include('modules/lottie.js');
+  @@include('modules/collections-slider.js')
 });
+

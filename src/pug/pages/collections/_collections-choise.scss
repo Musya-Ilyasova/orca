@@ -1,0 +1,79 @@
+.collections-choise {
+  padding: 80px 0 70px;
+  @include media($TABLET) {
+    padding: 100px 0;
+
+  }
+  @include media($HD) {
+    padding: 147px 0 248px;
+  }
+  &__title {
+    font-size: 32px;
+    line-height: 1.4;
+    @include media($TABLET) {
+      font-size: 48px;
+    }
+    @include media($DESKTOP) {
+      font-size: 60px;
+      line-height: 78px;
+    }
+  }
+  &__text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 20px 0;
+    max-width: 922px;
+    @include media($TABLET) {
+      font-size: 22px;
+    }
+    @include media($DESKTOP) {
+      font-size: 28px;
+    }
+  }
+  &-list {
+    margin-top: 80px;
+    @include media($TABLET) {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 20px;
+    }
+    @include media($HD) {
+      margin-top: 120px;
+      grid-template-columns: 1.1fr 0.8fr 1.1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 60px;
+    }
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: 66px;
+        @include media($TABLET) {
+          margin-bottom: 0;
+        }
+      }
+      &__title {
+        font-size: 22px;
+        display: block;
+        font-weight: 700;
+        margin-bottom: 14px;
+        @include media($TABLET) {
+          font-size: 18px;
+        }
+        @include media($DESKTOP) {
+          font-size: 28px;
+        }
+      }
+      &__text {
+        font-size: 18px;
+        line-height: 27px;
+        margin: 0;
+        @include media($TABLET) {
+          font-size: 16px;
+        }
+        @include media($DESKTOP) {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

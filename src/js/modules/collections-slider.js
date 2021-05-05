@@ -1,3 +1,10 @@
+
+var initialPoint;
+var finalPoint;
+let swipeBox = document.querySelector('.first-swipe-box');
+// swipeBox.addEventListener('click', function )
+let imageTop = document.querySelector('.collections-slider-item-img-top');
+let imageBottom = document.querySelector('.collections-slider-item-img-bottom');
 function buildCollectionsSwiper() {
   (function () {
     "use strict";
@@ -31,23 +38,15 @@ function buildCollectionsSwiper() {
           nextEl: '.collections-slider-next',
           prevEl: '.collections-slider-prev',
         },
-        // on: {
-        //   slideChangeTransitionStart: function() {
-        //     let slide = document.querySelectorAll('.collections-slider-item');
-        //     slide.forEach(i=> {
-        //       i.style.opacity="0";
-        //     })
-        //   },
-        //   slideChangeTransitionEnd: function() {
-        //     let slide = document.querySelectorAll('.collections-slider-item');
-        //     slide.forEach(i=> {
-        //       i.style.opacity="1";
-        //     })
-        //   }
-        // }
+        touchEventsTarget: ".first-swipe-box",
+        on: {
+          init: function () {
+            let swipeMobile = document.createElement('div');
+            swipeMobile.classList.add('.first-swipe-box-mobile');
+          }
+        },
       });
     };
-
     breakpoint.addListener(breakpointChecker);
     breakpointChecker();
   })();

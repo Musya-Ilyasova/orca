@@ -93,9 +93,27 @@
         padding: 0;
         max-width: 312px;
       }
+      .first-swipe-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+      }
       &-top {
         position: relative;
         bottom: -2px;
+        &.next-step {
+          transform: rotate(-10deg) translateY(-20px);
+        }
+      }
+      &-bottom {
+        position: relative;
+        &.next-step {
+          transform: translateY(20px);
+        }
       }
       &.show-swipe {
         &:after {
@@ -143,14 +161,6 @@
         width: 100%;
         pointer-events: none;
       }
-    }
-    .first-swipe-box {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
     }
     &__content {
       max-width: 286px;

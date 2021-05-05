@@ -65,16 +65,5 @@ function addRotate() {
 addRotate();
 buildCollectionsSwiper();
 
-// const collectionsSwiper = new Swiper('.collections-slider-container', {
-//   lidesPerView: 1,
-//   spaceBetween: 22,
-//   navigation: {
-//     nextEl: '.collections-slider-next',
-//     prevEl: '.collections-slider-prev',
-//   },
-//   on: {
-//     init: addRotate(),
-//   }
-// });
 
 

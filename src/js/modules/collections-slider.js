@@ -28,12 +28,8 @@ function buildCollectionsSwiper() {
       collectionsSwiper = new Swiper(".collections-slider-container", {
         lidesPerView: 1,
         spaceBetween: 22,
-        effect: 'fade',
-        speed: 1000,
+        speed: 300,
         allowTouchMove: false,
-        fadeEffect: {
-          crossFade: true
-        },
         navigation: {
           nextEl: '.collections-slider-next',
           prevEl: '.collections-slider-prev',
@@ -43,13 +39,17 @@ function buildCollectionsSwiper() {
           init: function () {
             addSwipeMobile();
           },
-          slideChangeTransitionEnd: function () {
+          slideChange: function () {
+            document.querySelector('.swiper-slide-active .collections-slider-item-img__card').style.transform="";
+          },
+          slideChangeTransitionStart: function () {
             if(document.querySelector('.swipe-box-mobile')) {
               document.querySelector('.swipe-box-mobile').remove();
               document.querySelector('.tap-box-mobile').remove();
-            }
+            };
             if(document.querySelector('.swiper-slide-active .collections-slider-item-img__top').classList.contains('opacity')) {
-              return;
+              document.querySelector('.swiper-slide-active .collections-slider-item-img__card').style.transitionDelay="0.2s";
+              document.querySelector('.swiper-slide-active .collections-slider-item-img__card').style.transform="scale(1.2)";
             } else {
               addSwipeMobile();
             }

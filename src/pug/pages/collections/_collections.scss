@@ -81,6 +81,7 @@
       position: relative;
       z-index: 5;
       padding: 0 20px;
+      transition: transform 0.2s ease;
       @include media($TABLET) {
         padding: 0 50px;
         max-width: 412px;
@@ -93,6 +94,9 @@
         padding: 0;
         max-width: 312px;
       }
+      &.next-step {
+        transform: rotate(0)!important;
+      }
       .first-swipe-box {
         position: absolute;
         top: 0;
@@ -102,18 +106,47 @@
         height: 100%;
         z-index: 100;
       }
-      &-top {
+      &__top {
         position: relative;
         bottom: -2px;
+        z-index: 10;
+        transition-property: opacity, transform;
+        transition-delay: 0.2s, 0.2s;
+        transition-duration: 0.5s;
+        transition-timing-function: ease;
         &.next-step {
-          transform: rotate(-12deg) translateY(-10px);
+          transform: rotate(-12deg) translateY(-20px);
+        }
+        &.opacity {
+          transform: rotate(-15deg) translateY(-80px);
+          opacity: 0;
         }
       }
-      &-bottom {
+      &__bottom {
         position: relative;
+        z-index: 10;
+        transition-property: opacity, transform;
+        transition-delay: 0.2s;
+        transition-duration: 0.5s, 0.3s;
+        transition-timing-function: ease;
         &.next-step {
-          transform: translateY(20px) rotate(2deg);
+          transform: translateY(5px);
         }
+        &.opacity {
+          transform:  translateY(100%);
+          opacity: 0;
+        }
+      }
+      &__card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 91%;
+        z-index: 9;
+        padding: 0 20px;
+        transition: transform 0.2s linear;
       }
       &.show-swipe {
         &:after {
@@ -207,7 +240,7 @@
   }
   &-container {
     position: relative;
-    .first-swipe-box-mobile {
+    .swipe-box-mobile {
       position: absolute;
       top: 40px;
       left: 0;
@@ -216,12 +249,57 @@
       width: 100%;
       max-width: 332px;
       height: 400px;
-      z-index: 1000;
+      z-index: 10;
+      cursor: pointer;
+      &.tap {
+        pointer-events: none;
+      }
+    }
+    .tap-box-mobile, .hover-box-mobile{
+      position: absolute;
+      top: 40px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 332px;
+      height: 400px;
+      z-index: 11;
+      display: none;
+      cursor: pointer;
+    }
+    .hover-box-mobile {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      a {
+        &:hover {
+          z-index: 12;
+          clip-path: none;
+        }
+        // &:nth-child(1):hover ~ .box {
+        //   transform: rotateX(180deg);
+        // }
+        // &:nth-child(2):hover ~ .box {
+        //   transform: rotateY(180deg);
+        // }
+        // &:nth-child(3):hover ~ .box {
+        //   transform: rotateX(-180deg);
+        // }
+        // &:nth-child(4):hover ~ .box {
+        //   transform: rotateY(-180deg);
+        // }
+        // &:nth-child(1):hover ~ .box:after, &:nth-child(3):hover ~ .box:after {
+        //   transform: rotateX(-180deg);
+        // }
+        // &:nth-child(2):hover ~ .box:after, &:nth-child(4):hover ~ .box:after {
+        //   transform: rotateY(-180deg);
+        // }
+      }
     }
   }
   &-arrows {
     position: absolute;
-    bottom: 119px;
+    bottom: 150px;
     left: 0;
     right: 0;
     margin: 0 auto;

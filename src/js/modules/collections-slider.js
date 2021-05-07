@@ -41,8 +41,18 @@ function buildCollectionsSwiper() {
         touchEventsTarget: ".first-swipe-box",
         on: {
           init: function () {
-            let swipeMobile = document.createElement('div');
-            swipeMobile.classList.add('.first-swipe-box-mobile');
+            addSwipeMobile();
+          },
+          slideChangeTransitionEnd: function () {
+            if(document.querySelector('.swipe-box-mobile')) {
+              document.querySelector('.swipe-box-mobile').remove();
+              document.querySelector('.tap-box-mobile').remove();
+            }
+            if(document.querySelector('.swiper-slide-active .collections-slider-item-img__top').classList.contains('opacity')) {
+              return;
+            } else {
+              addSwipeMobile();
+            }
           }
         },
       });

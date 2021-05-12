@@ -56,12 +56,13 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     grid-column-gap: 67px;
-    grid-row-gap: 60px;
+    grid-row-gap: 91px;
   }
   &-item {
     text-align: center;
     padding-top: 46px;
     transition-duration: 0.2s;
+    overflow: visible;
     @include media($TABLET) {
       opacity: 1;
     }
@@ -74,6 +75,7 @@
       padding: 0 20px;
       transition: transform 0.3s ease;
       cursor: pointer;
+      overflow: visible;
       @include media($TABLET) {
         padding: 0 30px;
         max-width: 412px;
@@ -97,6 +99,8 @@
         width: 100%;
         height: 100%;
         z-index: 100;
+        pointer-events: all;
+
       }
       .tap-box {
         display: none;
@@ -134,48 +138,38 @@
       }
       &__card {
         position: absolute;
-        top: 0;
+        top: 10px;
         left: 0;
         right: 0;
         margin: 0 auto;
-        width: 91%;
+        width: 89%;
         z-index: 9;
         padding: 0 20px;
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s linear;
         @include media($TABLET) {
           padding: 0 30px;
         }
         @include media($DESKTOP) {
           padding: 0 20px;
         }
-        .hover-box {
-          @include media($TABLET) {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            margin: 0 auto;
-            height: 100%;
-            display: grid;
-            padding: 0 30px;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
-            a {
-              &:nth-child(1):hover ~ img {
-                transform: rotateX(180deg);
-              }
-              &:nth-child(2):hover ~ img {
-                transform: rotateY(180deg);
-              }
-              &:nth-child(3):hover ~ img {
-                transform: rotateX(-180deg);
-              }
-              &:nth-child(4):hover ~ img {
-                transform: rotateY(-180deg);
-              }
+        &.scale {
+          transform: scale(1.2);
+          &:hover {
+            @include media($TABLET) {
+              transform: scale(1.3);
             }
-
+            @include media($HD) {
+              transform: scale(1.4);
+            }
           }
+        }
+        img {
+          box-shadow: 0px 0px 34px 0px rgba(34, 60, 80, 0.2);
+          will-change: box-shadow;
+          z-index: 10;
+          width: 100%;
+          object-fit: contain;
+          transform: rotateX(0deg) rotateY(0deg);
         }
       }
       &.show-swipe {
@@ -206,7 +200,7 @@
         &:before {
           content: "";
           position: absolute;
-          left: px;
+          left: -10px;
           top: -81px;
           opacity: 1;
           transition: opacity 0.3s ease;
@@ -226,6 +220,7 @@
           @include media($HD) {
             width: 90px;
             height: 76px;
+            left: -91px;
           }
         }
         &.opacity-tap {
@@ -236,13 +231,15 @@
       }
       img {
         width: 100%;
-        pointer-events: none;
       }
     }
     &__content {
       max-width: 286px;
       margin: 50px auto 0;
       transition: opacity 0.2s ease;
+      @include media($DESKTOP) {
+        margin: 25px auto 0;
+      }
     }
     &__title {
       font-size: 22px;
@@ -284,6 +281,9 @@
   }
   &-container {
     position: relative;
+    @include media($HD) {
+      margin-top: 138px;
+    }
     .swipe-box-mobile {
       position: absolute;
       top: 40px;
@@ -343,5 +343,5 @@
       cursor: none;
     }
   }
-
 }
+

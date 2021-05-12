@@ -89,7 +89,7 @@ function scriptsLibs() {
     "node_modules/highcharts/highcharts.js",
     "node_modules/highcharts/modules/exporting.js",
     "node_modules/highcharts/modules/export-data.js",
-    "node_modules/highcharts/modules/accessibility.js"
+    "node_modules/highcharts/modules/accessibility.js",
   ])
     .pipe(glp.concat("libs.min.js"))
     .pipe(strip())

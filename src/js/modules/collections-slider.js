@@ -2,7 +2,6 @@
 var initialPoint;
 var finalPoint;
 let swipeBox = document.querySelector('.first-swipe-box');
-// swipeBox.addEventListener('click', function )
 let imageTop = document.querySelector('.collections-slider-item-img-top');
 let imageBottom = document.querySelector('.collections-slider-item-img-bottom');
 function buildCollectionsSwiper() {
@@ -11,11 +10,13 @@ function buildCollectionsSwiper() {
     var breakpoint = window.matchMedia("(min-width:768px)");
     var collectionsSwiper;
 
-    var breakpointChecker = function breakpointChecker() {
+    var breakpointChecker = function () {
       if (breakpoint.matches === true) {
         if (breakpointChecker !== undefined) {
           window.onresize = function() {
-            collectionsSwiper.destroy(true, true);
+            if(document.querySelector('.collections-slider-container').classList.contains('collections-slider-container')) {
+              collectionsSwiper.destroy(true, true);
+            }
           }
           return;
         }

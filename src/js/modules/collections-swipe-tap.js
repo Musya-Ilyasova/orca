@@ -18,9 +18,7 @@ function addSwipeDesktop() {
     swipeBox.addEventListener('mousedown', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      // initialPoint = e.changedTouches[0];
       initialPoint = e.screenX;
-      console.log(initialPoint);
     }, false);
     swipeBox.addEventListener('mouseup', function (e) {
       e.preventDefault();
@@ -56,23 +54,21 @@ function addSwipeDesktop() {
             let height = imgRect.height;
             let mouseX = ev.offsetX;
             let mouseY = ev.offsetY;
-            let rotateY = map(mouseX, 0, 312, -5, 5);
-            let rotateX = map(mouseY, 0, 440, 25, -25);
-            let brightness = map(mouseY, 0, 500, 1.5, 0.5);
+            let rotateY = map(mouseX, 0, width, -25, 25);
+            let rotateX = map(mouseY, 0, height, 25, -25);
+            let brightness = map(mouseY, 0, height, 1.5, 0.5);
             img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             img.style.filter = `brightness(${brightness})`;
           }
-
           imageCard.addEventListener('mousemove', (ev) => {
             Card3D(imageCard, ev);
           });
-          imageCard.addEventListener('mouseoute', (ev) => {
-            ev.preventDefault();
+          imageCard.addEventListener('mouseout', (ev) => {
             let img = imageCard.querySelector('img');
-            img.style.transform = 'rotateX(0deg) rotateY(0deg))';
+            img.style.transform = 'rotateX(0deg) rotateY(0deg)';
             img.style.filter = 'brightness(1)';
           });
-        }, false)
+        }, true)
       }
     }, true);
   });

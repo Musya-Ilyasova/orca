@@ -12,7 +12,6 @@ function addSwipeDesktop() {
     let imageTop = item.querySelector('.collections-slider-item-img__top');
     let imageBottom = item.querySelector('.collections-slider-item-img__bottom');
     let imageCard = item.querySelector('.collections-slider-item-img__card');
-    let imageCardImg = item.querySelector('.collections-slider-item-img__card img');
     imageBox.prepend(tapBox);
     imageBox.prepend(swipeBox);
     swipeBox.addEventListener('mousedown', function (e) {
@@ -25,7 +24,7 @@ function addSwipeDesktop() {
       e.stopPropagation();
       finalPoint = e.screenX;
       var xAbs = Math.abs( finalPoint - initialPoint);
-      if (xAbs>100) {
+      if (xAbs>30) {
         imageTop.classList.add('next-step');
         imageBottom.classList.add('next-step');
         tapBox.style.display = "block";
@@ -73,7 +72,6 @@ function addSwipeDesktop() {
     }, true);
   });
 };
-addSwipeDesktop();
 
 function addSwipeMobile() {
   let slider = document.querySelector('.collections-slider-container');
@@ -89,40 +87,58 @@ function addSwipeMobile() {
   let imageTop = document.querySelector('.swiper-slide-active .collections-slider-item-img__top');
   let imageBottom = document.querySelector('.swiper-slide-active .collections-slider-item-img__bottom');
   let imageCard = document.querySelector('.swiper-slide-active .collections-slider-item-img__card');
-  swipeBox.addEventListener('touchstart', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    initialPoint = event.changedTouches[0];
-  }, false);
-  swipeBox.addEventListener('touchend', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    finalPoint = event.changedTouches[0];
-    var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
-    var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
-    if (xAbs > 20 || yAbs > 20) {
-      if (xAbs > yAbs) {
-        if (finalPoint.pageX < initialPoint.pageX) {
-          imageTop.classList.add('next-step');
-          imageBottom.classList.add('next-step');
-          imageBox.classList.add('next-step')
-          swipeBox.classList.add('tap');
-          tapBox.style.display='block';
-          if(imageBox.classList.contains("show-swipe")) {
-            imageBox.classList.add('opacity-swipe');
-            imageBox.classList.add('show-tap');
-          }
-          tapBox.addEventListener('click', function(event) {
-            event.preventDefault();
-            imageTop.classList.add('opacity');
-            imageBottom.classList.add('opacity');
-            setTimeout(() => imageCard.style.transform = "scale(1.2)", 500);
-            if(imageBox.classList.contains("show-tap")) {
-              imageBox.classList.add('opacity-tap');
+  let imageCardImg = document.querySelector('.swiper-slide-active .collections-slider-item-img__card img');
+  imageCardImg.style.opacity = "0";
+  imageBox.classList.add("show-swipe");
+  if(imageTop.classList.contains('next-step')) {
+    tapBox.style.display='block';
+    imageCardImg.style.opacity = "1";
+    tapBox.addEventListener('click', function(event) {
+      event.preventDefault();
+      imageTop.classList.add('opacity');
+      imageBottom.classList.add('opacity');
+      setTimeout(() => imageCard.style.transform = "scale(1.2)", 500);
+      if(imageBox.classList.contains("show-tap")) {
+        imageBox.classList.add('opacity-tap');
+      }
+    }, false);
+  } else {
+    swipeBox.addEventListener('touchstart', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      initialPoint = event.changedTouches[0];
+    }, false);
+    swipeBox.addEventListener('touchend', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      finalPoint = event.changedTouches[0];
+      var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+      var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
+      if (xAbs > 20 || yAbs > 20) {
+        if (xAbs > yAbs) {
+          if (finalPoint.pageX < initialPoint.pageX) {
+            imageCardImg.style.opacity = "";
+            imageTop.classList.add('next-step');
+            imageBottom.classList.add('next-step');
+            imageBox.classList.add('next-step')
+            swipeBox.classList.add('tap');
+            tapBox.style.display='block';
+            if(imageBox.classList.contains("show-swipe")) {
+              imageBox.classList.add('opacity-swipe');
+              imageBox.classList.add('show-tap');
             }
-          }, false);
-        }
-      };
-    }
-  }, true);
+          }
+        };
+      }
+    }, true);
+    tapBox.addEventListener('click', function(event) {
+      event.preventDefault();
+      imageTop.classList.add('opacity');
+      imageBottom.classList.add('opacity');
+      setTimeout(() => imageCard.style.transform = "scale(1.2)", 500);
+      if(imageBox.classList.contains("show-tap")) {
+        imageBox.classList.add('opacity-tap');
+      }
+    }, false);
+  }
 }

@@ -1,0 +1,110 @@
+.page-collections {
+  .btn-primary, .getapp__btn {
+    background: black;
+    border: 1px solid white;
+    height: 48px;
+    line-height: 46px;
+    &:hover {
+      background: transparent;
+      border: 1px solid white;
+      box-shadow: 0 0 4px 1px white;
+    }
+  }
+  .getapp__btn {
+    line-height: 60px;
+    height: 60px;
+  }
+  .headerLogo {
+    padding: 46px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    width: 100%;
+    background: transparent;
+    z-index: 1000;
+    transition-property: padding, background;
+    transition-delay:  0.1s, 0s;
+    transition-duration: 0.2s, 0.2s;
+    transition-timing-function: ease;
+    @include media($TABLET) {
+      position: fixed;
+    }
+    &.sticky {
+      @include media($TABLET) {
+        background: black;
+        padding: 30px 0 20px;
+        transition-delay: 0s, 0.1s;
+        transition-duration: 0s, 0.2s;
+      }
+    }
+    .container {
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    .logo {
+      width: 108px;
+      height: 58px;
+      display: block;
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .btn {
+      display: none;
+      @include media($TABLET) {
+        display: block;
+        padding: 0 61px;
+      }
+    }
+  }
+
+  .collections-form {
+    display: none;
+    @include media($TABLET) {
+      display: block;
+      background: url(../img/collections-back-desktop.png) no-repeat;
+      background-size: cover;
+      background-position: bottom;
+      padding: 97px 0 122px;
+    }
+
+    &__title {
+      text-align: center;
+      font-size: 28px;
+      max-width: 651px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+  }
+
+  .collection-subscribe {
+    margin: 30px auto 0;
+    width: 438px;
+    color: white;  .subscribe__form {
+      margin: 0;
+    }
+    .subscribe__form-label {
+      color: white;
+      line-height: 24px;
+    }
+    input {
+      background: white;
+      color: #151515;
+    }
+    .subscribe__input-placeholder {
+      color: #151515;
+    }
+    .btn-primary {
+      color: #151515;
+      background: transparent;
+      border: 2px solid #000000;
+      padding: 0 10px;
+    }
+    .subscribe__form-box {
+      margin-top: 19px;
+    }
+  }
+}

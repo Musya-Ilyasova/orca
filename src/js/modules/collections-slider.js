@@ -1,9 +1,3 @@
-
-var initialPoint;
-var finalPoint;
-let swipeBox = document.querySelector('.first-swipe-box');
-let imageTop = document.querySelector('.collections-slider-item-img-top');
-let imageBottom = document.querySelector('.collections-slider-item-img-bottom');
 function buildCollectionsSwiper() {
   (function () {
     "use strict";
@@ -13,8 +7,11 @@ function buildCollectionsSwiper() {
     var breakpointChecker = function () {
       if (breakpoint.matches === true) {
         if (breakpointChecker !== undefined) {
+          if(document.querySelector('.collections-slider-container').classList.contains('swiper-container-initialized')) {
+            collectionsSwiper.destroy(true, true);
+          }
           window.onresize = function() {
-            if(document.querySelector('.collections-slider-container').classList.contains('collections-slider-container')) {
+            if(document.querySelector('.collections-slider-container').classList.contains('swiper-container-initialized')) {
               collectionsSwiper.destroy(true, true);
             }
           }
@@ -30,7 +27,6 @@ function buildCollectionsSwiper() {
         lidesPerView: 1,
         spaceBetween: 22,
         speed: 300,
-        allowTouchMove: false,
         navigation: {
           nextEl: '.collections-slider-next',
           prevEl: '.collections-slider-prev',
@@ -72,8 +68,7 @@ function addRotate() {
     }
   };
 };
-addRotate();
-buildCollectionsSwiper();
+
 
 
 

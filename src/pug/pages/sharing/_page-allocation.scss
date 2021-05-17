@@ -1,5 +1,3 @@
-$sharing-main: #5677F7;
-
 .page-allocation {
   .headerLogo {
     padding: 46px 0;
@@ -12,15 +10,12 @@ $sharing-main: #5677F7;
         height: 100%;
       }
     }
+    .btn-primary {
+      display: none;
+    }
   }
   .container {
     padding: 0 16px;
-  }
-  .getapp__btn {
-    background: linear-gradient(90deg, #5579F7 0%, #762FE6 100%);
-    &:hover, &:active {
-      background: linear-gradient(90deg, #222d54 0%, #762FE6 100%);
-    }
   }
   main {
     @include media($TABLET) {
@@ -89,7 +84,7 @@ $sharing-main: #5677F7;
       font-size: 14px;
       line-height: 20px;
       &_main {
-        color: $sharing-main;
+        color: #EE49A0;
       }
     }
     .subscribe__form-box {
@@ -124,12 +119,6 @@ $sharing-main: #5677F7;
         padding: 0;
       }
     }
-    .rewarded__title_main {
-      color: #8346E9;
-    }
-    .rewarded-slider-item__circle .icon {
-      background: radial-gradient(51.27% 57.64% at 28.47% 29.17%, #5579F7 0%, #762FE6 100%);
-    }
     .rewarded-slider {
       width: auto;
       @include media($TABLET) {
@@ -157,7 +146,6 @@ $sharing-main: #5677F7;
     @include media($TABLET) {
       font-size: 16px;
     }
-
   }
   &__text {
     margin-top: 8px;

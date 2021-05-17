@@ -43,9 +43,6 @@ function collectDonutObj(shareRequest) {
   });
 }
 
-
-
-
 function addSectors(shareRequest) {
   let sectorsList = document.querySelector('.breakdown-donut-volums-list');
   partsList = [];
@@ -176,8 +173,13 @@ function addDonutBox(shareRequest) {
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          distance: -40,
+          distance: -47,
           format: '{y} %',
+          filter: {
+            property: 'percentage',
+            operator: '>',
+            value: 7
+          },
           className : 'donutPersent'
         },
         shadow: false,
@@ -186,19 +188,17 @@ function addDonutBox(shareRequest) {
     series: [{
       name: 'Persent',
       colorByPoint: true,
-      innerSize: '43%',
+      innerSize: '47%',
       data: donutMap,
       colors: labels,
-      dataLabels: {
-        formatter: function () {
-          return this.y > 5 ? this.point.name : null;
-        }
-      }
+      // dataLabels: {
+      //   formatter: function () {
+      //     return this.y > 5 ? this.point.name : null;
+      //   }
+      // }
     }]
   });
 }
-
-
 
 function removeSectors() {
   let sectorsList = document.querySelector('.breakdown-donut-volums-list');
@@ -237,7 +237,7 @@ function toggleDonutLink(shareRequest) {
       };
       breakdown=Number(this.dataset.breakdown);
       this.classList.add('active');
-      myDonut.destroy();
+      Highcharts.destroy();
       removeSectors();
       addSectors(shareRequest);
       collectDonutObj(shareRequest);

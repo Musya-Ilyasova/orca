@@ -66,16 +66,25 @@
       }
     }
     &-box {
-      width: 70%;
+      width: 265px;
       margin: 0 auto;
       height: 296px;
       overflow: visible;
+      @include media($TABLET) {
+        width: 100%;
+      }
       @include media($DESKTOP) {
         grid-column-start: 1;
         grid-row-end: 2;
         grid-row-start: 2;
         grid-row-end: 3;
         min-width: 328px;
+      }
+      g.highcharts-data-labels.highcharts-series-0.highcharts-pie-series.highcharts-tracker {
+        transform: translate(-15px,-15px) scale(1.2)!important;
+        @include media($TABLET) {
+          transform: translate(-15px,-10px) scale(1.15)!important;
+        }
       }
       #myDonut  {
         max-height: 100%;
@@ -91,23 +100,15 @@
         .highcharts-point {
           stroke-width: 0;
         }
-        .highcharts-text-outline {
-          fill: white !important;
-          color: white !important;
-          text {
-            fill: white !important;
-            color: white !important;
-          }
-          tspan {
-            fill: white !important;
-            color: white !important;
-          }
-        }
         .highcharts-text-outline, .donutPersent {
           stroke-width: 0;
           fill: white;
           text {
-            fill: white;
+            fill: white!important;
+            font-size: 14px!important;
+            @include media($TABLET) {
+              font-size: 18px!important;
+            }
           }
         }
 

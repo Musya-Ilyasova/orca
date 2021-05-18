@@ -41,9 +41,6 @@ function animOut() {
   anim = lottie.loadAnimation(animItem3);
 }
 setTimeout(animPulse, 700);
-// document.querySelector('#svgContainer').addEventListener('click', function() {
-
-// });
 
 let generation = document.querySelector('.chart-loading__text');
 generation.addEventListener('click', function() {
@@ -52,4 +49,5 @@ generation.addEventListener('click', function() {
   let content = document.querySelectorAll('.content');
   content.forEach(item=> item.classList.toggle('visibility'))
   document.querySelector('.chart-loading').classList.toggle('opacity');
+  asideAnimation();
 })

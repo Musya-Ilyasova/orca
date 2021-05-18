@@ -210,6 +210,8 @@ function addChartBox(shareRequest) {
         data: dates,
         backgroundColor: gradientFill,
         borderColor: gradientStroke,
+        borderJoinStyle: "round",
+        lineTension: 0.2,
         borderWidth: 1,
         pointRadius: "0",
       }]

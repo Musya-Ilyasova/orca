@@ -237,7 +237,6 @@ function toggleDonutLink(shareRequest) {
       };
       breakdown=Number(this.dataset.breakdown);
       this.classList.add('active');
-      Highcharts.destroy();
       removeSectors();
       addSectors(shareRequest);
       collectDonutObj(shareRequest);

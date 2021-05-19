@@ -21,7 +21,7 @@
     @include media($TABLET) {
       display: grid;
       grid-template-columns: 1fr 250px;
-      grid-template-rows: auto;
+      grid-template-rows: auto auto;
       grid-column-gap: 20px;
       padding: 40px 40px 0;
       width: 100%;
@@ -60,6 +60,11 @@
     display: none;
     @include media($TABLET) {
       display: block;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      padding-bottom: 145px;
     }
     &__wrapper {
       margin: 0;
@@ -72,6 +77,7 @@
       background: #141414;
       height: auto;
       border-radius: 6px;
+      transition: 0.5s linear;
       @include media($TABLET) {
         top: 30px;
       }

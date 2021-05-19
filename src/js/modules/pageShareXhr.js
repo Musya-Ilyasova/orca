@@ -211,7 +211,7 @@ function addChartBox(shareRequest) {
         backgroundColor: gradientFill,
         borderColor: gradientStroke,
         borderJoinStyle: "round",
-        lineTension: 0.2,
+        lineTension: 0.4,
         borderWidth: 1,
         pointRadius: "0",
       }]

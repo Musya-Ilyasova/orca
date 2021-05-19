@@ -1,14 +1,15 @@
 function asideAnimation() {
-  let aside  = document.querySelector('.page-allocation-aside'),
+  let aside  = document.querySelector('.page-allocation-aside__wrapper'),
   rewarded = document.querySelector('.page-allocation-rewarded');
   window.onscroll = function() {
     let rewardedBox = rewarded.getBoundingClientRect();
     const posTop = rewardedBox.top;
-    if(posTop + rewarded.clientHeight <= window.innerHeight && posTop >= 0) {
-      aside.classList.add('visible');
+    if(posTop <= window.innerHeight) {
+      aside.style.top = "100%";
+    }else {
+      aside.style.top = '';
     }
   }
-
 }
 
 

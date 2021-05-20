@@ -140,7 +140,7 @@ function addDonutBox(shareRequest) {
     },
     tooltip: {
       className: 'donut-tooltip',
-      pointFormat: 'Persent: <b>{point.y}% </b>',
+      pointFormat: 'Slice: <b>{point.y}% </b>',
       style: {
         color: 'white',
         fontWeight: 'bold',

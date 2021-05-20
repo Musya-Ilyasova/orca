@@ -38,8 +38,8 @@ function sharedFieldInner(shareRequest) {
 
 function dataTimeInner(shareRequest) {
   let a = new Date(shareRequest.created);
-  let thisTime = " " + a.toLocaleTimeString("en-US", {hour12:true}).slice(0, 5) + a.toLocaleTimeString().slice(7);
-  // let thisTime = " " + a.toLocaleTimeString().slice(0, 4) + a.toLocaleTimeString().slice(7);
+  let timeStr = a.toLocaleTimeString("en-US", {hour12:true});
+  let thisTime = " " + timeStr.substr(0, timeStr.length-6) + timeStr.substr(timeStr.length-3, timeStr.length-1);
   document.querySelector('.chart-datatime__date').textContent = a.toLocaleDateString();
   document.querySelector('.chart-datatime__time').textContent = thisTime;
 }
@@ -69,28 +69,51 @@ function addChartBox(shareRequest) {
   let gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
   gradientStroke.addColorStop(0, '#B484FF');
   gradientStroke.addColorStop(1, '#D4DEFF');
-  let labels = [];
-  let dates = [];
-  let datesLastValue = [];
-  let datesItem, datesItemTime, datesItemDate;
+  let labels = [],
+  dates = [],
+  max = shareRequest.states[period].states[0].percent,
+  min = shareRequest.states[period].states[0].percent,
+  datesItem, datesItemTime, datesItemDate;
   for(let i=0; i<= shareRequest.states[period].states.length-1; i++) {
     datesItem = new Date(shareRequest.states[period].states[i].datetime);
     datesItemTime = " " + datesItem.toLocaleTimeString().slice(0, 4) + datesItem.toLocaleTimeString().slice(7);
     datesItemDate= datesItem.toLocaleDateString();
     labels.push(datesItemDate + datesItemTime);
     dates.push(shareRequest.states[period].states[i].percent);
-    if(i==shareRequest.states[period].states.length-1) {
-      datesLastValue.push(shareRequest.states[period].states[i].percent);
-    }
+    if(max<shareRequest.states[period].states[i].percent) {
+      max=shareRequest.states[period].states[i].percent;
+    } else if(min>shareRequest.states[period].states[i].percent){
+      min = shareRequest.states[period].states[i].percent;
+    };
   };
+  let stepSize = 0,
+  minValue = 0,
+  maxValue = 0;
+  if(max-min<=5) {
+    stepSize=1;
+    minValue = Math.floor((min-stepSize)/stepSize)*stepSize;
+    maxValue = Math.floor((max+stepSize)/stepSize)*stepSize;
+  } else if(max-min>5 && max-min<=7.5 ) {
+    stepSize = 4;
+    minValue = Math.floor((min-stepSize)/stepSize)*stepSize;
+    maxValue = Math.floor((max+stepSize)/stepSize)*stepSize;
+  } else if(max-min>7.5) {
+    stepSize = Math.floor((max-min/2));
+    minValue = Math.floor((min-stepSize)/stepSize)*stepSize;
+    maxValue = Math.floor((max+stepSize)/stepSize)*stepSize;
+  }
+
+  Chart.defaults.scales.linear.min = Math.floor(minValue);
+  Chart.defaults.scales.linear.max = Math.floor(maxValue);
   myChart = new Chart(ctx, {
     options: {
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           display: false,
         },
         tooltip: {
-          usePointStyle: true,
+          intersect: false,
           callbacks: {
             title: function(tooltipItems) {
               return 'Date: ' + tooltipItems[0].label;
@@ -119,9 +142,6 @@ function addChartBox(shareRequest) {
             }
           }]
         }
-      },
-      layout:{
-        right: 10
       },
       responsive: true,
       scales: {
@@ -186,9 +206,8 @@ function addChartBox(shareRequest) {
           },
           ticks: {
             color: 'white',
-            stepSize : 4,
+            stepSize: stepSize,
             offset: true,
-            tickLength: 0,
             maxTicksLimit: 0,
             padding: 10,
             font: {
@@ -197,7 +216,7 @@ function addChartBox(shareRequest) {
             },
             callback: function(value, index, values) {
               return value + '%';
-            }
+            },
           }
         },
       },
@@ -214,10 +233,13 @@ function addChartBox(shareRequest) {
         lineTension: 0.4,
         borderWidth: 1,
         pointRadius: "0",
+        pointHoverRadius: "4",
+        hitRadius: 500,
       }]
     },
   });
 };
+
 
 @@include('donut.js');
 

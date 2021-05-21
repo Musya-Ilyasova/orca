@@ -1,32 +1,58 @@
 function pageShareXhr() {
   var shareXhr = new XMLHttpRequest();
-  shareXhr.open('GET', 'js/json/chart.json', true);
+  shareXhr.open('GET', 'js/json/chart-full.json', true);
   shareXhr.responseType="json";
   shareXhr.send();
   shareXhr.onload = function () {
     if (shareXhr.status !== 200) {
       console.error('Failed to fetch faq data')
       return
-    }
+    };
     let shareObj = shareXhr.response.payload;
-    addGap(shareObj);
-    dataTimeInner(shareObj);
-    sharedFieldInner(shareObj);
-    linkGapToggle(shareObj);
-    addChartBox(shareObj);
-    collectDonutObj(shareObj)
-    addSectors(shareObj);
-    addDonutBox(shareObj);
-    toggleDonutLink(shareObj);
-    filterStocks(shareObj);
+    if(shareXhr.response.payload["status"]=="DONE") {
+      addNameAndDate(shareObj)
+      if(shareObj.states.length>0) {
+        addGap(shareObj);
+        sharedFieldInner(shareObj);
+        linkGapToggle(shareObj);
+        addChartBox(shareObj);
+      } else {
+        document.querySelector(".chart").style.minHeight = "0";
+        document.querySelector(".chart-results").style.display = "none";
+      }
+      if(shareObj.breakdowns.length>0) {
+        collectDonutObj(shareObj);
+        addSectors(shareObj);
+        addDonutBox(shareObj);
+        toggleDonutLink(shareObj);
+        if(shareObj.states.length==0) {
+          document.querySelector(".breakdown__title").style.display = "none";
+        }
+      } else {
+        document.querySelector(".breakdown").style.display = "none";
+      }
+      if(shareObj.symbols.length>0) {
+        filterStocks(shareObj);
+      } else {
+        document.querySelector(".stocks").style.display = "none";
+      }
+    }
   };
   shareXhr.onerror = function () {
     console.error("An error occurred during request");
   };
 }
 
-function sharedFieldInner(shareRequest) {
+function addNameAndDate(shareRequest) {
   document.querySelector('.chart__title span').textContent = shareRequest.user.first_name;
+  let a = new Date(shareRequest.created);
+  let timeStr = a.toLocaleTimeString("en-US", {hour12:true});
+  let thisTime = " " + timeStr.substr(0, timeStr.length-6) + timeStr.substr(timeStr.length-3, timeStr.length-1);
+  document.querySelector('.chart-datatime__date').textContent = a.toLocaleDateString();
+  document.querySelector('.chart-datatime__time').textContent = thisTime;
+}
+
+function sharedFieldInner(shareRequest) {
   document.querySelector('.chart-results-details__period').textContent = shareRequest.states[period].title;
   if(shareRequest.states[period].change.percent<0) {
     document.querySelector('.chart-results-details__arrow').classList.add('down');
@@ -34,14 +60,6 @@ function sharedFieldInner(shareRequest) {
     document.querySelector('.chart-results-details__arrow').classList.remove('down');
   };
   document.querySelector('.chart-results-details__percent span').textContent = Math.floor(shareRequest.states[period].change.percent * 100) / 100;
-}
-
-function dataTimeInner(shareRequest) {
-  let a = new Date(shareRequest.created);
-  let timeStr = a.toLocaleTimeString("en-US", {hour12:true});
-  let thisTime = " " + timeStr.substr(0, timeStr.length-6) + timeStr.substr(timeStr.length-3, timeStr.length-1);
-  document.querySelector('.chart-datatime__date').textContent = a.toLocaleDateString();
-  document.querySelector('.chart-datatime__time').textContent = thisTime;
 }
 
 function addGap(shareRequest) {
@@ -102,7 +120,6 @@ function addChartBox(shareRequest) {
     minValue = Math.floor((min-stepSize)/stepSize)*stepSize;
     maxValue = Math.floor((max+stepSize)/stepSize)*stepSize;
   }
-
   Chart.defaults.scales.linear.min = Math.floor(minValue);
   Chart.defaults.scales.linear.max = Math.floor(maxValue);
   myChart = new Chart(ctx, {
@@ -116,15 +133,32 @@ function addChartBox(shareRequest) {
           intersect: false,
           callbacks: {
             title: function(tooltipItems) {
-              return 'Date: ' + tooltipItems[0].label;
+              var label = tooltipItems[0].raw;
+              label = Math.floor(label * 100) / 100 + '%';
+              return label
             },
-            label: function(context) {
-              context.dataset.fill=false;
-              var label = context.dataset.label || '';
-              return label = Math.floor(context.parsed.y * 100) / 100 + '%';
-            },
+            // label: function(context) {
+            //   context.dataset.fill=false;
+            //   var label = context.dataset.label || '';
+            //   label = Math.floor(context.parsed.y * 100) / 100 + '%';
+            //   return label
+            // },
+            // labelTextColor: function(tooltipItem) {
+            //   if(Number(tooltipItem.formattedValue)>=0) {
+            //     return "#34C759";
+            //   } else {
+            //     return "#EA5555";
+            //   }
+            // }
+
           },
           displayColors: false,
+          backgroundColor: '#2C2C2E',
+          cornerRadius: 8,
+          padding: 12,
+          fontSize: 18,
+          bodyFont: 'Inter',
+          titleFontSize: 18,
         },
         annotation: {
           annotations: [{
@@ -255,7 +289,6 @@ function linkGapToggle(shareRequest) {
       period=this.dataset.gap;
       this.classList.add('active');
       sharedFieldInner(shareRequest);
-      dataTimeInner(shareRequest);
       myChart.destroy();
       addChartBox(shareRequest);
     })

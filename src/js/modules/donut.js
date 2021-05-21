@@ -11,7 +11,6 @@ function collectDonutObj(shareRequest) {
   data=[];
   other=[];
   let breakdownsParts = shareRequest.breakdowns[breakdown].parts;
-
   for(let i=0; i<=breakdownsParts.length-1; i++){
     if(breakdownsParts[i].percent<7){
       other.push(breakdownsParts[i].percent);
@@ -56,36 +55,41 @@ function addSectors(shareRequest) {
     name: 'Cash',
     percent: 0,
   };
-  let partsObj = shareRequest.breakdowns[breakdown].parts;
-  let countOther = 0;
-  for(let i =0; i<=partsObj.length-1; i++) {
-    if(partsObj[i].percent<7) {
-      countOther++;
-    }
-  };
-  if(countOther<=1) {
-    for(let i =0; i<=partsObj.length-1; i++) {
-      partsList.push(partsObj[i]);
-    };
-  } else if(countOther>1) {
+  if(shareRequest.breakdowns[breakdown].parts.length==0) {
+    cash.percent = shareRequest.breakdowns[0].cash.percent;
+    partsList.push(cash);
+  } else {
+    let partsObj = shareRequest.breakdowns[breakdown].parts;
+    let countOther = 0;
     for(let i =0; i<=partsObj.length-1; i++) {
       if(partsObj[i].percent<7) {
-        otherItem.count+=partsObj[i].count;
-        otherItem.percent+=partsObj[i].percent;
-      } else {
+        countOther++;
+      }
+    };
+    if(countOther<=1) {
+      for(let i =0; i<=partsObj.length-1; i++) {
         partsList.push(partsObj[i]);
       };
+    } else if(countOther>1) {
+      for(let i =0; i<=partsObj.length-1; i++) {
+        if(partsObj[i].percent<7) {
+          otherItem.count+=partsObj[i].count;
+          otherItem.percent+=partsObj[i].percent;
+        } else {
+          partsList.push(partsObj[i]);
+        };
+      };
+      partsList.push(otherItem);
     };
-    partsList.push(otherItem);
-  };
+    cash.percent = shareRequest.breakdowns[0].cash.percent;
+    partsList.push(cash);
+    partsList=partsList.sort(function (a, b){
+      if (a.percent < b.percent) return 1;
+      if (a.percent > b.percent) return -1;
+      return 0;
+    });
+  }
 
-  cash.percent = shareRequest.breakdowns[0].cash.percent;
-  partsList.push(cash);
-  partsList=partsList.sort(function (a, b){
-    if (a.percent < b.percent) return 1;
-    if (a.percent > b.percent) return -1;
-    return 0;
-  });
   for (let i=0; i<=partsList.length-1; i++) {
     names.push(partsList[i].name);
     let li = document.createElement('li');
@@ -123,6 +127,36 @@ function addDonutBox(shareRequest) {
       color: donutColors[i]
     });
   };
+  (function(H) {
+    H.wrap(H.seriesTypes.pie.prototype, 'animate', function(proceed, init) {
+      var series = this,
+        points = series.points,
+        startAngleRad = series.startAngleRad;
+      if (!init) {
+        points.forEach(function(point) {
+          var graphic = point.graphic,
+            args = point.shapeArgs;
+
+          if (graphic) {
+            // start values
+            graphic.attr({
+              r: args.r || (series.center[3] / 2),
+              start: startAngleRad,
+              end: startAngleRad
+            });
+            // animate
+            graphic.animate({
+              r: args.r,
+              start: args.start,
+              end: args.end
+            }, series.options.animation);
+          }
+        });
+        // delete this function to allow it only once
+        series.animate = null;
+      }
+    })
+  })(Highcharts)
   Highcharts.chart('myDonut', {
     chart: {
       plotBackgroundColor: 'black',
@@ -214,6 +248,17 @@ function showAll(partList) {
 
 
 function toggleDonutLink(shareRequest) {
+  let donutList = document.querySelector('.breakdown-donut-list');
+  for(let i=0; i<=shareRequest.breakdowns.length-1; i++) {
+    let donutLink = document.createElement('li');
+    donutLink.classList.add('breakdown-donut-list__item');
+    donutLink.innerText = shareRequest.breakdowns[i].name;
+    donutLink.setAttribute('data-breakdown', i);
+    donutList.appendChild(donutLink);
+    if(i==0) {
+      donutLink.classList.add('active');
+    };
+  }
   let donutLink = document.querySelectorAll('.breakdown-donut-list__item');
   donutLink.forEach((item)=> {
     item.addEventListener('click', function(e) {

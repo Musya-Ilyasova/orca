@@ -1,11 +1,11 @@
 
 section.chart
-  .chart-loading.container.container--1120
+  .chart-loading.container.container--1120.opacity
     .chart-loading__animation
       #loadingAnimation
       #svgContainer
     span.chart-loading__text Generating Portfolio
-  .container.container--1120.content
+  .container.container--1120.content.visibility
     h1.chart__title
       span
       |’s Portfolio
@@ -23,6 +23,7 @@ section.chart
       .chart-results-changes
         .chart-results-changes-box#chartContainer
           canvas#myChart(width="100%" height="100%")
+          +icon('logotype')
         ul.chart-results-changes-gap
 
 

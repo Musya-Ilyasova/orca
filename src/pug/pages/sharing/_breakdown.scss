@@ -80,9 +80,9 @@
         grid-row-end: 3;
       }
       g.highcharts-data-labels.highcharts-series-0.highcharts-pie-series.highcharts-tracker {
-        transform: translate(-15px,-15px) scale(1.2)!important;
+        transform: translate(-20px,-26px) scale(1.25)!important;
         @include media($TABLET) {
-          transform: translate(-13px,-10px) scale(1.15)!important;
+          transform: translate(-15px,-9px) scale(1.15)!important;
         }
       }
       .highcharts-root .highcharts-halo{
@@ -99,12 +99,6 @@
           }
         }
       }
-      // .highcharts-series .highcharts-point-inactive {
-      //   opacity: 1!important;
-      // }
-      // .highcharts-point-select {
-
-      // }
       #myDonut  {
         max-height: 100%;
         max-width: 100%;

@@ -49,5 +49,7 @@ generation.addEventListener('click', function() {
   let content = document.querySelectorAll('.content');
   content.forEach(item=> item.classList.toggle('visibility'))
   document.querySelector('.chart-loading').classList.toggle('opacity');
-  asideAnimation();
+  if(document.querySelector(".stocks").style.display != "none") {
+    asideAnimation();
+  };
 })

@@ -89,6 +89,8 @@ function addChartBox(shareRequest) {
   gradientStroke.addColorStop(1, '#D4DEFF');
   let labels = [],
   dates = [],
+  lastDate = 0,
+  lastLabel = "",
   max = shareRequest.states[period].states[0].percent,
   min = shareRequest.states[period].states[0].percent,
   datesItem, datesItemTime, datesItemDate;
@@ -103,6 +105,10 @@ function addChartBox(shareRequest) {
     } else if(min>shareRequest.states[period].states[i].percent){
       min = shareRequest.states[period].states[i].percent;
     };
+    if(i == shareRequest.states[period].states.length-1) {
+      lastDate = shareRequest.states[period].states[i].percent;
+      lastLabel = datesItemDate + datesItemTime;
+    }
   };
   let stepSize = 0,
   minValue = 0,
@@ -131,36 +137,92 @@ function addChartBox(shareRequest) {
         },
         tooltip: {
           intersect: false,
-          callbacks: {
-            title: function(tooltipItems) {
-              return ""
-            },
-            label: function(context) {
-              var label = context.dataset.label || '';
-              label = Math.floor(context.parsed.y * 100) / 100 + '%';
-              if(context.raw>0) {
-                return '+' + label
-              } else {
-                return label
-              }
-            },
-            labelTextColor: function(tooltipItem) {
-              if(Number(tooltipItem.formattedValue)>=0) {
-                return "#34C759";
-              } else {
-                return "#EA5555";
-              }
-            },
-            footer: function(tooltipItem) {
-              let months = (new Date(tooltipItem[0].label)).toLocaleDateString(void(0), { month: 'long' });
-              let day = (new Date(tooltipItem[0].label)).toLocaleDateString(void(0), { day: '2-digit' });
-              return 'on ' + months + ' ' + day
+          enabled: false,
+          external: function(context) {
+            // Tooltip Element
+            var tooltipEl = document.getElementById('chartjs-tooltip');
+            // Create element on first render
+            if (!tooltipEl) {
+              tooltipEl = document.createElement('div');
+              tooltipEl.id = 'chartjs-tooltip';
+              tooltipEl.innerHTML = '<table></table>';
+              document.body.appendChild(tooltipEl);
             }
+            tooltipEl.innerHTML = '<table></table>';
+
+            // Hide if no tooltip
+            var tooltipModel = context.tooltip;
+            if (tooltipModel.opacity === 0) {
+              tooltipEl.style.opacity = 0;
+              return;
+            }
+
+            // Set caret Position
+            tooltipEl.classList.remove('above', 'below', 'no-transform');
+            if (tooltipModel.yAlign) {
+              tooltipEl.classList.add(tooltipModel.yAlign);
+            } else {
+              tooltipEl.classList.add('no-transform');
+            }
+            function getBody(bodyItem) {
+              return bodyItem.lines;
+            }
+            // Set Text
+            if (tooltipModel.body) {
+              var bodyLines = tooltipModel.title || [];
+              var titleLines= tooltipModel.body.map(getBody);
+              var innerHtml = '<thead style="text-align: left;">';
+              titleLines.forEach(function(title) {
+                var style = 'font-weight: 400; font-size: 18px;';
+                if(Number(title)>=0) {
+                  style += 'color: #34C759;';
+                } else {
+                  style += 'color: #EA5555;';
+                }
+                var span = '<span style="' + style + '">';
+
+                if(Number(title)>0) {
+                  innerHtml += '<tr><th>' + span + '+' + Math.floor(title * 100) / 100 + '%' + '</span></th></tr>';
+                } else {
+                  innerHtml += '<tr><th>' + span + Math.floor(title * 100) / 100 + '%' + '</span></th></tr>';
+                }
+              });
+              innerHtml += '</thead><tbody>';
+
+              bodyLines.forEach(function(body, i) {
+                var style = 'background:#2C2C2E; line-height: 16px; display: inline-block; padding-top: 8px;';
+                var span = '<span style="' + style + '">';
+                let months = (new Date(body)).toLocaleDateString(void(0), { month: 'long' });
+                let day = (new Date(body)).toLocaleDateString(void(0), { day: '2-digit' });
+                innerHtml += '<tr><td>' + span + 'on ' + months + ' ' + day + '</span></td></tr>';
+              });
+              innerHtml += '</tbody>';
+
+              var tableRoot = tooltipEl.querySelector('table');
+              tableRoot.innerHTML = innerHtml;
+            }
+
+            var position = context.chart.canvas.getBoundingClientRect();
+            // Display, position, and set styles for font
+            tooltipEl.style.opacity = 1;
+            tooltipEl.style.position = 'absolute';
+            if(position.left+tooltipModel.caretX+tooltipEl.offsetWidth>position.width) {
+              tooltipEl.style.left = position.width-tooltipEl.offsetWidth-position.left + 'px';
+            } else {
+              tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+            };
+            tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 12 + 'px';
+            tooltipEl.style.font = '14px "Inter", sans-serif';
+            tooltipEl.style.padding = 12 + 'px ' + 12 + 'px';
+            tooltipEl.style.borderRadius = '8px';
+            tooltipEl.style.pointerEvents = 'none';
+            tooltipEl.style.backgroundColor = '#2C2C2E';
+            tooltipEl.style.padding = '#2C2C2E';
+            tooltipEl.style.titleAlign = 'left';
+            tooltipEl.style.weight = '400';
+            tooltipEl.style.transition = '.2s ease';
           },
           displayColors: false,
-          backgroundColor: '#2C2C2E',
-          cornerRadius: 8,
-          padding: 12,
           bodyWaight: '400',
           bodyColor: '#ffffff',
           footerFont: {
@@ -169,20 +231,32 @@ function addChartBox(shareRequest) {
           footerSpacing: -0.1,
         },
         annotation: {
-          annotations: [{
-            type: 'line',
-            mode: 'horizontal',
-            yMin: 0,
-            yMax: 0,
-            value: 5,
-            borderColor: '#EA8D01',
-            borderWidth: 1,
-            borderDash: [1,1],
-            label: {
-              enabled: false,
-              content: 'Test label'
+          annotations: {
+            line: {
+              type: 'line',
+              mode: 'horizontal',
+              yMin: lastDate,
+              yMax: lastDate,
+              value: 5,
+              borderColor: '#EA8D01',
+              borderWidth: 1,
+              borderDash: [1,1],
+              label: {
+                enabled: false,
+                content: ''
+              }
+            },
+            point: {
+              type: 'point',
+              xValue: lastLabel,
+              yValue: lastDate,
+              backgroundColor: '#fff',
+              radius: 4,
+              borderColor: '#EA8D01',
+              borderWidth: 2,
+              order: 0,
             }
-          }]
+          }
         }
       },
       responsive: true,
@@ -265,17 +339,21 @@ function addChartBox(shareRequest) {
     },
     data: {
       labels: labels,
+      order: 3,
       datasets: [{
         type: 'line',
         fill: 'start',
         data: dates,
         backgroundColor: gradientFill,
         borderColor: gradientStroke,
-        borderJoinStyle: "round",
+        borderJoinStyle: 'round',
         lineTension: 0.4,
         borderWidth: 1,
-        pointRadius: "0",
-        pointHoverRadius: "4",
+        pointRadius: '0',
+        pointHoverRadius: '4',
+        hoverBorderWidth: '2',
+        pointBorderColor: '#fff',
+        pointBackgroundColor: '#000',
         hitRadius: 500,
       }]
     },

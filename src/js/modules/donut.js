@@ -174,15 +174,18 @@ function addDonutBox(shareRequest) {
     },
     tooltip: {
       className: 'donut-tooltip',
-      pointFormat: 'Slice: <b>{point.y}% </b>',
+      headerFormat: '<span>{point.y}%</span> <br>',
+      pointFormat: '<span style="font-size:14px;">{point.name}</span>',
+      borderRadius: '10',
+      padding: 12,
       style: {
         color: 'white',
-        fontWeight: 'bold',
         fontFamily: 'Inter, sans-serif',
-        lineHeight: '20px',
-        padding: '15px'
-
-      }
+        lineHeight: '28px',
+        fontSize: '18px',
+      },
+      verticalAlign: "bottom",
+      itemMarginTop: "20px",
     },
     accessibility: {
       point: {

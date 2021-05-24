@@ -1,4 +1,9 @@
 .page-allocation {
+  &:after {
+    content: "";
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
   .headerLogo {
     padding: 46px 0;
     .logo {
@@ -16,6 +21,19 @@
   }
   .container {
     padding: 0 16px;
+  }
+  &.lock {
+    overflow: hidden;
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($color: #000000, $alpha: 0.5);
+      z-index: 100;
+      opacity: 1;
+    }
   }
   main {
     @include media($TABLET) {
@@ -129,8 +147,157 @@
         grid-template-rows: auto;
         grid-column-gap: 20px;
       }
+      &-item {
+        height: auto;
+        @include media($TABLET) {
+          overflow: visible;
+        }
+      }
+      &-container {
+        @include media($TABLET) {
+          overflow: visible;
+        }
+      }
     }
   }
+  .refferal-link {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    margin: 18px 0;
+    position: relative;
+    z-index: 2;
+    &__text {
+      color: #F8F8F8;
+      line-height: 24px ;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 19px;
+    }
+  
+    &-copy {
+      background: #262626;
+      border-radius: 6px;
+      display: grid;
+      grid-template-columns: 1fr 58px;
+      grid-template-rows: auto;
+      height: 60px;
+      position: relative;
+      @include media($TABLET) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        height: auto;
+      }
+      @include media($DESKTOP) {
+        grid-template-columns: 1fr 58px;
+        grid-template-rows: auto;
+        height: 60px;
+      }
+      &.copy {
+        &::after {
+          content: "Copied!";
+          color: #8346e9;
+          font-size: 14px;
+          line-height: 24px;
+          position: absolute;
+          bottom: -30px;
+          right: 3px;
+          @include media($TABLET) {
+            bottom: -23px;
+          }
+          @include media($DESKTOP) {
+            bottom: -23px;
+          }
+        }
+      }
+      &__text {
+        display: inline-block;
+        font-size: 22px;
+        line-height: 60px;
+        text-align: center;
+        vertical-align: middle;
+        height: 100%;
+        width: 100%;
+        font-weight: 700;
+        color: #F8F8F8;
+        background: transparent;
+        border: none;
+        @include media($TABLET) {
+          height: auto;
+          line-height: 50px;
+        }
+        @include media($DESKTOP) {
+          height: 100%;
+          line-height: 60px;
+        }
+        &::selection {
+          background: transparent;
+          color: #F8F8F8;
+        }
+      }
+      &__btn {
+        background: transparent;
+        padding-left: 30px;
+        display: inline-flex;
+        align-items: center;
+        background: url("../img/copy.svg") no-repeat;
+        background-position: center;
+        background-size: 24px 24px;
+        transition: 0.2s ease;
+        font-size: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        @include media($TABLET) {
+          height: 42px;
+        }
+        @include media($DESKTOP) {
+          height: 100%;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 46px;
+          width: 2px;
+          background: rgba($color: #FFFFFF, $alpha: 0.2);
+          transition: height 0.2s ease;
+          @include media($TABLET) {
+            top: 0;
+            right: 0;
+            margin: 0 auto;
+            height: 2px;
+            width: 90%;
+            transform: translateY(0);
+          }
+          @include media($DESKTOP) {
+            top: 50%;
+            transform: translateY(-50%);
+            height: 46px;
+            width: 2px;
+            margin: 0;
+          }
+        }
+        &:hover {
+          background-color: rgba($color: #ffffff, $alpha: 0.2);
+          border-radius: 0 6px 6px 0;
+          &:before {
+            margin: 0;
+            height: 100%;
+            @include media($TABLET) {
+              height: 2px;
+              width: 100%;
+            }
+            @include media($DESKTOP) {
+              margin: 0;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }  
 }
 .page-allocation-footer {
   color: #8D8D93;

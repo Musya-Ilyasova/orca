@@ -9,6 +9,7 @@ function pageShareXhr() {
       return
     };
     let shareObj = shareXhr.response.payload;
+    copyAllocationReferralCode(shareObj);
     if(shareXhr.response.payload["status"]=="DONE") {
       addNameAndDate(shareObj)
       if(shareObj.states.length>0) {

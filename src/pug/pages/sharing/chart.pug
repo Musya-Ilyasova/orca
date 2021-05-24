@@ -16,9 +16,14 @@ section.chart
         span.chart-results-details__arrow
           +icon('chart-arrow')
         span.chart-results-details__percent
-          span 23.14
+          span 
           | %
         span.chart-results-details__period
+      .chart-tooltip 
+        .chart-tooltip-link How do we calculate this?
+        .chart-tooltip-box  
+          p.chart-tooltip-box__text We take positions in investments in the presented timeframes and calculate their change relative to the starting point of the chart. 
+          button.chart-tooltip-box__btn Got it
       .chart-results-changes
         .chart-results-changes-box#chartContainer
           canvas#myChart(width="100%" height="100%")

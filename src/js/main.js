@@ -16,4 +16,5 @@ if(document.body.classList.contains("page-allocation")) {
   @@include('modules/lottie.js')
   @@include('modules/pageShareXhr.js')
   @@include('modules/aside.js')
+  @@include('modules/copyAllocation.js')
 }

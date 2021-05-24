@@ -133,32 +133,43 @@ function addChartBox(shareRequest) {
           intersect: false,
           callbacks: {
             title: function(tooltipItems) {
-              var label = tooltipItems[0].raw;
-              label = Math.floor(label * 100) / 100 + '%';
-              return label
+              return ""
             },
-            // label: function(context) {
-            //   context.dataset.fill=false;
-            //   var label = context.dataset.label || '';
-            //   label = Math.floor(context.parsed.y * 100) / 100 + '%';
-            //   return label
-            // },
-            // labelTextColor: function(tooltipItem) {
-            //   if(Number(tooltipItem.formattedValue)>=0) {
-            //     return "#34C759";
-            //   } else {
-            //     return "#EA5555";
-            //   }
-            // }
+            label: function(context) {
+              var label = context.dataset.label || '';
+              label = Math.floor(context.parsed.y * 100) / 100 + '%';
+              if(context.raw>0) {
+                return '+' + label
+              } else {
+                return label
+              }
+            },
+            labelTextColor: function(tooltipItem) {
+              if(Number(tooltipItem.formattedValue)>=0) {
+                return "#34C759";
+              } else {
+                return "#EA5555";
+              }
+            },
+            footer: function(tooltipItem) {
+              let months = (new Date(tooltipItem[0].label)).toLocaleDateString(void(0), { month: 'long' });
+              let day = (new Date(tooltipItem[0].label)).toLocaleDateString(void(0), { day: '2-digit' });
+              return 'on ' + months + ' ' + day
+            },
+            bodyFont: function () {
 
+            }
           },
           displayColors: false,
           backgroundColor: '#2C2C2E',
           cornerRadius: 8,
           padding: 12,
-          fontSize: 18,
-          bodyFont: 'Inter',
-          titleFontSize: 18,
+          bodyWaight: '400',
+          bodyColor: '#ffffff',
+          footerFont: {
+            weight: 'regular',
+          },
+          footerSpacing: -0.1,
         },
         annotation: {
           annotations: [{
@@ -246,7 +257,7 @@ function addChartBox(shareRequest) {
             padding: 10,
             font: {
               size: 13,
-              family: 'inter, san-serif',
+              family: "'inter', san-serif",
             },
             callback: function(value, index, values) {
               return value + '%';

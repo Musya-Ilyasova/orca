@@ -155,9 +155,6 @@ function addChartBox(shareRequest) {
               let months = (new Date(tooltipItem[0].label)).toLocaleDateString(void(0), { month: 'long' });
               let day = (new Date(tooltipItem[0].label)).toLocaleDateString(void(0), { day: '2-digit' });
               return 'on ' + months + ' ' + day
-            },
-            bodyFont: function () {
-
             }
           },
           displayColors: false,

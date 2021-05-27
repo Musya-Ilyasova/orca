@@ -22,13 +22,27 @@
     }
   }
   &-tooltip {
+    width: 100%;
+    @include media($TABLET) {
+      position: relative;
+    }
+    @include media($DESKTOP) {
+      display: inline-block;
+      width: auto;
+      line-height: 1;
+      margin-left: 8px;
+      padding-top: 2px;
+      vertical-align: bottom;
+    }
     &-link {
       display: block;
       font-size: 14px;
       line-height: 26px;
-      margin-top: 8px;
       color: #8346E9;
       cursor: pointer;
+      @include media($DESKTOP) {
+        margin-bottom: -1px;
+      }
     }
     &-box {
       position: fixed;
@@ -40,13 +54,39 @@
       z-index: 500;
       padding: 40px 20px;
       text-align: center;
+      width: calc(100% - 30px);
       max-width: 344px;
       margin: 0 auto;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: scale(0);
+      transition: 0.2s ease;
+      &.open {
+        opacity: 1;
+        max-height: 500px;
+        transform: scale(1) rotate(0);
+      }
+      @include media($TABLET) {
+        position: absolute;
+        margin: 0;
+        width: 309px;
+        bottom: auto;
+        padding: 12px;
+        text-align: left;
+        border-radius: 8px;
+        left: 0;
+        bottom: calc(100% + 5px);
+      }
       &__text {
         color: #DEDEDE;
         line-height: 20px;
         font-size: 14px;
         margin: 0;
+        @include media($TABLET) {
+          font-size: 12px;
+          line-height: 17px;
+        }
       }
       &__btn {
         color: #5579F7;
@@ -58,6 +98,9 @@
         transition: color 0.2s ease;
         &:hover, &:active {
           color: #8346E9;
+        }
+        @include media($TABLET) {
+          display: none;
         }
       }
     }
@@ -75,10 +118,10 @@
   &-results {
     margin-top: 40px;
     @include media($TABLET) {
-      margin-top: 60px;
+      margin-top: 58px;
     }
     &-details {
-      display: flex;
+      display: inline-flex;
       align-items: flex-end;
       @include media($TABLET) {
         align-items: center;
@@ -181,6 +224,7 @@
     position: relative;
     @include media($TABLET) {
       height: 269px;
+      position: relative;
     }
     #myChart {
       max-height: 100%;

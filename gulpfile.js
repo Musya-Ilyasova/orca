@@ -82,6 +82,7 @@ exports.sass = sass;
 
 function scriptsLibs() {
   return src([
+    "node_modules/resize-observer-polyfill/dist/ResizeObserver.js",
     "node_modules/chart.js/dist/chart.min.js",
     "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js",
     "node_modules/swiper/swiper-bundle.min.js",

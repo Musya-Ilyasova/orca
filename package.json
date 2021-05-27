@@ -55,6 +55,7 @@
     "jquery": "^3.6.0",
     "lottie-web": "^5.7.8",
     "polyfill-library": "^3.104.0",
+    "resize-observer-polyfill": "^1.5.1",
     "swiper": "^6.4.0"
   }
 }

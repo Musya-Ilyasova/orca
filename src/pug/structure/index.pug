@@ -2,7 +2,7 @@ include ../mixins/mixins
 doctype html
 html(lang="ru")
   include ../components/global/head
-  body.page-allocation.lock
+  body.page-allocation
     include ../components/global/headerLogo
     //main
     main
@@ -14,5 +14,6 @@ html(lang="ru")
       include ../pages/sharing/disclosure
       include ../pages/sharing/aside
     //- include ../components/global/footer
+    .screen
     include ../components/global/scripts
     //- script(src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0")

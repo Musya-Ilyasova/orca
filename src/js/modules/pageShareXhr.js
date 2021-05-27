@@ -1,6 +1,6 @@
 function pageShareXhr() {
   var shareXhr = new XMLHttpRequest();
-  shareXhr.open('GET', 'js/json/chart-full.json', true);
+  shareXhr.open('GET', 'js/json/chart.json', true);
   shareXhr.responseType="json";
   shareXhr.send();
   shareXhr.onload = function () {
@@ -8,42 +8,78 @@ function pageShareXhr() {
       console.error('Failed to fetch faq data')
       return
     };
-    let shareObj = shareXhr.response.payload;
-    copyAllocationReferralCode(shareObj);
-    if(shareXhr.response.payload["status"]=="DONE") {
-      addNameAndDate(shareObj)
-      if(shareObj.states.length>0) {
-        addGap(shareObj);
-        sharedFieldInner(shareObj);
-        linkGapToggle(shareObj);
-        addChartBox(shareObj);
-      } else {
-        document.querySelector(".chart").style.minHeight = "0";
-        document.querySelector(".chart-results").style.display = "none";
-      }
-      if(shareObj.breakdowns.length>0) {
-        collectDonutObj(shareObj);
-        addSectors(shareObj);
-        addDonutBox(shareObj);
-        toggleDonutLink(shareObj);
-        if(shareObj.states.length==0) {
-          document.querySelector(".breakdown__title").style.display = "none";
-        }
-      } else {
-        document.querySelector(".breakdown").style.display = "none";
-      }
-      if(shareObj.symbols.length>0) {
-        filterStocks(shareObj);
-      } else {
-        document.querySelector(".stocks").style.display = "none";
-      }
-    }
+    let shareObj= shareXhr.response.payload;
+    renderData(shareObj);
   };
+
   shareXhr.onerror = function () {
     console.error("An error occurred during request");
   };
+
 }
 
+function getShareFromMain() {
+  let main = document.querySelector('main');
+  if (main.dataset && main.dataset.share !== undefined) {
+    let shareObj = JSON.parse(main.dataset.share);
+    renderData(shareObj);
+  } else {
+    pageShareXhr();
+  }
+}
+
+function renderData(shareObj) {
+  copyAllocationReferralCode(shareObj);
+  if(shareObj["status"]=="DONE") {
+    addNameAndDate(shareObj)
+    if(shareObj.states.length>0) {
+      addGap(shareObj);
+      sharedFieldInner(shareObj);
+      linkGapToggle(shareObj);
+      addChartBox(shareObj);
+    } else {
+      document.querySelector(".chart").style.minHeight = "0";
+      document.querySelector(".chart-results").style.display = "none";
+    }
+    if(shareObj.breakdowns.length>0) {
+      collectDonutObj(shareObj);
+      addSectors(shareObj);
+      addDonutBox(shareObj);
+      toggleDonutLink(shareObj);
+      if(shareObj.states.length==0) {
+        document.querySelector(".breakdown__title").style.display = "none";
+      }
+    } else {
+      document.querySelector(".breakdown").style.display = "none";
+    }
+    if(shareObj.symbols.length>0) {
+      filterStocks(shareObj);
+    } else {
+      document.querySelector(".stocks").style.display = "none";
+    }
+  } else if(shareObj["status"]=="ERROR") {
+    document.querySelector(".chart").style.display = "none";
+    document.querySelector(".chart-results").style.display = "none";
+    document.querySelector(".breakdown").style.display = "none";
+    document.querySelector(".stocks").style.display = "none";
+    let section = document.createElement('section');
+    section.classList.add('page-allocation-error');
+    let img = document.createElement('div');
+    img.classList.add('page-allocation-error__img');
+    let title = document.createElement('span');
+    title.classList.add('page-allocation-error__title');
+    let text = document.createElement('p');
+    text.classList.add('page-allocation-error__text');
+    title.innerText = "The data hasn't loaded";
+    text.innerText = "But we've already received a notification about this case. Ask a friend to generate a link on the portfolio again.";
+    section.appendChild(img);
+    section.appendChild(title);
+    section.appendChild(text);
+    document.querySelector('.shares-page__wrapper').prepend(section);
+  } else if(shareObj["status"]==="GENERATION") {
+    setTimeout(pageShareXhr, 5000);
+  }
+};
 function addNameAndDate(shareRequest) {
   document.querySelector('.chart__title span').textContent = shareRequest.user.first_name;
   let a = new Date(shareRequest.created);
@@ -207,11 +243,15 @@ function addChartBox(shareRequest) {
             // Display, position, and set styles for font
             tooltipEl.style.opacity = 1;
             tooltipEl.style.position = 'absolute';
-            if(position.left+tooltipModel.caretX+tooltipEl.offsetWidth>position.width) {
-              tooltipEl.style.left = position.width-tooltipEl.offsetWidth-position.left + 'px';
+            if(window.innerWidth<=767) {
+              if(position.left+tooltipModel.caretX+tooltipEl.offsetWidth>=position.width) {
+                tooltipEl.style.left = position.width-tooltipEl.offsetWidth + 'px';
+              } else {
+                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+              };
             } else {
               tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
-            };
+            }
             tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 12 + 'px';
             tooltipEl.style.font = '14px "Inter", sans-serif';
             tooltipEl.style.padding = 12 + 'px ' + 12 + 'px';
@@ -240,8 +280,8 @@ function addChartBox(shareRequest) {
               yMax: lastDate,
               value: 5,
               borderColor: '#EA8D01',
-              borderWidth: 1,
-              borderDash: [1,1],
+              borderWidth: 2,
+              borderDash: [2,3],
               label: {
                 enabled: false,
                 content: ''
@@ -256,6 +296,7 @@ function addChartBox(shareRequest) {
               borderColor: '#EA8D01',
               borderWidth: 2,
               order: 0,
+              drawTime: 'afterDatasetsDraw',
             }
           }
         }
@@ -351,10 +392,10 @@ function addChartBox(shareRequest) {
         lineTension: 0.4,
         borderWidth: 1,
         pointRadius: '0',
-        pointHoverRadius: '4',
-        hoverBorderWidth: '2',
-        pointBorderColor: '#fff',
-        pointBackgroundColor: '#000',
+        pointHoverRadius: '5',
+        hoverBorderWidth: '3',
+        pointBorderColor: '#EA8D01',
+        pointBackgroundColor: '#fff',
         hitRadius: 500,
       }]
     },
@@ -419,8 +460,9 @@ if(document.body.classList.contains("page-allocation")) {
   var period;
   var toggle = false;
   var myChart  = {};
-  pageShareXhr();
+  getShareFromMain();
   buildRewardedSlider();
+  chartTooltip();
 }
 
 

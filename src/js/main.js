@@ -17,4 +17,6 @@ if(document.body.classList.contains("page-allocation")) {
   @@include('modules/pageShareXhr.js')
   @@include('modules/aside.js')
   @@include('modules/copyAllocation.js')
+  @@include('modules/chart-tooltip.js')
+  
 }

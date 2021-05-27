@@ -1,5 +1,4 @@
 function copyAllocationReferralCode(shareObj) {
-  console.log(shareObj.user.ref_code);
   let textCopy = document.querySelector('.refferal-link-copy__text'),
   btnCopy = document.querySelector('.refferal-link-copy__btn');
   textCopy.value = shareObj.user.ref_code;

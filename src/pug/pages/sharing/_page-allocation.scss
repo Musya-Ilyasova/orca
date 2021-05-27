@@ -1,8 +1,9 @@
 .page-allocation {
-  &:after {
-    content: "";
+  .screen {
+    position: absolute;
     opacity: 0;
     transition: opacity 0.2s ease;
+    z-index: 0;
   }
   .headerLogo {
     padding: 46px 0;
@@ -24,8 +25,10 @@
   }
   &.lock {
     overflow: hidden;
-    &:after {
-      position: absolute;
+    @include media($TABLET) {
+      overflow: visible;
+    }
+    .screen {
       top: 0;
       right: 0;
       width: 100%;
@@ -33,6 +36,9 @@
       background: rgba($color: #000000, $alpha: 0.5);
       z-index: 100;
       opacity: 1;
+      @include media($TABLET) {
+        opacity: 0;
+      }
     }
   }
   main {
@@ -160,6 +166,37 @@
       }
     }
   }
+  &-error {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 258px;
+    color: #F8F8F8;
+    padding: 0 20px;
+    &__title {
+      display: block;
+      font-weight: 600;
+      width: 100%;
+      font-size: 20px;
+      line-height: 28px;
+
+    }
+    &__img {
+      width: 60px;
+      height: 60px;
+      background: url('../img/chart-error.png') no-repeat;
+      background-size: contain;
+    }
+    &__text {
+      font-size: 16px;
+      line-height: 28px;
+      max-width: 545px;
+      margin: 20px auto;
+    }
+
+  }
   .refferal-link {
     width: 100%;
     font-family: 'Inter', sans-serif;
@@ -173,7 +210,7 @@
       display: inline-block;
       margin-bottom: 19px;
     }
-  
+
     &-copy {
       background: #262626;
       border-radius: 6px;
@@ -297,7 +334,7 @@
         }
       }
     }
-  }  
+  }
 }
 .page-allocation-footer {
   color: #8D8D93;

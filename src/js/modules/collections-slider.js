@@ -27,6 +27,7 @@ function buildCollectionsSwiper() {
         lidesPerView: 1,
         spaceBetween: 22,
         speed: 300,
+        allowTouchMove: false,
         navigation: {
           nextEl: '.collections-slider-next',
           prevEl: '.collections-slider-prev',
@@ -58,6 +59,9 @@ function buildCollectionsSwiper() {
     breakpointChecker();
   })();
 }
+
+
+
 function addRotate() {
   let collectionImg = document.querySelectorAll('.collections-slider-item-img');
   for(let i=0; i<=collectionImg.length-1; i++) {

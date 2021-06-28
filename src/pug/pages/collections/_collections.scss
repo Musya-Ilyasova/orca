@@ -104,10 +104,14 @@
         transition-timing-function: ease;
         &.next-step {
           transform: rotate(-12deg) translateY(-20px);
+          transition-property: opacity, transform, z-index;
+          transition-delay: 0.2s, 0.4;
+          transition-duration: 0.5s, 0.3s, 0.2;
         }
         &.opacity {
           transform: rotate(-15deg) translateY(-80px);
           opacity: 0;
+          z-index: 0;
         }
       }
       &__bottom {
@@ -119,10 +123,14 @@
         transition-timing-function: ease;
         &.next-step {
           transform: translateY(5px);
+          transition-property: opacity, transform, z-index;
+          transition-delay: 0.2s, 0.4;
+          transition-duration: 0.5s, 0.3s, 0.2;
         }
         &.opacity {
           transform:  translateY(100%);
           opacity: 0;
+          z-index: 0;
         }
       }
       &__card {
@@ -134,8 +142,8 @@
         width: 100%;
         z-index: 9;
         padding: 0 20px;
-        transition: transform 0.3s linear;
         user-select: none;
+        transition: all 250ms ease-out;
         @include media($TABLET) {
           padding: 0;
           width: 87%;
@@ -145,6 +153,7 @@
         }
         &.scale {
           transform: scale(1.2);
+          z-index: 11;
           &:hover {
             perspective-origin: 50% 50%;
             perspective: 800px;
@@ -159,12 +168,12 @@
         }
         img {
           box-shadow: 0px 0px 34px 0px rgba(34, 60, 80, 0.2);
-          will-change: box-shadow;
           z-index: 10;
           width: 100%;
           object-fit: contain;
           transform: rotateX(0deg) rotateY(0deg);
           user-select: none;
+          transition: all 250ms ease-out;
         }
       }
       &.show-swipe {
@@ -175,7 +184,7 @@
           top: -71px;
           opacity: 1;
           transition: opacity 0.3s ease;
-          background: url('../img/collections-img-after.png') no-repeat;
+          background: url("/img/collections-img-after.png") no-repeat;
           width: 124px;
           height: 82px;
           background-size: contain;
@@ -201,14 +210,14 @@
           top: -81px;
           opacity: 1;
           transition: opacity 0.3s ease;
-          background-image: url('../img/collections-img-before.png');
+          background-image: url("../img/collections-img-before.png");
           background-repeat: no-repeat;
           width: 105px;
           height: 69px;
           background-size: contain;
           animation: pulse 0.5s infinite;
           @include media($DESKTOP) {
-            background-image: url('../img/collections-img-before-desktop.png');
+            background-image: url("../img/collections-img-before-desktop.png");
             left: -68px;
             top: 50%;
             transform: translateY(-50%);
@@ -236,6 +245,8 @@
       max-width: 286px;
       margin: 50px auto 0;
       transition: opacity 0.2s ease;
+      position: relative;
+      z-index: 10;
       @include media($DESKTOP) {
         margin: 40px auto 0;
       }
@@ -346,6 +357,8 @@
     }
   }
 }
+
+
 
 @keyframes pulse {
   0% {

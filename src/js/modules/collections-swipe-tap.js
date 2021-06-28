@@ -3,6 +3,7 @@ function addSwipeDesktop() {
   var initialPoint;
   var finalPoint;
   let collectionItem = document.querySelectorAll('.collections-slider-item');
+  let imageFee = document.querySelector('.collections-new-item-fee');
   collectionItem.forEach((item) => {
     let swipeBox = document.createElement('div');
     swipeBox.classList.add('swipe-box');
@@ -32,6 +33,9 @@ function addSwipeDesktop() {
         if(imageBox.classList.contains("show-swipe")) {
           imageBox.classList.add('opacity-swipe');
           imageBox.classList.add('show-tap');
+        }
+        if(imageFee) {
+          imageFee.classList.add('opacity');
         }
         tapBox.addEventListener('click', function(e) {
           e.preventDefault();
@@ -84,6 +88,7 @@ function addNewSwipeMobile() {
   let initialPoint;
   let finalPoint;
   let imageBox = wrapper.querySelector('.collections-slider-item-img');
+  let imageFee = wrapper.querySelector('.collections-new-item-fee');
   let imageTop = wrapper.querySelector('.collections-slider-item-img__top');
   let imageBottom = wrapper.querySelector('.collections-slider-item-img__bottom');
   let imageCard = wrapper.querySelector('.collections-slider-item-img__card');
@@ -106,6 +111,7 @@ function addNewSwipeMobile() {
         if (finalPoint.pageX < initialPoint.pageX) {
           imageCardImg.style.opacity = "";
           imageTop.classList.add('next-step');
+          imageFee.classList.add('opacity');
           imageBottom.classList.add('next-step');
           imageBox.classList.add('next-step')
           swipeNewBox.classList.add('tap');

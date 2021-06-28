@@ -1,19 +1,34 @@
 section.collections-new
-  .container
+  .container.container--1120
     .collections-new-content
-      h2.collections-new__title Introducing new collection!
-      p.collections-new__text Unpack this awesome new Orca’s collection and find out what to invest in next!
+      h2.collections-new__title God Save the Queen –
+        wbr
+        | the new Orca collection!
+      ul.collections-new-content__list
+        li The UK’s six most valuable brands according to Kantar’s ratings
+        li Better performance over the last 5 years, if compared with FTSE100
+        li Diversified in equal parts (Energy / Financial / Consumer discretionary / Consumer Staples / Telecommunication)
+        li More than 12% growth over one year (except for dividends), and more than 50% growth over the last 5 years.
+        li Total cost under £300
+        li High dividend yield
+      span.collections-new-content__subtitle FEE FREE!
+      p.collections-new__text Yes, you can buy this collection without our&nbsp;
+        span.collections-new__text_main fees till Jun 18!&nbsp;
+        | (you save £6).
     .collections-new-item-wrapper
       .collections-new-item.collections-slider-item
         .collections-slider-item-img.show-swipe
+          .collections-new-item-fee
+            +icon('fee')
           .collections-slider-item-img__card
-            img(src="img/irish-spirit.png", alt="Collections Irish Spirit")
+            img(src="img/queen.png", alt="Collections Irish Spirit")
           .collections-slider-item-img__top
             img(src="img/collection-top.png", alt="")
           .collections-slider-item-img__bottom
             img(src="img/collection-bottom.png", alt="")
         .collections-slider-item__content
-          span.collections-slider-item__title Irish Spirit
-          p.collections-slider-item__text This Collection is made up of the main Irish-based market drivers.
+          span.collections-slider-item__title God Save the Queen
+          p.collections-slider-item__text We picked and collected six assets of the most valuable British brands in one place.
           a.collections-slider-item__link(href="") Crack on
+            +icon('arrow-right')
 

@@ -1,0 +1,23 @@
+.calculator-first {
+  padding-top: 40px;
+  .container  {
+    @include media($TABLET) {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      grid-column-gap: 40px;
+    }
+  }
+  &-img {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &-content {
+    &__title {
+      font-size: 50px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+  }
+}

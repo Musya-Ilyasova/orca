@@ -3,6 +3,7 @@ function addSwipeDesktop() {
   var initialPoint;
   var finalPoint;
   let collectionItem = document.querySelectorAll('.collections-slider-item');
+  let imageFee = document.querySelector('.collections-new-item-fee');
   collectionItem.forEach((item) => {
     let swipeBox = document.createElement('div');
     swipeBox.classList.add('swipe-box');
@@ -32,6 +33,9 @@ function addSwipeDesktop() {
         if(imageBox.classList.contains("show-swipe")) {
           imageBox.classList.add('opacity-swipe');
           imageBox.classList.add('show-tap');
+        }
+        if(imageFee) {
+          imageFee.classList.add('opacity');
         }
         tapBox.addEventListener('click', function(e) {
           e.preventDefault();
@@ -73,6 +77,64 @@ function addSwipeDesktop() {
   });
 };
 
+function addNewSwipeMobile() {
+  let wrapper = document.querySelector('.collections-new-item-wrapper');
+  let swipeNewBox = document.createElement('div');
+  swipeNewBox.classList.add('swipe-box-mobile');
+  wrapper.appendChild(swipeNewBox);
+  let tapNewBox = document.createElement('div');
+  tapNewBox.classList.add('tap-box-mobile');
+  wrapper.appendChild(tapNewBox);
+  let initialPoint;
+  let finalPoint;
+  let imageBox = wrapper.querySelector('.collections-slider-item-img');
+  let imageFee = wrapper.querySelector('.collections-new-item-fee');
+  let imageTop = wrapper.querySelector('.collections-slider-item-img__top');
+  let imageBottom = wrapper.querySelector('.collections-slider-item-img__bottom');
+  let imageCard = wrapper.querySelector('.collections-slider-item-img__card');
+  let imageCardImg = wrapper.querySelector('.collections-slider-item-img__card img');
+  imageCardImg.style.opacity = "0";
+  imageBox.classList.add("show-swipe");
+  swipeNewBox.addEventListener('touchstart', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    initialPoint = event.changedTouches[0];
+  }, false);
+  swipeNewBox.addEventListener('touchend', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    finalPoint = event.changedTouches[0];
+    var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+    var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
+    if (xAbs > 20 || yAbs > 20) {
+      if (xAbs > yAbs) {
+        if (finalPoint.pageX < initialPoint.pageX) {
+          imageCardImg.style.opacity = "";
+          imageTop.classList.add('next-step');
+          imageFee.classList.add('opacity');
+          imageBottom.classList.add('next-step');
+          imageBox.classList.add('next-step')
+          swipeNewBox.classList.add('tap');
+          tapNewBox.style.display='block';
+          if(imageBox.classList.contains("show-swipe")) {
+            imageBox.classList.add('opacity-swipe');
+            imageBox.classList.add('show-tap');
+          }
+        }
+      };
+    }
+  }, true);
+  tapNewBox.addEventListener('click', function(event) {
+    event.preventDefault();
+    imageTop.classList.add('opacity');
+    imageBottom.classList.add('opacity');
+    setTimeout(() => imageCard.style.transform = "scale(1.2)", 500);
+    if(imageBox.classList.contains("show-tap")) {
+      imageBox.classList.add('opacity-tap');
+    }
+  }, false);
+}
+
 function addSwipeMobile() {
   let slider = document.querySelector('.collections-slider-container');
   let swipeBox = document.createElement('div');
@@ -81,8 +143,8 @@ function addSwipeMobile() {
   let tapBox = document.createElement('div');
   tapBox.classList.add('tap-box-mobile');
   slider.appendChild(tapBox);
-  var initialPoint;
-  var finalPoint;
+  let initialPoint;
+  let finalPoint;
   let imageBox = document.querySelector('.swiper-slide-active .collections-slider-item-img');
   let imageTop = document.querySelector('.swiper-slide-active .collections-slider-item-img__top');
   let imageBottom = document.querySelector('.swiper-slide-active .collections-slider-item-img__bottom');

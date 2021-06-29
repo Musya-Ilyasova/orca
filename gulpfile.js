@@ -83,14 +83,14 @@ exports.sass = sass;
 function scriptsLibs() {
   return src([
     "node_modules/resize-observer-polyfill/dist/ResizeObserver.js",
-    "node_modules/chart.js/dist/chart.min.js",
-    "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js",
     "node_modules/swiper/swiper-bundle.min.js",
-    "node_modules/lottie-web/build/player/lottie.min.js",
-    "node_modules/highcharts/highcharts.js",
-    "node_modules/highcharts/modules/exporting.js",
-    "node_modules/highcharts/modules/export-data.js",
-    "node_modules/highcharts/modules/accessibility.js",
+    // "node_modules/chart.js/dist/chart.min.js",
+    // "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js",
+    // "node_modules/lottie-web/build/player/lottie.min.js",
+    // "node_modules/highcharts/highcharts.js",
+    // "node_modules/highcharts/modules/exporting.js",
+    // "node_modules/highcharts/modules/export-data.js",
+    // "node_modules/highcharts/modules/accessibility.js",
   ])
     .pipe(glp.concat("libs.min.js"))
     .pipe(strip())

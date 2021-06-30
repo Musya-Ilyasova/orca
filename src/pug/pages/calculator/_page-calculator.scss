@@ -58,4 +58,8 @@ $calc-main: #8FFF00;
       }
     }
   }
+  .hidden {
+    visibility: hidden;
+    font-size: 0;
+  }
 }

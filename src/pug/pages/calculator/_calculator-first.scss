@@ -1,23 +1,55 @@
 .calculator-first {
-  padding-top: 40px;
+  padding-top: 118px;
   .container  {
     @include media($TABLET) {
       display: grid;
-      grid-template-columns: 1fr 260px;
-      grid-column-gap: 40px;
+      grid-template-columns: 1fr 250px;
+      grid-template-rows: auto;
+      grid-column-gap: 65px;
+      align-items: center;
+    }
+    @include media($DESKTOP) {
+      grid-template-columns: 1fr 290px;
+      grid-template-rows: auto;
+      grid-column-gap: 153px;
     }
   }
   &-img {
+    display: none;
+    @include media($TABLET) {
+      display: block;
+    }
     img {
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
   }
   &-content {
     &__title {
-      font-size: 50px;
+      font-size: 46px;
       line-height: 1.2;
       margin-bottom: 20px;
+      @include media($DESKTOP) {
+        font-size: 50px;
+        max-width: 551px;
+      }
+    }
+    &__text {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-top: 20px;
+      @include media($TABLET) {
+        font-size: 20px;
+        margin-top: 30px;
+      }
+      &_main {
+        color: $calc-main;
+      }
+    }
+    &__subtitle {
+      font-size: 18px;
+      line-height: 1.8;
     }
   }
 }

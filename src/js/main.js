@@ -39,3 +39,11 @@ if(document.body.classList.contains("page-seo")) {
 
 
 
+
+if(document.body.classList.contains("page-calculator")) {
+  @@include('modules/calculator.js')
+
+}
+
+
+

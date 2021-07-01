@@ -8,10 +8,10 @@
 	width: 100%;
 	background: transparent;
 	z-index: 1000;
-	transition-property: padding, background;
 	transition-delay: 0.1s, 0s;
 	transition-duration: 0.2s, 0.2s;
 	transition-timing-function: ease;
+	transition-property: padding, background;
 	.logo {
 		width: 110px;
 		height: 58px;

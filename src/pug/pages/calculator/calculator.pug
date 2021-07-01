@@ -1,7 +1,35 @@
 section.calculator
   .container.container--1120
     h2.hidden Calculator
-    .calculator-panel
+    .calculator-wrapper
+      .calculator-fields
+        .calculator-fields-single.calculator-fields__item
+          label.calculator-fields-label(for="sp") Single payment
+          .calculator-fields-value
+            span £
+            input#sp(type="number" placeholder="200")
+        .calculator-fields-regular.calculator-fields__item
+          label.calculator-fields-label(for="rp") Regular payment
+          .calculator-fields-regular-frequency
+            span monthly
+            input(type="checkbox")
+            span annually
+          .calculator-fields-value.calculator-fields-regular__value
+            span £
+            input#rp(type="number" placeholder="200")
+        .calculator-fields-yty.calculator-fields__item
+          label.calculator-fields-label(for="yty") Year-to-year potfolio growth
+          button.calculator-fields-yty__btn ?
+          .calculator-fields-yty__tooltip
+            p Based on any single and/or regular payments you've selected
+          input#yty(type="range" min="5" max="10")
+        .calculator-fields-noy.calculator-fields__item
+          label.calculator-fields-label(for="noy") Number of years
+          input#noy(type="range" min="5" max="20")
+        button.calculator-fields__btn.btn-primary Calculate
+
+      .calculator-chart
+
     ul.calculator-results
       li.calculator-results__item.calculator-results-item-small
         .calculator-results-item-small-top.calculator-results-item-small-top_two_title
@@ -31,9 +59,11 @@ section.calculator
           b N%&nbsp;
           | expected growth rate you've selected
       li.calculator-results__item.calculator-results-item-big
-        span.calculator-results-item-big__title No Charges
-        p.calculator-results-item-big__text Charges assumed in the calculator are 0.75% a year.
-        p.calculator-results-item-big__text Charges are typically between 0.5% and 1.85% of the fund value a year depending on investments chosen and the amount invested in the Aviva Online Investment Service.
+        span.calculator-results-item-big__title About ISA Calculator
+        p.calculator-results-item-big__text This calculator shows charges 0.75%/year. We used the growth rate as selected. This can vary from 0%  to 10%. It depends on your fund selections and your expected rate of return.
+
+        p.calculator-results-item-big__text Inflation is not considered in this calculator, hence the figures are shown in absolute terms and reflect the monetary value of the investment at the end of your chosen term. Note that the figures don’t show today’s value.
+        p.calculator-results-item-big__text Actual charges may be higher or lower than these and will depend on the investments chosen. The growth rate shown is just an example actual growth rates will depend on how investments perform. Please choose the rate that fits your investment choices best.
       li.calculator-results__item.calculator-results-item-transparent
         span.calculator-results-item-transparent__title What's next?
         p.calculator-results-item-transparent__text It's important to shop around to get a deal that you're comfortable with. If you decide the Orca Stocks &amp; Shares ISA suits you, it's easy to apply. Find out more now:

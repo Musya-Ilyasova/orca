@@ -1,0 +1,56 @@
+.calculator-form {
+  display: none;
+  @include media($TABLET) {
+    display: block;
+    margin: 0 auto;
+    padding: 80px 0 40px;
+    text-align: center;
+  }
+  @include media($DESKTOP) {
+    padding: 140px 0 70px;
+  }
+  &__title {
+    font-size: 46px;
+    line-height: 1.4;
+    @include media($DESKTOP) {
+      font-size: 50px;
+    }
+    &_main {
+      color: $calc-main;
+    }
+  }
+  &_second {
+    background: #101010;
+    padding: 110px 0 104px;
+  }
+}
+
+.calculator-subscribe {
+  margin: 60px auto;
+  .subscribe__form {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 558px;
+  }
+  .subscribe__form-label {
+    font-size: 18px;
+  }
+  .subscribe__form-box {
+    width: 100%;
+    input {
+      height: 66px;
+    }
+  }
+  .btn-primary {
+    width: 234px;
+    padding: 0;
+    font-size: 18px;
+    background: #141414;
+    height: 63px;
+    top: 1px;
+    right: 1px;
+  }
+  .subscribe__input-placeholder {
+    top: 52%;
+  }
+}

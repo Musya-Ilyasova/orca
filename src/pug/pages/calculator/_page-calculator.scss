@@ -2,9 +2,12 @@ $calc-main: #8FFF00;
 .page-calculator {
   .btn-primary, .getapp__btn {
     background: black;
-    border: 1px solid white;
-    height: 48px;
+    border: 2px solid $calc-main;
+    height: 63px;
     line-height: 46px;
+    padding: 0 15px;
+    min-width: 230px;
+    font-size: 18px;
     &:hover {
       background: transparent;
       border: 1px solid white;

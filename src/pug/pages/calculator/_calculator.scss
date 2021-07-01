@@ -1,4 +1,67 @@
 .calculator {
+  &-wrapper {
+    max-width: 410px;
+    padding-top: 60px;
+    margin: 0 auto;
+  }
+  &-fields {
+    &__item {
+      margin-bottom: 55px;
+    }
+    &__btn {
+      margin: 0 auto;
+      display: block;
+    }
+    &-label {
+      font-size: 18px;
+    }
+    &-single {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &-regular {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(2, auto);
+      grid-row-gap: 14px;
+      &-frequency {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+      &__value {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        align-self: center;
+        margin-left: auto;
+      }
+
+    }
+    &-value {
+      width: 130px;
+      padding: 0 30px;
+      height: 49px;
+      display: flex;
+      align-items: center;
+      background: #141414;
+      border-radius: 8px;
+      font-size: 24px;
+      input {
+        background: transparent;
+        border: none;
+        font-size: 24px;
+        margin-left: 4px;
+        color: white;
+        width: 60px;
+
+
+      }
+    }
+  }
   &-results {
     display: grid;
     grid-template-columns: 100%;
@@ -13,8 +76,8 @@
       margin-top: 100px;
     }
     @include media($DESKTOP) {
-      grid-template-columns: repeat(3, auto);
-      grid-template-rows: repeat(4, auto);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(5, auto);
       margin-top: 140px;
     }
     &__item {
@@ -34,7 +97,7 @@
           grid-column-start: 1;
           grid-column-end: 3;
           grid-row-start: 2;
-          grid-row-end: 4;
+          grid-row-end: 5;
         }
         &__title {
           font-weight: 700;

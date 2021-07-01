@@ -1,0 +1,47 @@
+.calculator-wondering {
+  padding: 40px 0;
+  max-width: 829px;
+  margin: 0 auto;
+  @include media($TABLET) {
+    padding: 80px 0;
+  }
+  &__title {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 40px;
+    @include media($TABLET) {
+
+    }
+  }
+  &-list {
+    &-item {
+      display: grid;
+      grid-template-columns: 40px auto;
+      grid-column-gap: 20px;
+      grid-template-rows: repeat(2, auto);
+      margin-bottom: 36px;
+      &__title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+        align-self: center;
+        &_main {
+          color: $calc-main;
+        }
+      }
+      &__img {
+        width: 40px;
+        height: 40px;
+        align-self: center;
+      }
+      &__text {
+        line-height: 1.8;
+        padding-left: 60px;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+    }
+  }
+}

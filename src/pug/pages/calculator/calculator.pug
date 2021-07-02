@@ -10,10 +10,10 @@ section.calculator
             input#sp(type="number" placeholder="200")
         .calculator-fields-regular.calculator-fields__item
           label.calculator-fields-label(for="rp") Regular payment
-          .calculator-fields-regular-frequency
-            span monthly
+          label.calculator-fields-regular-frequency monthly
+            span.calculator-fields-regular-frequency__btn
             input(type="checkbox")
-            span annually
+            | annually
           .calculator-fields-value.calculator-fields-regular__value
             span £
             input#rp(type="number" placeholder="200")
@@ -21,11 +21,13 @@ section.calculator
           label.calculator-fields-label(for="yty") Year-to-year potfolio growth
           button.calculator-fields-yty__btn ?
           .calculator-fields-yty__tooltip
-            p Based on any single and/or regular payments you've selected
-          input#yty(type="range" min="5" max="10")
+            p It is anticipated growth. The default setting is 5%. it's neither an average nor recommended value. We can't predict investment returns higher or lower than this. If you want to see how another level of investment return could affect what you get back, change the expected rate.
+          .calculator-fields-range
+            input#yty(type="range" min="5" max="10")
         .calculator-fields-noy.calculator-fields__item
           label.calculator-fields-label(for="noy") Number of years
-          input#noy(type="range" min="5" max="20")
+          .calculator-fields-range
+            input#noy(type="range" min="5" max="20")
         button.calculator-fields__btn.btn-primary Calculate
 
       .calculator-chart

@@ -6,7 +6,6 @@
       grid-template-columns: 1fr 250px;
       grid-template-rows: auto;
       grid-column-gap: 65px;
-      align-items: center;
     }
     @include media($DESKTOP) {
       grid-template-columns: 1fr 290px;
@@ -18,6 +17,7 @@
     display: none;
     @include media($TABLET) {
       display: block;
+      align-self: center;
     }
     img {
       width: 100%;
@@ -26,6 +26,9 @@
     }
   }
   &-content {
+    @include media($TABLET) {
+      align-self: center;
+    }    
     &__title {
       font-size: 46px;
       line-height: 1.2;

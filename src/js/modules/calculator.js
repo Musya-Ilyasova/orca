@@ -5,8 +5,12 @@ function calculatorCheckbox() {
   checkbox.addEventListener('change', function(e) {
     if(e.target.checked) {
       customCheckbox.classList.add('checked');
+      document.querySelector('.calculator-fields-regular-frequency__value:first-child').classList.remove('active');
+      document.querySelector('.calculator-fields-regular-frequency__value:last-child').classList.add('active');
     } else {
       customCheckbox.classList.remove('checked');
+      document.querySelector('.calculator-fields-regular-frequency__value:first-child').classList.add('active');
+      document.querySelector('.calculator-fields-regular-frequency__value:last-child').classList.remove('active');
     }
   })
 }
@@ -32,12 +36,17 @@ function calculatorTooltip() {
 
 function culculatorRange() {
   let range = document.querySelectorAll('.calculator-fields-range input');
+  let rangeYtyValue = document.querySelector('#ytyValue');
+  let rangeNoyValue = document.querySelector('#noyValue');
   range.forEach((item) => {
-    let value = (item.value-item.min)/(item.max-item.min)*100;
-    item.style.background = 'linear-gradient(to right, #8FFF00 0%, #8FFF00 ' + value + '%, #2E2E2E ' + value + '%, #2E2E2E 100%)';
-    item.addEventListener('change', function () {
-      value = (item.value-item.min)/(item.max-item.min)*100;
+    item.addEventListener('input', function () {
+      let value = (item.value-item.min)/(item.max-item.min)*100;
       item.style.background = 'linear-gradient(to right, #8FFF00 0%, #8FFF00 ' + `${value}` + '%, #2E2E2E ' + `${value}` + '%, #2E2E2E 100%)';
+      if(item.id==='yty') {
+        rangeYtyValue.innerText = item.value + "%";
+      } else if(item.id==='noy') {
+        rangeNoyValue.innerText = item.value;
+      }
     })
   })
 

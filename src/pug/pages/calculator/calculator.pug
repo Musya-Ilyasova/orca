@@ -7,31 +7,39 @@ section.calculator
           label.calculator-fields-label(for="sp") Single payment
           .calculator-fields-value
             span £
-            input#sp(type="number" placeholder="200")
+            input#sp(type="number" min="1" placeholder="200")
         .calculator-fields-regular.calculator-fields__item
           label.calculator-fields-label(for="rp") Regular payment
-          label.calculator-fields-regular-frequency monthly
+          label.calculator-fields-regular-frequency 
+            span.calculator-fields-regular-frequency__value.active monthly
             span.calculator-fields-regular-frequency__btn
             input(type="checkbox")
-            | annually
+            span.calculator-fields-regular-frequency__value annually
           .calculator-fields-value.calculator-fields-regular__value
             span £
-            input#rp(type="number" placeholder="200")
+            input#rp(type="number" min="1" placeholder="200")
         .calculator-fields-yty.calculator-fields__item
           label.calculator-fields-label(for="yty") Year-to-year potfolio growth
           button.calculator-fields-yty__btn ?
           .calculator-fields-yty__tooltip
             p It is anticipated growth. The default setting is 5%. it's neither an average nor recommended value. We can't predict investment returns higher or lower than this. If you want to see how another level of investment return could affect what you get back, change the expected rate.
           .calculator-fields-range
-            input#yty(type="range" min="5" max="10")
+            input.calculator-fields-range__input#yty(type="range" min="2" max="10" value="5")
+            ul.calculator-fields-range-values
+              li#ytyValue 5% 
+              li 10%
         .calculator-fields-noy.calculator-fields__item
           label.calculator-fields-label(for="noy") Number of years
           .calculator-fields-range
-            input#noy(type="range" min="5" max="20")
+            input.calculator-fields-range__input#noy(type="range" min="1" max="20" value="5")
+            ul.calculator-fields-range-values
+              li#noyValue 5
+              li 20
         button.calculator-fields__btn.btn-primary Calculate
-
       .calculator-chart
-
+        span.calculator-chart__title Investment growth over time
+          span.calculator-chart__title_value £84,000
+        #calculatorChart
     ul.calculator-results
       li.calculator-results__item.calculator-results-item-small
         .calculator-results-item-small-top.calculator-results-item-small-top_two_title

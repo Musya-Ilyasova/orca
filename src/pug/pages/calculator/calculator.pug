@@ -5,12 +5,12 @@ section.calculator
       .calculator-fields
         .calculator-fields-single.calculator-fields__item
           label.calculator-fields-label(for="sp") Single payment
-          .calculator-fields-value
+          .calculator-fields-value.addwarn
             span £
             input#sp(type="number" min="1" placeholder="200")
         .calculator-fields-regular.calculator-fields__item
           label.calculator-fields-label(for="rp") Regular payment
-          label.calculator-fields-regular-frequency 
+          label.calculator-fields-regular-frequency
             span.calculator-fields-regular-frequency__value.active monthly
             span.calculator-fields-regular-frequency__btn
             input(type="checkbox")
@@ -26,7 +26,7 @@ section.calculator
           .calculator-fields-range
             input.calculator-fields-range__input#yty(type="range" min="2" max="10" value="5")
             ul.calculator-fields-range-values
-              li#ytyValue 5% 
+              li#ytyValue 5%
               li 10%
         .calculator-fields-noy.calculator-fields__item
           label.calculator-fields-label(for="noy") Number of years

@@ -51,11 +51,74 @@ function culculatorRange() {
   })
 }
 
+
+function calculateToggleBtn () {
+  let spField = document.querySelector('#sp');
+  let rpmField = document.querySelector('#rp');
+  let calculatorBtn = document.querySelector('.calculator-fields__btn');
+  calculatorBtn.addEventListener('click', function() {
+    if((spField.value !=="") && (rpmField.value !=="")) {
+      checkField(spField, rpmField)
+      addCalculateValues();
+      addCalculatorChart();
+    } else {
+      checkField(spField, rpmField);
+    };
+  });
+  spField.addEventListener('input', function() {
+    checkField(spField, rpmField);
+  })
+  rpmField.addEventListener('input', function() {
+    checkField(spField, rpmField);
+  })
+}
+
+function checkField(spField, rpmField) {
+  let field = document.querySelectorAll('.calculator-fields-value');
+  if(spField.value =="" && rpmField.value =="") {
+    field.forEach(item=>item.classList.add('warn'));
+  } else {
+    field.forEach(item=>item.classList.remove('warn'));
+  };
+}
+
+function addCalculateValues() {
+  window.calculate.dates = [];
+  let spField = document.querySelector('#sp');
+  let rpmField = document.querySelector('#rp');
+  let ypgField = document.querySelector('#yty');
+  let nyField = document.querySelector('#noy');
+  window.calculate.sp = parseInt(spField.value, 10);
+  window.calculate.rpm = parseInt(rpmField.value, 10);
+  window.calculate.ypg = parseInt(ypgField.value, 10);
+  window.calculate.ny = parseInt(nyField.value, 10);
+  window.calculate.dates.push([0, 0]);
+
+  if(window.calculate.ny>=1) {
+    let firstYr = ((window.calculate.sp+window.calculate.rpm*11) + (window.calculate.sp+window.calculate.rpm*11)* 0.05);
+    window.calculate.dates.push([1, firstYr/1000]);
+
+    if(window.calculate.ny>=2) {
+      let nextYr = ((firstYr+window.calculate.rpm*12) + (firstYr+window.calculate.rpm*12)* 0.05);
+      window.calculate.dates.push([2, nextYr/1000]);
+      if(window.calculate.ny>2) {
+        for(let i=3; i<=window.calculate.ny; i++) {
+          nextYr = ((nextYr+window.calculate.rpm*12) + (nextYr+window.calculate.rpm*12)* 0.05);
+          window.calculate.dates.push([i, nextYr/1000]);
+        }
+      }
+    }
+  }
+}
+
 function addCalculatorChart() {
-  let dates = [[0, 0], [5, 25], [10, 40], [15, 65], [20, 84]];
   Highcharts.chart('calculatorChart', {
     chart: {
       type: 'area',
+    },
+    legend: {
+      color: '#666666',
+      fontFamily: 'inter',
     },
     credits: {
       enabled: false
@@ -73,7 +136,7 @@ function addCalculatorChart() {
       ordinal: false,
       min: 0,
       tickLength: 0,
-      tickInterval: 1,
+      // tickInterval: 3,
       lineWidth: 0,
       startOnTick: true,
       endOnTick: false,
@@ -94,9 +157,9 @@ function addCalculatorChart() {
       }
     },
     yAxis: {
-      min:0, 
-      max: 100, 
-      tickInterval: 25,    
+      min:0,
+      // max: 100,
+      // tickInterval: 25,
       gridLineDashStyle: 'longdash',
       startOnTick: true,
       endOnTick: false,
@@ -111,7 +174,7 @@ function addCalculatorChart() {
       },
     },
     tooltip: {
-      enabled: false
+      // enabled: false
     },
     plotOptions : {
       area : {
@@ -137,7 +200,7 @@ function addCalculatorChart() {
       }
     },
     series: [{
-      data: dates,
+      data: window.calculate.dates,
       color: '#8FFF00',
       type : 'area',
       threshold: null,
@@ -145,6 +208,8 @@ function addCalculatorChart() {
         lineColor: '#8FFF00',
         fillColor: '#2E2E2E',
         lineWidth: 8,
+        borderWidth: 2,
+        radius: 8,
       },
       fillColor : {
         linearGradient : [0, 0, 0, 400],
@@ -154,15 +219,27 @@ function addCalculatorChart() {
         ]
       },
     }],
-    
+
   });
 }
 
 
+if(document.body.classList.contains("page-calculator")) {
+  window.calculate = {
+    sp: 0,
+    rpm: 0,
+    ypg: 0,
+    ny: 0,
+    dates: [[0, 0], [1, 2.52], [2, 5.166], [3, 7.9443], [4, 10.861514999999999], [5, 13.92459075]],
+  };
 
-calculatorCheckbox();
-calculatorTooltip();
-culculatorRange();
-addCalculatorChart();
+  calculatorCheckbox();
+  calculatorTooltip();
+  culculatorRange();
+  addCalculatorChart();
+  calculateToggleBtn();
+}
+
+
 
 

@@ -76,9 +76,8 @@ function calculateToggleBtn() {
 
 function checkField(spField, rpmField) {
   let field = document.querySelectorAll('.calculator-fields-value');
-  if (spField.value == "" && rpmField.value == "") {
+  if ((spField.value == "" || parseInt(spField.value) === 0) && (rpmField.value == "" || parseInt(rpmField.value) === 0)) {
     field.forEach(item => item.classList.add('warn'));
-    console.log(spField.value);
   } else {
     field.forEach(item => item.classList.remove('warn'));
   };
@@ -156,8 +155,6 @@ function addCalculateValues() {
     window.calculate.taxReturn = window.calculate.sp + window.calculate.rpm + (window.calculate.rpm * (window.calculate.ny - 1));
   }
   window.calculate.maxX = window.calculate.ny;
-
-  console.log(window.calculate.dates);
 }
 
 function checkGrowth(x) {

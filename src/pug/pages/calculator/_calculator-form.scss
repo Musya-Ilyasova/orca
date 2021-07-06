@@ -3,11 +3,17 @@
   @include media($TABLET) {
     display: block;
     margin: 0 auto;
-    padding: 80px 0 40px;
+    padding: 100px 0 104px;
     text-align: center;
   }
   @include media($DESKTOP) {
-    padding: 140px 0 70px;
+    padding: 110px 0 104px;
+  }
+  .subscribe {
+    @include media($TABLET) {
+      display: block;
+      margin: 60px 0 0;
+    }
   }
   &__title {
     font-size: 46px;

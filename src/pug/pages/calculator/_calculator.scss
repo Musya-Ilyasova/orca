@@ -1,6 +1,9 @@
 .calculator {
   &-wrapper {
     padding-top: 60px;
+    @include media($TABLET) {
+      padding-top: 114px;
+    }
     @include media($DESKTOP) {
       display: grid;
       grid-template-columns: 329px 1fr;
@@ -195,7 +198,7 @@
     }
     &-value {
       width: 130px;
-      padding: 0 30px;
+      padding: 0 20px;
       height: 49px;
       display: flex;
       align-items: center;
@@ -209,8 +212,10 @@
         &.addwarn {
           position: relative;
           &:after {
+            content: "You need to invest
+            more than £0 😉";
             position: absolute;
-            bottom: -52px;
+            bottom: -44px;
             left: 0;
             right: 0;
             margin: 0 auto;
@@ -218,8 +223,13 @@
             font-size: 12px;
             line-height: 15px;
             color: #FFC700;
-            content: "You need to invest
-            more than £0 😉";
+            @include media($TABLET) {
+              bottom: -52px;
+            }
+            @include media($DESKTOP) {
+              bottom: -31px;
+              line-height: 12px;
+            }
           }
         }
       }
@@ -229,8 +239,8 @@
         font-size: 24px;
         line-height: 29px;
         margin-left: 4px;
-        color: #666666;
-        width: 60px;
+        color: white;
+        width: 68px;
         &::-webkit-outer-spin-button {
           -webkit-appearance: none;
         }
@@ -278,7 +288,7 @@
           border: 2px solid $calc-main;
         }
         &#yty {
-          background: linear-gradient(to right, rgb(143, 255, 0) 0%, rgb(143, 255, 0) 37.5%, rgb(46, 46, 46) 37.5%, rgb(46, 46, 46) 100%);
+          background: linear-gradient(to right, rgb(143, 255, 0) 0%, rgb(143, 255, 0) 44.4444%, rgb(46, 46, 46) 44.4444%, rgb(46, 46, 46) 100%);
         }
         &#noy {
           background: linear-gradient(to right, rgb(143, 255, 0) 0%, rgb(143, 255, 0) 21.0526%, rgb(46, 46, 46) 21.0526%, rgb(46, 46, 46) 100%);
@@ -340,6 +350,16 @@
       .highcharts-axis-labels.highcharts-yaxis-labels {
         padding-right: 30px;
       }
+      .highcharts-tooltip-box {
+        fill: #2E2E2E;
+        fill-opacity: 0.6;
+        stroke-width: 0;
+      }
+
+      .highcharts-tooltip text {
+        fill: white;
+        text-shadow: 0 0 3px black;
+      }
     }
     &__title {
       font-size: 28px;
@@ -349,6 +369,12 @@
       line-height: 1.4;
       display: block;
       margin: 0 auto;
+      @include media($TABLET) {
+        max-width: 100%;
+        font-size: 30px;
+        text-align: left;
+
+      }
       &_value {
         font-size: 40px;
         display: block;
@@ -357,12 +383,6 @@
           display: inline-block;
           margin-left: 15px;
         }
-      }
-      @include media($TABLET) {
-        max-width: 100%;
-        font-size: 30px;
-        text-align: left;
-
       }
     }
   }
@@ -406,10 +426,12 @@
         &__title {
           font-weight: 700;
           line-height: 1.5;
+          display: block;
+          margin-bottom: 20px;
         }
         &__text {
           line-height: 1.5;
-          margin: 20px 0;
+          margin: 0;
           &:last-child {
             margin-bottom: 0;
           }
@@ -456,6 +478,7 @@
           color: $calc-main;
           font-weight: 700;
           line-height: 30px;
+          white-space: nowrap;
           .icon {
             fill: $calc-main;
             width: 5px;

@@ -4,14 +4,13 @@ $calc-main: #8FFF00;
     background: black;
     border: 2px solid $calc-main;
     height: 63px;
-    line-height: 46px;
+    line-height: 60px;
     padding: 0 15px;
     min-width: 230px;
     font-size: 18px;
     &:hover {
       background: transparent;
-      border: 1px solid white;
-      box-shadow: 0 0 4px 1px white;
+      box-shadow: 0 0 4px 1px $calc-main;
     }
   }
   .getapp__btn {

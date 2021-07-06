@@ -13,7 +13,7 @@ section.calculator
           label.calculator-fields-regular-frequency
             span.calculator-fields-regular-frequency__value.active monthly
             span.calculator-fields-regular-frequency__btn
-            input(type="checkbox")
+            input#frequency(type="checkbox")
             span.calculator-fields-regular-frequency__value annually
           .calculator-fields-value.calculator-fields-regular__value
             span £
@@ -24,7 +24,7 @@ section.calculator
           .calculator-fields-yty__tooltip
             p It is anticipated growth. The default setting is 5%. it's neither an average nor recommended value. We can't predict investment returns higher or lower than this. If you want to see how another level of investment return could affect what you get back, change the expected rate.
           .calculator-fields-range
-            input.calculator-fields-range__input#yty(type="range" min="2" max="10" value="5")
+            input.calculator-fields-range__input#yty(type="range" min="1" max="10" value="5")
             ul.calculator-fields-range-values
               li#ytyValue 5%
               li 10%
@@ -38,7 +38,7 @@ section.calculator
         button.calculator-fields__btn.btn-primary Calculate
       .calculator-chart
         span.calculator-chart__title Investment growth over time
-          span.calculator-chart__title_value £84,000
+          span.calculator-chart__title_value £13,925
         #calculatorChart
     ul.calculator-results
       li.calculator-results__item.calculator-results-item-small
@@ -50,13 +50,13 @@ section.calculator
           .calculator-results-item-small-top__right
             span.calculator-results-item-small-top__title New ISA investments:&nbsp;
             span.calculator-results-item-small-top__value £
-              span#newIsa 84,000
+              span#newIsa 13,925
         p.calculator-results-item-small__bottom Based on any single and/or regular payments you've selected
       li.calculator-results__item.calculator-results-item-small
         .calculator-results-item-small-top
           span.calculator-results-item-small-top__title Investment growth:&nbsp;
           span.calculator-results-item-small-top__value £
-            span#growthIsa 27,370.69
+            span#growthIsa 2,124
         p.calculator-results-item-small__bottom Based on&nbsp;
           b N%&nbsp;
           | expected growth rate you've selected
@@ -64,7 +64,7 @@ section.calculator
         .calculator-results-item-small-top
           span.calculator-results-item-small-top__title Your possible ISA tax return:&nbsp;
           span.calculator-results-item-small-top__value £
-            span#growthIsa 84,000
+            span#taxReturn 11,800
         p.calculator-results-item-small__bottom Based on&nbsp;
           b N%&nbsp;
           | expected growth rate you've selected

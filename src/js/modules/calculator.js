@@ -52,63 +52,140 @@ function culculatorRange() {
 }
 
 
-function calculateToggleBtn () {
+function calculateToggleBtn() {
   let spField = document.querySelector('#sp');
   let rpmField = document.querySelector('#rp');
   let calculatorBtn = document.querySelector('.calculator-fields__btn');
-  calculatorBtn.addEventListener('click', function() {
-    if((spField.value !=="") && (rpmField.value !=="")) {
+  calculatorBtn.addEventListener('click', function () {
+    if ((spField.value !== "") || (rpmField.value !== "")) {
       checkField(spField, rpmField)
       addCalculateValues();
+      calculatorInnerFields();
       addCalculatorChart();
     } else {
       checkField(spField, rpmField);
     };
   });
-  spField.addEventListener('input', function() {
+  spField.addEventListener('input', function () {
     checkField(spField, rpmField);
   })
-  rpmField.addEventListener('input', function() {
+  rpmField.addEventListener('input', function () {
     checkField(spField, rpmField);
   })
 }
 
 function checkField(spField, rpmField) {
   let field = document.querySelectorAll('.calculator-fields-value');
-  if(spField.value =="" && rpmField.value =="") {
-    field.forEach(item=>item.classList.add('warn'));
+  if (spField.value == "" && rpmField.value == "") {
+    field.forEach(item => item.classList.add('warn'));
+    console.log(spField.value);
   } else {
-    field.forEach(item=>item.classList.remove('warn'));
+    field.forEach(item => item.classList.remove('warn'));
   };
 }
 
 function addCalculateValues() {
   window.calculate.dates = [];
-  let spField = document.querySelector('#sp');
-  let rpmField = document.querySelector('#rp');
-  let ypgField = document.querySelector('#yty');
-  let nyField = document.querySelector('#noy');
+  let spField = document.querySelector('#sp'),
+    rpmField = document.querySelector('#rp'),
+    ypgField = document.querySelector('#yty'),
+    nyField = document.querySelector('#noy'),
+    frequencyField = document.querySelector('#frequency');
+  window.calculate.growth = 0;
   window.calculate.sp = parseInt(spField.value, 10);
   window.calculate.rpm = parseInt(rpmField.value, 10);
-  window.calculate.ypg = parseInt(ypgField.value, 10);
+  window.calculate.ypg = parseInt(ypgField.value, 10) / 100;
   window.calculate.ny = parseInt(nyField.value, 10);
-  window.calculate.dates.push([0, 0]);
+  if (isNaN(window.calculate.sp)) {
+    window.calculate.sp = 0;
+  } else if (isNaN(window.calculate.rpm)) {
+    window.calculate.rpm = 0;
+  }
+  if (window.calculate.sp > 0) {
+    window.calculate.dates.push([0, window.calculate.sp / 1000]);
+  } else {
+    window.calculate.dates.push([0, 0]);
+  };
 
-  if(window.calculate.ny>=1) {
-    let firstYr = ((window.calculate.sp+window.calculate.rpm*11) + (window.calculate.sp+window.calculate.rpm*11)* 0.05);
-    window.calculate.dates.push([1, firstYr/1000]);
+  if (!frequencyField.checked) {
+    let firstYr = ((window.calculate.sp + window.calculate.rpm * 11) + (window.calculate.sp + window.calculate.rpm * 11) * window.calculate.ypg);
+    window.calculate.dates.push([1, firstYr / 1000]);
 
-    if(window.calculate.ny>=2) {
-      let nextYr = ((firstYr+window.calculate.rpm*12) + (firstYr+window.calculate.rpm*12)* 0.05);
-      window.calculate.dates.push([2, nextYr/1000]);
-      if(window.calculate.ny>2) {
-        for(let i=3; i<=window.calculate.ny; i++) {
-          nextYr = ((nextYr+window.calculate.rpm*12) + (nextYr+window.calculate.rpm*12)* 0.05);
-          window.calculate.dates.push([i, nextYr/1000]);
+    let growthfirstYr = (window.calculate.sp + window.calculate.rpm * 11) * window.calculate.ypg;
+    window.calculate.growth += checkGrowth(growthfirstYr);
+
+    if (window.calculate.ny >= 2) {
+      let nextYr = ((firstYr + window.calculate.rpm * 12) + (firstYr + window.calculate.rpm * 12) * window.calculate.ypg);
+      window.calculate.dates.push([2, nextYr / 1000]);
+      let growthNextYr = (firstYr + window.calculate.rpm * 12) * window.calculate.ypg;
+      window.calculate.growth += checkGrowth(growthNextYr);
+
+      if (window.calculate.ny > 2) {
+        for (let i = 3; i <= window.calculate.ny; i++) {
+          nextYr = ((nextYr + window.calculate.rpm * 12) + (nextYr + window.calculate.rpm * 12) * window.calculate.ypg);
+          window.calculate.dates.push([i, nextYr / 1000]);
+          growthNextYr = (nextYr + window.calculate.rpm * 12) * window.calculate.ypg;
+          window.calculate.growth += checkGrowth(growthNextYr);
         }
       }
     }
+    window.calculate.taxReturn = window.calculate.sp + window.calculate.rpm * 11 + (window.calculate.rpm * 12 * (window.calculate.ny - 1));
+  } else {
+    let firstYr = ((window.calculate.sp + window.calculate.rpm) + (window.calculate.sp + window.calculate.rpm) * window.calculate.ypg);
+    window.calculate.dates.push([1, firstYr / 1000]);
+
+    let growthfirstYr = (window.calculate.sp + window.calculate.rpm) * window.calculate.ypg;
+    window.calculate.growth += checkGrowth(growthfirstYr);
+
+    if (window.calculate.ny >= 2) {
+      let nextYr = ((firstYr + window.calculate.rpm) + (firstYr + window.calculate.rpm) * window.calculate.ypg);
+      window.calculate.dates.push([2, nextYr / 1000]);
+
+      let growthNextYr = (firstYr + window.calculate.rpm) * window.calculate.ypg;
+      window.calculate.growth += checkGrowth(growthNextYr);
+
+      if (window.calculate.ny > 2) {
+        for (let i = 3; i <= window.calculate.ny; i++) {
+          nextYr = ((nextYr + window.calculate.rpm) + (nextYr + window.calculate.rpm) * window.calculate.ypg);
+          window.calculate.dates.push([i, nextYr / 1000]);
+          growthNextYr = (nextYr + window.calculate.rpm) * window.calculate.ypg;
+          window.calculate.growth += checkGrowth(growthNextYr);
+        }
+      }
+    }
+    window.calculate.taxReturn = window.calculate.sp + window.calculate.rpm + (window.calculate.rpm * (window.calculate.ny - 1));
   }
+  window.calculate.maxX = window.calculate.ny;
+
+  console.log(window.calculate.dates);
+}
+
+function checkGrowth(x) {
+  if(x > 20000) {
+    return 20000;
+  } else {
+    return x;
+  }
+}
+
+function calculatorInnerFields() {
+  let growthOver = document.querySelectorAll('.calculator-chart__title_value'),
+    newIsa = document.querySelectorAll('#newIsa'),
+    existingIsa = document.querySelectorAll('#existingIsa'),
+    growth = document.querySelectorAll('#growthIsa'),
+    taxReturn = document.querySelectorAll('#taxReturn');
+  window.calculate.growthOver = Math.round(window.calculate.dates[window.calculate.dates.length - 1][1] * 1000);
+
+  window.calculate.maxY = Math.round(window.calculate.dates[window.calculate.dates.length - 1][1])+(Math.round(window.calculate.dates[window.calculate.dates.length - 1][1]))*0.2;
+  growthOver[0].textContent = '£' + numberWithCommas(window.calculate.growthOver);
+  newIsa[0].textContent = numberWithCommas(Math.round(window.calculate.growthOver));
+  existingIsa[0].textContent = numberWithCommas(Math.round(window.calculate.sp));
+  taxReturn[0].textContent = numberWithCommas(Math.round(window.calculate.taxReturn));
+  growth[0].textContent = numberWithCommas(Math.round(window.calculate.growth));
+}
+
+function numberWithCommas(x) {
+  return x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function addCalculatorChart() {
@@ -119,6 +196,8 @@ function addCalculatorChart() {
     legend: {
       color: '#666666',
       fontFamily: 'inter',
+      itemMargintop: 50,
+      itemMarginright: 50,
     },
     credits: {
       enabled: false
@@ -135,14 +214,16 @@ function addCalculatorChart() {
     xAxis: {
       ordinal: false,
       min: 0,
+      max: window.calculate.maxX,
       tickLength: 0,
-      // tickInterval: 3,
       lineWidth: 0,
       startOnTick: true,
       endOnTick: false,
       minRange: 5,
+      minTickInterval: 1,
       labels: {
-        format: '{value} yrs'
+        format: '{value} y',
+        y: 30
       },
       title: {
         text: null
@@ -154,17 +235,17 @@ function addCalculatorChart() {
       crosshair: {
         width: 2,
         color: '#8FFF00'
-      }
+      },
     },
     yAxis: {
-      min:0,
-      // max: 100,
-      // tickInterval: 25,
+      min: 0,
+      max: window.calculate.maxY,
       gridLineDashStyle: 'longdash',
       startOnTick: true,
       endOnTick: false,
       labels: {
-        format: '{value} k'
+        format: '{value} k',
+        x: -20
       },
       title: {
         text: null
@@ -174,22 +255,38 @@ function addCalculatorChart() {
       },
     },
     tooltip: {
-      // enabled: false
+      headerFormat: '<span>£{point.y}</span> <br>',
+      formatter: function () {
+        return '<b>£' + numberWithCommas(Math.round(this.y*1000)) + '</b>';
+      },
+      pointFormat: '',
+      borderRadius: '10',
+      padding: 12,
+      style: {
+        color: 'white',
+        fontFamily: 'Inter, sans-serif',
+        lineHeight: '28px',
+        fontSize: '18px'
+      },
+      verticalAlign: "bottom",
+      itemMarginTop: "20px",
+      hideDelay: 100
     },
-    plotOptions : {
-      area : {
-        lineWidth : 1,
-        marker : {
-          enabled : false,
-          states : {
-            hover : {
-              enabled : true,
+    plotOptions: {
+      area: {
+        lineWidth: 1,
+        marker: {
+          enabled: false,
+          states: {
+            hover: {
+              enabled: true,
             }
           }
         },
       },
       series: {
         states: {
+          pointPlacement: 'on',
           hover: {
             enabled: true,
             halo: {
@@ -202,7 +299,7 @@ function addCalculatorChart() {
     series: [{
       data: window.calculate.dates,
       color: '#8FFF00',
-      type : 'area',
+      type: 'area',
       threshold: null,
       marker: {
         lineColor: '#8FFF00',
@@ -211,25 +308,29 @@ function addCalculatorChart() {
         borderWidth: 2,
         radius: 8,
       },
-      fillColor : {
-        linearGradient : [0, 0, 0, 400],
-        stops : [
+      fillColor: {
+        linearGradient:  { x1: 1, x2: 0, y1: 0, y2: 1 },
+        stops: [
           [0, '#8FFF00'],
           [1, 'rgba(143, 255, 0, 0)']
         ]
       },
     }],
-
   });
 }
 
 
-if(document.body.classList.contains("page-calculator")) {
+if (document.body.classList.contains("page-calculator")) {
   window.calculate = {
     sp: 0,
     rpm: 0,
     ypg: 0,
     ny: 0,
+    growth: 0,
+    maxX: 5,
+    maxY: 16,
+    growthOver: 13.92459075,
+    taxReturn: 11800,
     dates: [[0, 0], [1, 2.52], [2, 5.166], [3, 7.9443], [4, 10.861514999999999], [5, 13.92459075]],
   };
 

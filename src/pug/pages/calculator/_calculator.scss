@@ -385,7 +385,6 @@
         font-size: 30px;
         text-align: left;
         line-height: 1.1;
-
       }
       &_value {
         font-size: 40px;
@@ -393,7 +392,10 @@
         color: $calc-main;
         @include media($TABLET) {
           display: inline-block;
-          margin-left: 15px;
+         
+        }
+        @include media($TABLET) {
+
         }
       }
     }

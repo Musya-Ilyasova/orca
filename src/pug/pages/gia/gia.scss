@@ -1,0 +1,96 @@
+$giamain: #8FFF00;
+.page-gia {
+  position: relative;
+  .headerLogo {
+    .container {
+      @include media($TABLET) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .btn {
+      display: none;
+      @include media($TABLET) {
+        display: block;
+      }
+    }
+  }
+
+  .btn-primary {
+    background: #000000;
+    height: 48px;
+    line-height: 46px;
+    padding: 0 61px;
+    border: 1px solid $main-seo;
+    background: transparent;
+    color: $main-seo;
+    display: inline-flex;
+    transition: 0.2s ease;
+    &:hover {
+      border: 1px solid lighten($color: $main-seo, $amount: 20%);
+      background: transparent;
+      color: lighten($color: $main-seo, $amount: 20%);
+    }
+  }
+  .btn-primary, .getapp__btn {
+    background: black;
+    border: 2px solid $calc-main;
+    height: 60px;
+    line-height: 58px;
+    padding: 0 15px;
+    min-width: 230px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    &:hover {
+      background: transparent;
+      box-shadow: 0 0 4px 1px $calc-main;
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      margin-left: 10px;
+      color: $giamain;
+      font-weight: 600;
+      line-height: 30px;
+    }
+  }
+}
+
+.gia-first {
+  padding-top: 150px;
+  &__title {
+    font-size: 40px;
+    line-height: 1.2;
+    &_main {
+      color: $giamain;
+    }
+  }
+  &__subtitle {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 32px;
+  }
+  &-links {
+    display: none;
+  }
+}
+
+.gia-first-list {
+  margin-top: 60px;
+  &-item {
+    margin-bottom: 40px;
+    &__subtitle {
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 700;
+    }
+    &__text {
+      margin: 9px 0 0;
+      line-height: 1.8;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 function calculatorCheckbox() {
   let customCheckbox = document.querySelector('.calculator-fields-regular-frequency');
-  let btn = document.querySelector('.calculator-fields-yty__btn');
   let checkbox = customCheckbox.querySelector('input');
   checkbox.addEventListener('change', function (e) {
     if (e.target.checked) {
@@ -107,10 +106,10 @@ function addCalculateValues() {
   };
 
   if (!frequencyField.checked) {
-    let firstYr = ((window.calculate.sp + window.calculate.rpm * 11) + (window.calculate.sp + window.calculate.rpm * 11) * window.calculate.ypg);
+    let firstYr = ((window.calculate.sp + window.calculate.rpm * 12) + (window.calculate.sp + window.calculate.rpm * 12) * window.calculate.ypg);
     window.calculate.dates.push([1, firstYr / 1000]);
 
-    let growthfirstYr = (window.calculate.sp + window.calculate.rpm * 11) * window.calculate.ypg;
+    let growthfirstYr = (window.calculate.sp + window.calculate.rpm * 12) * window.calculate.ypg;
     window.calculate.growth += checkGrowth(growthfirstYr);
 
     if (window.calculate.ny >= 2) {
@@ -128,7 +127,8 @@ function addCalculateValues() {
         }
       }
     }
-    window.calculate.taxReturn = window.calculate.sp + window.calculate.rpm * 11 + (window.calculate.rpm * 12 * (window.calculate.ny - 1));
+    window.calculate.overRpm = window.calculate.ny * window.calculate.rpm * 12;
+    console.log(window.calculate.dates);
   } else {
     let firstYr = ((window.calculate.sp + window.calculate.rpm) + (window.calculate.sp + window.calculate.rpm) * window.calculate.ypg);
     window.calculate.dates.push([1, firstYr / 1000]);
@@ -152,13 +152,20 @@ function addCalculateValues() {
         }
       }
     }
-    window.calculate.taxReturn = window.calculate.sp + window.calculate.rpm + (window.calculate.rpm * (window.calculate.ny - 1));
+    window.calculate.overRpm = window.calculate.ny * window.calculate.rpm * 12;
   }
   window.calculate.maxX = window.calculate.ny;
+  if (window.calculate.ny <= 7) {
+    window.calculate.intervalX = 1;
+  } else if (window.calculate.ny > 7 && window.calculate.ny <= 12) {
+    window.calculate.intervalX = 2;
+  } else if (window.calculate.ny > 12) {
+    window.calculate.intervalX = 3;
+  }
 }
 
 function checkGrowth(x) {
-  if(x > 20000) {
+  if (x > 20000) {
     return 20000;
   } else {
     return x;
@@ -170,14 +177,15 @@ function calculatorInnerFields() {
     newIsa = document.querySelectorAll('#newIsa'),
     existingIsa = document.querySelectorAll('#existingIsa'),
     growth = document.querySelectorAll('#growthIsa'),
-    taxReturn = document.querySelectorAll('#taxReturn');
+    overRpm = document.querySelectorAll('#overRpm');
   window.calculate.growthOver = Math.round(window.calculate.dates[window.calculate.dates.length - 1][1] * 1000);
-
-  window.calculate.maxY = Math.round(window.calculate.dates[window.calculate.dates.length - 1][1])+(Math.round(window.calculate.dates[window.calculate.dates.length - 1][1]))*0.2;
+  let maxValue = Math.round(window.calculate.dates[window.calculate.dates.length - 1][1]);
+  window.calculate.maxY = ((maxValue - (maxValue % 3)) / 3 + maxValue - (maxValue % 3));
+  window.calculate.intervalY = ((maxValue - (maxValue % 3)) / 3 + maxValue - (maxValue % 3)) / 4;
   growthOver[0].textContent = '£' + numberWithCommas(window.calculate.growthOver);
   newIsa[0].textContent = numberWithCommas(Math.round(window.calculate.growthOver));
   existingIsa[0].textContent = numberWithCommas(Math.round(window.calculate.sp));
-  taxReturn[0].textContent = numberWithCommas(Math.round(window.calculate.taxReturn));
+  overRpm[0].textContent = numberWithCommas(Math.round(window.calculate.overRpm));
   growth[0].textContent = numberWithCommas(Math.round(window.calculate.growth));
 }
 
@@ -213,6 +221,7 @@ function addCalculatorChart() {
       min: 0,
       max: window.calculate.maxX,
       tickLength: 0,
+      tickInterval: window.calculate.intervalX,
       lineWidth: 0,
       startOnTick: true,
       endOnTick: false,
@@ -240,6 +249,7 @@ function addCalculatorChart() {
       gridLineDashStyle: 'longdash',
       startOnTick: true,
       endOnTick: false,
+      tickInterval: window.calculate.intervalY,
       labels: {
         format: '{value} k',
         x: -20
@@ -254,7 +264,7 @@ function addCalculatorChart() {
     tooltip: {
       headerFormat: '<span>£{point.y}</span> <br>',
       formatter: function () {
-        return '<b>£' + numberWithCommas(Math.round(this.y*1000)) + '</b>';
+        return '<b>£' + numberWithCommas(Math.round(this.y * 1000)) + '</b>';
       },
       pointFormat: '',
       borderRadius: '10',
@@ -306,7 +316,7 @@ function addCalculatorChart() {
         radius: 8,
       },
       fillColor: {
-        linearGradient:  { x1: 1, x2: 0, y1: 0, y2: 1 },
+        linearGradient: { x1: 1, x2: 0, y1: 0, y2: 1 },
         stops: [
           [0, '#8FFF00'],
           [1, 'rgba(143, 255, 0, 0)']
@@ -326,9 +336,11 @@ if (document.body.classList.contains("page-calculator")) {
     growth: 0,
     maxX: 5,
     maxY: 16,
+    intervalY: 4,
+    intervalX: 1,
     growthOver: 13.92459075,
-    taxReturn: 11800,
-    dates: [[0, 0], [1, 2.52], [2, 5.166], [3, 7.9443], [4, 10.861514999999999], [5, 13.92459075]],
+    overRpm: 11800,
+    dates: [[0, 0.2], [1, 2.73], [2, 5.3865], [3, 8.175825], [4, 11.104616250000001], [5, 14.1798470625]],
   };
 
   calculatorCheckbox();
@@ -337,7 +349,3 @@ if (document.body.classList.contains("page-calculator")) {
   addCalculatorChart();
   calculateToggleBtn();
 }
-
-
-
-

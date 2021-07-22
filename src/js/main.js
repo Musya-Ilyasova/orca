@@ -40,7 +40,9 @@ if(document.body.classList.contains("page-seo")) {
 
 
 @@include('modules/calculator.js')
+@@include('modules/gia-slider.js')
 
-
-
+if(document.body.classList.contains("page-gia")) {
+  addGiaSlider();
+}
 

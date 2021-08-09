@@ -20,5 +20,4 @@ function addGiaSlider() {
       el: '.swiper-scrollbar',
     },
   });
-
 }

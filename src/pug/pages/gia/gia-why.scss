@@ -1,20 +1,46 @@
 .gia-why {
-  padding: 40px 0 300px;
+  padding: 40px 0 0;
+  @include media($TABLET) {
+    padding: 40px 0 70px;
+  }
   &__title {
     text-align: center;
     font-size: 28px;
     line-height: 32px;
+    @include media($TABLET) {
+      font-size: 40px;
+    }
+  }
+  .gia-form {
+    padding: 30px 0;
+    &__title {
+      display: none;
+      margin-top: 146px;
+      @include media($TABLET) {
+        display: block;
+        text-align: center;
+        font-size: 40px;
+      }
+    }
   }
 }
 
 .gia-why-slider {
   width: 100%;
-  height: 600px;
-  margin-top: 40px;
-  max-width: 996px;
-  margin: 40px auto;
+  height: auto;
+  max-width: 940px;
+  margin: 35px auto;
+  overflow: visible;
+  @include media($TABLET) {
+    margin: 75px auto 50px;
+  }
+  @include media($DESKTOP) {
+    overflow: hidden;
+  }
+
   &-item {
     width: 280px;
+    cursor: pointer;
     &.swiper-slide-active {
       .gia-why-slider-item-img {
         transform: scale(1);
@@ -39,20 +65,31 @@
       &__title {
         font-size: 16px;
         font-weight: 700;
+        @include media($TABLET) {
+          font-size: 22px;
+          line-height: 32px;
+        }
       }
       &__text {
         font-size: 14px;
         line-height: 1.4;
         max-width: 196px;
         margin: 14px auto;
+        @include media($TABLET) {
+          margin: 20px auto;
+          font-size: 18px;
+          line-height: 32px;
+          max-width: 256px;
+        }
       }
     }
   }
+
   &-nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30px auto;
+    margin: 44px auto;
     z-index: 500;
     position: relative;
 

@@ -12,36 +12,23 @@ $giamain: #8FFF00;
       display: none;
       @include media($TABLET) {
         display: block;
+        padding: 0 30px;
       }
     }
   }
-
-  .btn-primary {
-    background: #000000;
-    height: 48px;
-    line-height: 46px;
-    padding: 0 61px;
-    border: 1px solid $main-seo;
-    background: transparent;
-    color: $main-seo;
-    display: inline-flex;
-    transition: 0.2s ease;
-    &:hover {
-      border: 1px solid lighten($color: $main-seo, $amount: 20%);
-      background: transparent;
-      color: lighten($color: $main-seo, $amount: 20%);
-    }
-  }
-  .btn-primary, .getapp__btn {
+  .getapp__btn {
     background: black;
     border: 2px solid $calc-main;
     height: 60px;
     line-height: 58px;
-    padding: 0 15px;
+    padding: 0 61px;
     min-width: 230px;
     font-size: 14px;
     display: flex;
     align-items: center;
+    @include media($TABLET) {
+      display: none;
+    }
     &:hover {
       background: transparent;
       box-shadow: 0 0 4px 1px $calc-main;
@@ -57,13 +44,49 @@ $giamain: #8FFF00;
       line-height: 30px;
     }
   }
+
+  .btn-primary {
+    background: #000000;
+    height: 48px;
+    line-height: 46px;
+    border: 1px solid $main-seo;
+    background: transparent;
+    color: $main-seo;
+    display: inline-flex;
+    transition: 0.2s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+    &:hover {
+      border: 1px solid lighten($color: $main-seo, $amount: 20%);
+      background: transparent;
+      color: lighten($color: $main-seo, $amount: 20%);
+    }
+  }
 }
 
 .gia-first {
   padding-top: 150px;
+  @include media($DESKTOP) {
+    padding-top: 200px;
+  }
+  &__top {
+    @include media($TABLET) {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: repeat(2,auto);
+      grid-auto-flow: column;
+      grid-column-gap: 45px;
+    }
+    @include media($HD) {
+      grid-column-gap: 75px;
+    }
+  }
   &__title {
     font-size: 40px;
     line-height: 1.2;
+    @include media($DESKTOP) {
+      font-size: 50px;
+    }
     &_main {
       color: $giamain;
     }
@@ -73,24 +96,243 @@ $giamain: #8FFF00;
     margin-top: 20px;
     font-size: 14px;
     line-height: 32px;
+    @include media($TABLET) {
+      margin-top: 14px;
+      font-size: 20px;
+    }
   }
   &-links {
     display: none;
+    @include media($TABLET) {
+      display: inline-flex;
+      flex-direction: column;
+      align-self: center;
+      grid-area: 1 / 2 / 3 / 3;
+    }
+    @include media($HD) {
+      flex-direction: row;
+    }
+    a {
+      width: 186px;
+      height: 64px;
+      display: block;
+      @include media($DESKTOP) {
+        width: 236px;
+        height: 76px;
+      }
+    }
+    li {
+      margin-bottom: 10px;
+      @include media($DESKTOP) {
+        margin-bottom: 20px;
+      }
+      @include media($HD) {
+        margin-bottom: 0;
+        &:first-child {
+          margin-right: 35px;
+        }
+      }
+
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &-list {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    @include media($TABLET) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @include media($DESKTOP) {
+      margin-top: 100px;
+      justify-content: flex-start;
+    }
+    &-item {
+      margin-bottom: 40px;
+      @include media($TABLET) {
+        width: 27%;
+      }
+      @include media($DESKTOP) {
+        width: auto;
+        margin-right: 100px;
+      }
+      @include media($HD) {
+        margin-right: 120px;
+      }
+      &__title {
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 700;
+        @include media($TABLET) {
+          font-size: 28px;
+        }
+      }
+      &__text {
+        margin: 9px 0 0;
+        line-height: 1.8;
+        max-width: 229px;
+        @include media($TABLET) {
+          margin: 20px 0 0;
+          font-size: 18px;
+        }
+        .main {
+          color: $giamain;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .gia-form {
+    background: #101010;
+    margin: 100px 0 60px;
+    padding: 92px 0;
   }
 }
 
-.gia-first-list {
-  margin-top: 60px;
-  &-item {
-    margin-bottom: 40px;
-    &__subtitle {
-      font-size: 24px;
-      line-height: 32px;
-      font-weight: 700;
+.gia-faq {
+  padding: 41px 0;
+  @include media($TABLET) {
+    padding: 41px 0 112px;
+  }
+  &__title {
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    max-width: 805px;
+    margin: 0 auto;
+    @include media($TABLET) {
+      font-size: 40px;
+      text-align: center;
     }
-    &__text {
-      margin: 9px 0 0;
-      line-height: 1.8;
+  }
+  &-list {
+    max-width: 805px;
+    margin: 0 auto;
+    @include media($TABLET) {
+      margin-top: 48px;
+    }
+    &-item {
+      border-bottom: 1px solid rgba($color: #FFFFFF, $alpha: 0.2);
+      padding: 32px 0 16px;
+      @include media($TABLET) {
+        padding: 30px 0 10px;
+      }
+      &:last-child {
+        border: none;
+      }
+      &__title {
+        font-size: 18px;
+        font-weight: 700;
+        @include media($TABLET) {
+          font-size: 24px;
+        }
+      }
+      &__text {
+        margin: 14px 0;
+        font-size: 14px;
+        line-height: 26px;
+        @include media($TABLET) {
+          margin: 20px 0;
+          font-size: 18px;
+          line-height: 1.8;
+        }
+      }
+    }
+  }
+  &-support {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    @include media($TABLET) {
+      margin-top: 67px;
+    }
+    &__title {
+      font-weight: 700;
+      @include media($TABLET) {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+    &__btn.btn-primary {
+      padding: 0 7px;
+      margin-left: 16px;
+      @include media($TABLET) {
+        margin-left: 24px;
+        padding: 0 31px;
+        font-size: 18px;
+        line-height: 63px;
+        height: 65px;
+      }
     }
   }
 }
+
+.gia-best {
+  padding: 30px 0;
+  @include media($TABLET) {
+    background: #101010;
+    padding: 80px 0;
+  }
+  &__title {
+    font-size: 28px;
+    line-height: 1.4;
+    letter-spacing: -1.5px;
+    @include media($TABLET) {
+      font-size: 40px;
+      max-width: 805px;
+      margin: 20px auto;
+    }
+  }
+  &__text {
+    line-height: 1.5;
+    margin: 20px 0;
+    max-width: 805px;
+    @include media($TABLET) {
+      line-height: 1.8;
+      font-size: 18px;
+      margin: 20px auto;
+    }
+  }
+  .gia-form {
+    max-width: 805px;
+    margin: 0 auto;
+    .subscribe__form {
+      @include media($TABLET) {
+        margin: 70px 0 0;
+      }
+    }
+  }
+}
+
+.gia-form {
+  display: none;
+  @include media($TABLET) {
+    display: block;
+  }
+  &-subscribe {
+    margin: 0 auto;
+    @include media($TABLET) {
+      display: block;
+    }
+  }
+  .subscribe__form {
+    margin: 0 auto;
+    max-width: 558px;
+  }
+  .btn {
+    padding: 0 58px;
+  }
+  .subscribe__form-label {
+    font-size: 18px;
+    color: white;
+  }
+}
+
+
+

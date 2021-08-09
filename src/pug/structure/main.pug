@@ -2,10 +2,9 @@ include ../mixins/mixins
 doctype html
 html(lang="ru")
   include ../components/global/head
-  body
-    include ../components/global/header
+  body.page-main
+    include ../components/global/headerLogo
     //main
-    main.ui
-      include ../pages/ui/ui
-    include ../components/modals/pages
+    main
+      include ../pages/main/main-first
     include ../components/global/scripts

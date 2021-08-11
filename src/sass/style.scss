@@ -60,8 +60,15 @@
 // @import "../pug/pages/gia/gia";
 // @import "../pug/pages/gia/gia-why";
 
-
+$mainColor: #8FFF00;
 @import "../pug/pages/faq/_help-centre";
 
 @import "../pug/pages/main/page-main";
+@import "../pug/pages/main/main-first";
+@import "../pug/pages/main/main-banner";
+@import "../pug/pages/main/main-security";
+@import "../pug/pages/main/main-advantages";
+@import "../pug/pages/main/main-reliability";
+
+
 

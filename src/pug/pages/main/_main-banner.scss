@@ -1,0 +1,27 @@
+.main-banner {
+  margin: 16px 16px 16px;
+  background: #171717;
+  padding: 30px 0;
+
+  border-radius: 15px;
+  &-content {
+    &__title {
+      font-size: 28px;
+      line-height: 1.1;
+      font-size:  Gilroy, sans-serif;
+      margin-bottom: 10px;
+    }
+    &__text {
+      line-height: 1.6;
+      font-size: 14px;
+      margin: 0;
+      &_green {
+        color: $mainColor;
+        font-weight: 600;
+      }
+    }
+    .btn-primary {
+      margin-top: 30px;
+    }
+  }
+}

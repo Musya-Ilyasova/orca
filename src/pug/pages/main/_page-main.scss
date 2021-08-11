@@ -45,4 +45,14 @@
       }
     }
   }
+  .btn-primary {
+    background: transparent;
+    border: 1px solid $mainColor;
+    height: 56px;
+    line-height: 54px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 62px;
+  }
 }

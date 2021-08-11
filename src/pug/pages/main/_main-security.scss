@@ -1,0 +1,27 @@
+.main-security {
+  padding: 64px 0;
+  &__title {
+    overflow: hidden;
+    height: 0;
+    font-size: 0;
+  }
+  &-list {
+    text-align: center;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #EEEEEE;
+    .icon {
+      width: 179px;
+      height: 60px;
+    }
+    p {
+      margin: 20px 0;
+    }
+    li {
+      margin-bottom: 50px;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}

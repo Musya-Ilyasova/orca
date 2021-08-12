@@ -1,9 +1,16 @@
 .main-banner {
-  margin: 16px 16px 16px;
-  background: #171717;
-  padding: 30px 0;
-
-  border-radius: 15px;
+  &-list {
+    &-item {
+      background: #171717;
+      padding: 30px 16px;
+      margin-bottom: 16px;
+      border-radius: 15px;
+    }
+    @include media($TABLET) {
+      max-width: 1200px;
+      margin: 16px 16px 16px;
+    }
+  }
   &-content {
     &__title {
       font-size: 28px;
@@ -25,3 +32,4 @@
     }
   }
 }
+

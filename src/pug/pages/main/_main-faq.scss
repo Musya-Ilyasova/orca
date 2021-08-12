@@ -1,0 +1,12 @@
+.main-faq {
+  &__title {
+    line-height: 1.1;
+    font-size: 28px;
+  }
+  &__text {
+    margin-top: 10px;
+  }
+  &.faq-list {
+    margin-top: 60px;
+  }
+}

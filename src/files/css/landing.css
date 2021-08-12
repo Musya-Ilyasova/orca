@@ -173,35 +173,35 @@ table {
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/static/landing/fonts/gilroy/regular/gilroy-regular.eot");
-  src: local("-"), url("/static/landing/fonts/gilroy/regular/gilroy-regular.eot?#iefix") format("embedded-opentype"), url("/static/landing/fonts/gilroy/regular/gilroy-regular.woff") format("woff"), url("/static/landing/fonts/gilroy/regular/gilroy-regular.ttf") format("truetype");
+  src: url("../fonts/gilroy/regular/gilroy-regular.eot");
+  src: local("-"), url("../fonts/gilroy/regular/gilroy-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/gilroy/regular/gilroy-regular.woff") format("woff"), url("../fonts/gilroy/regular/gilroy-regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap; }
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/static/landing/fonts/gilroy/bold/gilroy-bold.eot");
-  src: local("-"), url("/static/landing/fonts/gilroy/bold/gilroy-bold.eot?#iefix") format("embedded-opentype"), url("/static/landing/fonts/gilroy/bold/gilroy-bold.woff") format("woff"), url("/static/landing/fonts/gilroy/bold/gilroy-bold.ttf") format("truetype");
+  src: url("../fonts/gilroy/bold/gilroy-bold.eot");
+  src: local("-"), url("../fonts/gilroy/bold/gilroy-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/gilroy/bold/gilroy-bold.woff") format("woff"), url("../fonts/gilroy/bold/gilroy-bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap; }
 
 @font-face {
   font-family: "Gilroy";
-  src: url("/static/landing/fonts/gilroy/extrabold/gilroy-extrabold.eot");
-  src: local("-"), url("/static/landing/fonts/gilroy/extrabold/gilroy-extrabold.eot?#iefix") format("embedded-opentype"), url("/static/landing/fonts/gilroy/extrabold/gilroy-extrabold.woff") format("woff"), url("/static/landing/fonts/gilroy/extrabold/gilroy-extrabold.ttf") format("truetype");
+  src: url("../fonts/gilroy/extrabold/gilroy-extrabold.eot");
+  src: local("-"), url("../fonts/gilroy/extrabold/gilroy-extrabold.eot?#iefix") format("embedded-opentype"), url("../fonts/gilroy/extrabold/gilroy-extrabold.woff") format("woff"), url("../fonts/gilroy/extrabold/gilroy-extrabold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap; }
 
-.success {
+  ../.success {
   color: #14FF00;
   font-size: 14px; }
   .success .heart {
     width: 23px;
     height: 23px;
-    background-image: url("/static/landing/img/complete.png");
+    background-image: url("../img/complete.png");
     background-repeat: no-repeat;
     margin-bottom: 10px; }
     .success .heart h3 {
@@ -393,7 +393,7 @@ li {
       display: flex;
       margin-bottom: 100px; } }
   .main__invite .invite__image {
-    background-image: url("/static/landing/main/invite_phone.png");
+    background-image: url("../main/invite_phone.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
@@ -633,7 +633,7 @@ popup {
     top: 0;
     left: 0;
     background-color: transparent;
-    background-image: url("/static/landing/back.svg");
+    background-image: url("../back.svg");
     width: 30px;
     height: 30px; }
   popup-wrapper {

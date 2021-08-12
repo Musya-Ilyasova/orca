@@ -1,0 +1,41 @@
+.main-invite {
+  margin: 80px 0;
+  &__content {
+    background: #171717;
+    padding: 30px 16px;
+    border-radius: 15px;
+  }
+  &-img {
+    width: 100%;
+    text-align: center;
+    img {
+      width: 100%;
+      max-width: 420px;
+    }
+  }
+  &__title {
+    font-size:  Gilroy, sans-serif;
+    line-height: 1.1;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  &__text {
+    font-size: 14px;
+    line-height: 1.6;
+    p {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    &_green {
+      color: $mainColor;
+      font-weight: 600;
+    }
+  }
+  .btn {
+    width: 100%;
+    background: white;
+    color: black;
+    border: none;
+    margin-top: 10px;
+  }
+}

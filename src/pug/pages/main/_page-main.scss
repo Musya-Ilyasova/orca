@@ -56,3 +56,20 @@
     padding: 0 62px;
   }
 }
+
+.main-form {
+  @include media($TABLET) {
+    display: block;
+    margin: 30px 0;
+  }
+  .subscribe__form {
+    margin: 0;
+  }
+
+  .btn {
+    padding: 0 19px;
+    height: 48px;
+    line-height: 46px;
+  }
+}
+

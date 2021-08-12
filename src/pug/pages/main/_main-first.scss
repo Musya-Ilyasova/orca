@@ -1,6 +1,28 @@
 .main-first {
   padding-top: 150px;
   padding-bottom: 64px;
+  &__title {
+    font-size: 32px;
+    line-height: 1.2;
+    @include media($TABLET) {
+      font-size: 48px;
+    }
+  }
+  .container {
+    @include media($TABLET) {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: repeat(7, auto);
+      grid-auto-flow: column;
+    }
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 1.6;
+    @include media($TABLET) {
+      margin-bottom: 0;
+    }
+  }
   &-image {
     display: flex;
     justify-content: flex-end;
@@ -8,10 +30,18 @@
     position: relative;
     max-width: 420px;
     margin: 50px auto;
+    @include media($TABLET) {
+      grid-area: 1 / 2 / 6 / 3 ;
+      margin: 0;
+    }
     img {
       width: 267px;
       height: 350px;
       object-fit: contain;
+      @include media($TABLET) {
+        width: 354px;
+        height: 464px;
+      }
     }
     &__text {
       position: absolute;
@@ -112,24 +142,41 @@
   &-powered {
     max-width: 420px;
     margin: 75px auto;
+    @include media($TABLET) {
+      grid-area: 6 / 1 / 7 / 3;
+      max-width: 100%;
+      margin: 50px 0 0;
+    }
     &__title {
       display: block;
       text-align: center;
       font-weight: 700;
       font-size: 16px;
       line-height: 1.2;
+      @include media($TABLET) {
+        font-size: 24px;
+      }
     }
     &-list {
       margin-top: 34px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      @include media($TABLET) {
+        margin-top: 35px;
+      }
       li {
         margin-bottom: 20px;
         &:last-child {
           margin: 0 auto;
+          @include media($TABLET) {
+            margin: 0;
+          }
           img{
             max-width: 129px;
+            @include media($TABLET) {
+              max-width: 200px;
+            }
           }
         }
       }
@@ -138,6 +185,10 @@
         max-width: 105px;
         width: auto;
         object-fit: contain;
+        @include media($TABLET) {
+          height: 40px;
+          max-width: 160px;
+        }
       }
     }
   }
@@ -146,8 +197,17 @@
     justify-content: space-between;
     max-width: 420px;
     margin: 0 auto;
-    li {
+    @include media($TABLET) {
+      margin: 0;
+      max-width: 100%;
+      margin-top: 50px;
+    }
+    >li {
       width: auto;
+      @include media($TABLET) {
+        width: 30%;
+        max-width: 128px;
+      }
       &:last-child li:last-of-type .icon{
         fill: #656565;
       }
@@ -155,10 +215,18 @@
         display: block;
         width: 100%;
         height: 31px;
+        @include media($TABLET) {
+          height: auto;
+          width: 100%;
+        }
       }
       img {
-        width: 100%;
+        width: auto;
         height: 100%;
+        @include media($TABLET) {
+          width: 100%;
+          height: auto;
+        }
       }
     }
     &-stars {

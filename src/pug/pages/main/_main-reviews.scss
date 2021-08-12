@@ -1,0 +1,41 @@
+.main-reviews {
+  margin-bottom: 80px;
+  &__title {
+    font-size: 0;
+    line-height: 0;
+    .icon {
+      width: 203px;
+      height: 40px;
+      margin: 0 auto;
+      display: block;
+      padding-right: 39px;
+    }
+  }
+  &-list {
+    margin-top: 40px;
+    &-item {
+      background:#171717;
+      padding: 40px 34px;
+      border-radius: 15px;
+      margin-bottom: 16px;
+      width: 100%;
+      &__title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 11px;
+      }
+      &__stars {
+        margin-top: 11px;
+        .icon {
+          fill: #8FFF00;
+        }
+      }
+      &__text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 23px 0 0;
+      }
+    }
+  }
+}

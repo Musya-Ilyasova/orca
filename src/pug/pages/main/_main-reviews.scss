@@ -1,5 +1,9 @@
 .main-reviews {
   margin-bottom: 80px;
+  @include media($DESKTOP) {
+    margin-top: 120px;
+    margin-bottom: 130px;
+  }
   &__title {
     font-size: 0;
     line-height: 0;
@@ -9,16 +13,39 @@
       margin: 0 auto;
       display: block;
       padding-right: 39px;
+      @include media($TABLET) {
+        height: 57px;
+        width: 254px;
+      }
+      @include media($DESKTOP) {
+        height: 70px;
+        width: 354px;
+        padding-right: 68px;
+      }
     }
   }
   &-list {
     margin-top: 40px;
+    @include media($TABLET) {
+      display: flex;
+      justify-content: space-between;
+    }
+    @include media($DESKTOP) {
+      margin-top: 68px;
+    }
     &-item {
       background:#171717;
       padding: 40px 34px;
       border-radius: 15px;
       margin-bottom: 16px;
       width: 100%;
+      @include media($TABLET) {
+        width: 32%;
+        margin-bottom: 0;
+      }
+      @include media($DESKTOP) {
+        width: 31.5%;
+      }
       &__title {
         font-weight: 700;
         font-size: 18px;

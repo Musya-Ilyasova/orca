@@ -1,10 +1,17 @@
 .main-adventages {
   padding: 64px 0;
+  @include media($TABLET) {
+    padding-top: 0;
+  }
   &__title {
     visibility: hidden;
     height: 0;
   }
   &-list {
+    @include media($TABLET) {
+      display: flex;
+      justify-content: space-between;
+    }
     &-item {
       background: #171717;
       padding: 33px;
@@ -14,6 +21,12 @@
       border-radius: 15px;
       text-align: center;
       margin-bottom: 16px;
+      @include media($TABLET) {
+        width: 31%;
+      }
+      @include media($DESKTOP) {
+        padding: 53px;
+      }
       .icon {
         width: 34px;
         height: 34px;
@@ -23,11 +36,17 @@
         font-size: 18px;
         line-height: 1.2;
         font-weight: 700;
+        @include media($TABLET) {
+          font-size: 28px;
+        }
       }
       &__text {
         margin: 8px auto;
         max-width: 217px;
         line-height: 1.6;
+        @include media($TABLET) {
+          font-size: 18px;
+        }
       }
     }
   }

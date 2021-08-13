@@ -1,16 +1,36 @@
 .main-invite {
   margin: 80px 0;
+  @include media($TABLET) {
+    margin: 40px 0 80px;
+  }
   &__content {
     background: #171717;
     padding: 30px 16px;
     border-radius: 15px;
+    @include media($TABLET) {
+      padding: 45px;
+      padding-left: 10px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: repeat(4, auto);
+    }
   }
   &-img {
     width: 100%;
     text-align: center;
+    @include media($TABLET) {
+      grid-area: 1 / 1 / 5 / 2;
+    }
     img {
       width: 100%;
       max-width: 420px;
+      @include media($TABLET) {
+        max-width: 351px;
+      }
+      @include media($DESKTOP) {
+        margin-top: -100px;
+        max-width: 504px;
+      }
     }
   }
   &__title {
@@ -18,13 +38,27 @@
     line-height: 1.1;
     font-size: 28px;
     margin-bottom: 10px;
+    @include media($TABLET) {
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    @include media($DESKTOP) {
+      font-size: 48px;
+    }
   }
   &__text {
-    font-size: 14px;
-    line-height: 1.6;
     p {
       margin-top: 0;
       margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      @include media($TABLET) {
+        font-size: 16px;
+      }
+      @include media($DESKTOP) {
+        font-size: 18px;
+      }
     }
     &_green {
       color: $mainColor;
@@ -37,5 +71,9 @@
     color: black;
     border: none;
     margin-top: 10px;
+    @include media($TABLET) {
+      width: 200px;
+      padding: 0 50px;
+    }
   }
 }

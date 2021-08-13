@@ -5,23 +5,99 @@
       padding: 30px 16px;
       margin-bottom: 16px;
       border-radius: 15px;
-    }
-    @include media($TABLET) {
-      max-width: 1200px;
-      margin: 16px 16px 16px;
+      @include media($TABLET) {
+        display: flex;
+        padding: 53px 40px;
+        margin-bottom: 50px;
+        background-size: 60% auto;
+        background-repeat: no-repeat;
+      }
+      @include media($DESKTOP) {
+        background-size: contain;
+        padding: 54px 80px;
+      }
+      &:first-child {
+        @include media($TABLET) {
+          background-position: left 393px center;
+        }
+        @include media($DESKTOP) {
+          background-position: right -110px center;
+        }
+        @include media($HD) {
+          background-position: right 0 center;
+        }
+      }
+      &:nth-child(2) {
+        @include media($TABLET) {
+          justify-content: flex-end;
+          background-position: right 393px center;
+        }
+        @include media($DESKTOP) {
+          background-position: left -80px center;
+        }
+        @include media($HD) {
+          background-position: left 0 center;
+        }
+      }
+      &.invest-low {
+        @include media($TABLET) {
+          background-image: url('../img/banner-1-back.png');
+          background-size: auto 100%;
+        }
+      }
+      &.learn-invest {
+        @include media($TABLET) {
+          background-image: url('../img/banner-2-back.png');
+        }
+      }
+      &.know {
+        @include media($TABLET) {
+          background-image: url('../img/banner-3-back.png');
+          background-position: right -50% center;
+        }
+        @include media($DESKTOP) {
+          background-size: auto 100%;
+          background-position: right -20px bottom -20px;
+        }
+      }
+      &.diversify {
+        @include media($TABLET) {
+          background-image: url('../img/banner-4-back.png');
+        }
+      }
     }
   }
   &-content {
+    @include media($TABLET) {
+      width: 60%;
+      max-width: 393px;
+    }
+    @include media($DESKTOP) {
+      max-width: 516px;
+      width: 100%;
+    }
     &__title {
       font-size: 28px;
       line-height: 1.1;
-      font-size:  Gilroy, sans-serif;
       margin-bottom: 10px;
+      @include media($TABLET) {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+      @include media($DESKTOP) {
+        font-size: 38px;
+      }
     }
     &__text {
       line-height: 1.6;
       font-size: 14px;
       margin: 0;
+      @include media($TABLET) {
+        font-size: 16px;
+      }
+      @include media($DESKTOP) {
+        font-size: 18px;
+      }
       &_green {
         color: $mainColor;
         font-weight: 600;

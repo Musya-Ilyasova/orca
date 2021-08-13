@@ -57,7 +57,7 @@
   }
 }
 
-.main-form {
+.main-subscribe {
   @include media($TABLET) {
     display: block;
     margin: 30px 0;
@@ -65,11 +65,62 @@
   .subscribe__form {
     margin: 0;
   }
-
   .btn {
     padding: 0 19px;
     height: 48px;
     line-height: 46px;
+  }
+}
+
+.main-form {
+  display: none;
+  @include media($TABLET) {
+    display: block;
+    background: #171717;
+    padding: 90px 0 60px;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  @include media($DESKTOP) {
+    margin-bottom: 120px;
+  }
+  &__title {
+    font-size: 28px;
+  }
+  .subscribe__form-label {
+    span {
+      color: white;
+    }
+  }
+  .subscribe__form {
+    margin: 0 auto;
+  }
+}
+
+.main-faq {
+  &__title {
+    line-height: 1.1;
+    font-size: 28px;
+    @include media($TABLET) {
+      font-size: 36px;
+    }
+    @include media($DESKTOP) {
+      font-size: 48px;
+    }
+  }
+  &__text {
+    margin-top: 10px;
+    font-size: 14px;
+    @include media($TABLET) {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    @include media($DESKTOP) {
+      font-size: 18px;
+    }
+  }
+  &.faq-list {
+    margin-top: 60px;
   }
 }
 

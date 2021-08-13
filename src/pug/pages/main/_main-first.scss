@@ -1,6 +1,9 @@
 .main-first {
   padding-top: 150px;
   padding-bottom: 64px;
+  @include media($DESKTOP) {
+    padding-top: 252px;
+  }
   &__title {
     font-size: 32px;
     line-height: 1.2;
@@ -11,9 +14,13 @@
   .container {
     @include media($TABLET) {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 399px auto;
       grid-template-rows: repeat(7, auto);
       grid-auto-flow: column;
+      grid-column-gap: 5%;
+    }
+    @include media($DESKTOP) {
+      grid-template-columns: 510px auto;
     }
   }
   &__text {
@@ -21,6 +28,9 @@
     line-height: 1.6;
     @include media($TABLET) {
       margin-bottom: 0;
+    }
+    @include media($DESKTOP) {
+      font-size: 18px;
     }
   }
   &-image {
@@ -33,14 +43,21 @@
     @include media($TABLET) {
       grid-area: 1 / 2 / 6 / 3 ;
       margin: 0;
+      padding: 20px 0;
+      max-width: 100%;
+    }
+    @include media($DESKTOP) {
+      margin-top: -101px;
     }
     img {
       width: 267px;
       height: 350px;
       object-fit: contain;
       @include media($TABLET) {
-        width: 354px;
-        height: 464px;
+        min-width: 290px;
+        width: 100%;
+        height: auto;
+        max-width: 354px;
       }
     }
     &__text {
@@ -80,6 +97,9 @@
       &.sunglasses {
         top: 0;
         right: 0;
+        @include media($DESKTOP) {
+          right: 10%;
+        }
         &:before {
           right: 38px;
           bottom: -8px;
@@ -92,6 +112,14 @@
       &.partying {
         top: 78px;
         left: 24px;
+        @include media($TABLET) {
+          left: auto;
+          right: 47%;
+        }
+        @include media($DESKTOP) {
+          top: 110px;
+          right: 57%;
+        }
         &:before {
           right: -5px;
           bottom: -5px;
@@ -104,6 +132,14 @@
       &.nice {
         top: 167px;
         left: 0;
+        @include media($TABLET) {
+          left: auto;
+          right: 57%;
+        }
+        @include media($DESKTOP) {
+          top: 300px;
+          right: 67%;
+        }
         &:before {
           right: -5px;
           bottom: -5px;
@@ -116,6 +152,10 @@
       &.relieved {
         bottom: 114px;
         left: 0;
+        @include media($TABLET) {
+          left: auto;
+          right: 57%;
+        }
         &:before {
           transform: rotate(20deg);
           right: -5px;
@@ -147,6 +187,9 @@
       max-width: 100%;
       margin: 50px 0 0;
     }
+    @include media($DESKTOP) {
+      margin: 143px 0 0;
+    }
     &__title {
       display: block;
       text-align: center;
@@ -156,6 +199,9 @@
       @include media($TABLET) {
         font-size: 24px;
       }
+      @include media($DESKTOP) {
+        font-size: 28px;
+      }
     }
     &-list {
       margin-top: 34px;
@@ -164,6 +210,11 @@
       justify-content: space-between;
       @include media($TABLET) {
         margin-top: 35px;
+        max-width: 960px;
+        margin: 32px auto 0;
+      }
+      @include media($DESKTOP) {
+        margin-top: 55px;
       }
       li {
         margin-bottom: 20px;
@@ -186,8 +237,12 @@
         width: auto;
         object-fit: contain;
         @include media($TABLET) {
-          height: 40px;
+          height: 35px;
           max-width: 160px;
+        }
+        @include media($DESKTOP) {
+          max-width: 180px;
+          height: 43px;
         }
       }
     }
@@ -201,6 +256,7 @@
       margin: 0;
       max-width: 100%;
       margin-top: 50px;
+      max-width: 438px;
     }
     >li {
       width: auto;
@@ -238,6 +294,11 @@
         height: 11px;
         margin-right: 5px;
         display: inline-flex;
+        @include media($TABLET) {
+          width: 13px;
+          height: 13px;
+          font-size: 12px;
+        }
         &:last-child {
           margin: 0;
           .icon {

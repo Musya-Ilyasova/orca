@@ -1,5 +1,8 @@
 .main-security {
-  padding: 64px 0;
+  padding: 80px 0;
+  @include media($TABLET) {
+    padding: 0px 0 50px;
+  }
   &__title {
     overflow: hidden;
     height: 0;
@@ -9,16 +12,34 @@
     text-align: center;
     line-height: 1.6;
     font-size: 14px;
-    color: #EEEEEE;
+    color:#E3E3E3;
+    @include media($TABLET) {
+      background: #171717;
+      text-align: left;
+      border-radius: 15px;
+      padding: 36px 40px 20px;
+    }
     .icon {
       width: 179px;
       height: 60px;
+      @include media($TABLET) {
+        align-self: center;
+        width: 140px;
+        height: 47px;
+      }
     }
     p {
       margin: 20px 0;
     }
     li {
       margin-bottom: 50px;
+      @include media($TABLET) {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto;
+        grid-column-gap: 30px;
+        margin-bottom: 10px;
+      }
       &:last-child {
         margin: 0;
       }

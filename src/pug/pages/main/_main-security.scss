@@ -27,6 +27,10 @@
         width: 140px;
         height: 47px;
       }
+      @include media($DESKTOP) {
+        width: 179px;
+        height: 60px;
+      }
     }
     p {
       margin: 20px 0;

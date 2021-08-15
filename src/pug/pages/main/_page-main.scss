@@ -119,8 +119,11 @@
       font-size: 18px;
     }
   }
-  &.faq-list {
+  .faq-list {
     margin-top: 60px;
+    @include media($DESKTOP) {
+      margin-top: 37px;
+    }
   }
 }
 

@@ -12,7 +12,7 @@ function calculatorCheckbox() {
       document.querySelector('.calculator-fields-regular-frequency__value:last-child').classList.remove('active');
     }
   })
-}
+};
 
 function calculatorTooltip() {
   let tooltipBtn = document.querySelector('.calculator-fields-yty__btn');
@@ -48,7 +48,7 @@ function culculatorRange() {
       }
     })
   })
-}
+};
 
 
 function calculateToggleBtn() {

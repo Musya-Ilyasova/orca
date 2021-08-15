@@ -36,7 +36,7 @@
           background-position: left -80px center;
         }
         @include media($HD) {
-          background-position: left 0 center;
+          background-position: left 100px center;
         }
       }
       &.invest-low {
@@ -58,6 +58,9 @@
         @include media($DESKTOP) {
           background-size: auto 100%;
           background-position: right -20px bottom -20px;
+        }
+        @include media($HD) {
+          background-position: right 100px bottom -20px;
         }
       }
       &.diversify {

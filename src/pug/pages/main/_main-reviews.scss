@@ -45,6 +45,7 @@
       }
       @include media($DESKTOP) {
         width: 31.5%;
+        padding: 46px 37px;
       }
       &__title {
         font-weight: 700;

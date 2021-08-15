@@ -21,6 +21,11 @@
     }
     @include media($DESKTOP) {
       grid-template-columns: 510px auto;
+      grid-template-rows: repeat(7, auto);
+    }
+    @include media($HD) {
+      grid-template-columns: 660px auto;
+      grid-template-rows: repeat(7, auto);
     }
   }
   &__text {
@@ -31,6 +36,7 @@
     }
     @include media($DESKTOP) {
       font-size: 18px;
+      max-width: 580px;
     }
   }
   &-image {
@@ -48,6 +54,7 @@
     }
     @include media($DESKTOP) {
       margin-top: -101px;
+      justify-content: center;
     }
     img {
       width: 267px;
@@ -100,10 +107,19 @@
         @include media($DESKTOP) {
           right: 10%;
         }
+        @include media($HD) {
+          right: 37%;
+          top: -21px;
+        }
         &:before {
           right: 38px;
           bottom: -8px;
           transform: rotate(-51deg) scale(-1, 1);
+          @include media($HD) {
+            right: -2px;
+            bottom: -4px;
+            transform: rotate(15deg) scale(1, 1);
+          }
         }
         &:after{
           background-image: url('../img/sunglasses.png');
@@ -119,6 +135,10 @@
         @include media($DESKTOP) {
           top: 110px;
           right: 57%;
+        }
+        @include media($HD) {
+          top: 79px;
+          right: 68%;
         }
         &:before {
           right: -5px;
@@ -140,10 +160,20 @@
           top: 300px;
           right: 67%;
         }
+        @include media($HD) {
+          top: 254px;
+          right: 88%;
+        }
         &:before {
           right: -5px;
           bottom: -5px;
           transform: rotate(-24deg) scale(1,-1);
+          @include media($HD) {
+            top: -6px;
+            right: -6px;
+            bottom: auto;
+            transform: rotate(34deg) scale(1,1);
+          }
         }
         &:after{
           background-image: url('../img/nice.png');
@@ -155,6 +185,9 @@
         @include media($TABLET) {
           left: auto;
           right: 57%;
+        }
+        @include media($HD) {
+          right: 77%;
         }
         &:before {
           transform: rotate(20deg);
@@ -172,6 +205,11 @@
           left: 38px;
           top: -11px;
           transform: rotate(180deg) scale(1,-1);
+          @include media($HD) {
+            left: -6px;
+            top: -6px;
+            transform: rotate(215deg) scale(1,1);
+          }
         }
         &:after{
           background-image: url('../img/nerd.png');
@@ -215,6 +253,7 @@
       }
       @include media($DESKTOP) {
         margin-top: 55px;
+        max-width: 1030px;
       }
       li {
         margin-bottom: 20px;

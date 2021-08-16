@@ -1,20 +1,42 @@
 header.header-main
-  .container 
-    a.header-main-logo(href="./")  
+  .container
+    a.header-main-logo(href="./")
       +icon('logotype')
-    nav
+    nav.header-main-menu__wrapper
       ul.header-main-menu
-        li.header-main-menu-item 
+        li.header-main-menu-item
           a(href="./") Home
-        li.header-main-menu-item  
-          a(href="") ISA
-        li.header-main-menu-item           
-          a(href="") Help Centre
-        li.header-main-menu-item 
-          a(href="") Roadmap
+        li.header-main-menu-item.header-main-menu-item_submenu
+          span ISA
+          ul.header-main-submenu
+            li.header-main-submenu-item
+              a(href="") About ISA
+            li.header-main-submenu-item
+              a(href="#") Transfer ISA
+            li.header-main-submenu-item
+              a(href="#") Calculator ISA
+            li.header-main-submenu-item
+              a(href="#") FAQ
+        li.header-main-menu-item.header-main-menu-item_submenu
+          span Help Centre
+          ul.header-main-submenu
+            li.header-main-submenu-item
+              a(href="") All categories
+            li.header-main-submenu-item
+              a(href="") Account
+            li.header-main-submenu-item
+              a(href="#") Verification
+            li.header-main-submenu-item
+              a(href="#") Investing
+            li.header-main-submenu-item
+              a(href="#") Payments
+            li.header-main-submenu-item
+              a(href="#") Referral programe
+        li.header-main-menu-item
+          a(href="#") Roadmap
     a.btn.btn-primary(href="#subscribe") Join Orca
     button.header-main-btn Open
       i
-      i 
       i
-      
+      i
+

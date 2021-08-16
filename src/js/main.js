@@ -8,13 +8,50 @@ function faqBtnToggle() {
 };
 
 function mainHeaderBtnToggle() {
-  let btn = document.querySelector('.header-main-btn');
+  let btn = document.querySelector('.header-main-btn'),
+  body = document.querySelector('body'),
+  menu = document.querySelector('.header-main-menu__wrapper');
   btn.addEventListener('click', function() {
     btn.classList.toggle('show');
+    if(btn.classList.contains('show')) {
+      body.style.overflow = 'hidden';
+      menu.classList.add('open');
+    } else {
+      body.style.overflow= '';
+      menu.classList.remove('open');
+    }
   })
 }
+
+// function openSubMenu () {
+//   let items = document.querySelectorAll('.header-main-menu-item_submenu > a');
+//   items.forEach((item) => {
+//     let submenuAll = document.querySelectorAll('.header-main-submenu');
+//     let submenu = item.parentNode.querySelector('.header-main-submenu');
+//     item.addEventListener('mouseover', function(e) {
+//       item.classList.add('show');
+//       submenu.classList.add('open');
+//       item
+
+//       // if(item.classList.contains('show')) {
+//       //   item.classList.remove('show');
+//       //   submenu.classList.remove('open');
+//       // } else {
+//       //   items.forEach((i) => {
+//       //     i.classList.remove('show')
+//       //   });
+//       //   submenuAll.forEach((s) => {
+//       //     s.classList.remove('open')
+//       //   });
+//       //   item.classList.add('show');
+//       //   submenu.classList.add('open');
+//       // };
+//     })
+//   })
+// }
 
 if(document.body.classList.contains("page-main")) {
   faqBtnToggle();
   mainHeaderBtnToggle();
+  // openSubMenu ();
 }

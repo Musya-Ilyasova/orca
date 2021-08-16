@@ -8,13 +8,16 @@
     font-size: 32px;
     line-height: 1.2;
     @include media($TABLET) {
+      font-size: 42px;
+    }
+    @include media($DESKTOP) {
       font-size: 48px;
     }
   }
   .container {
     @include media($TABLET) {
       display: grid;
-      grid-template-columns: 399px auto;
+      grid-template-columns: 370px auto;
       grid-template-rows: repeat(7, auto);
       grid-auto-flow: column;
       grid-column-gap: 5%;
@@ -249,6 +252,7 @@
       @include media($TABLET) {
         margin-top: 35px;
         max-width: 960px;
+        width: 100%;
         margin: 32px auto 0;
       }
       @include media($DESKTOP) {

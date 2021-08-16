@@ -7,20 +7,50 @@
   right: 0;
   background: black;
   z-index: 1000;
-  .icon {
-    width: 88px;
-    height: 58px;
+  @include media($TABLET) {
+    padding: 25px 0 15px;
+  }
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    @include media($TABLET) {
+      display: none;
+    }
+  }
+  &-logo {
+    position: relative;
+    z-index: 1000;
+    .icon {
+      width: 88px;
+      height: 58px;
+    }
   }
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: black;
+    @include media($TABLET) {
+      justify-content: flex-start;
+    }
   }
   .btn-primary {
     display: none;
-  }
-  nav {
-    display: none;
+    @include media($TABLET) {
+      display: block;
+      margin-left: auto;
+      padding: 0 30px;
+    }
+    @include media($DESKTOP) {
+      padding: 0 61px;
+    }
   }
   &-btn {
     position: relative;
@@ -29,6 +59,11 @@
     font-size: 0;
     background: transparent;
     cursor: pointer;
+    padding: 2px 0;
+    z-index: 1000;
+    @include media($TABLET) {
+      display: none;
+    }
     i {
       width: 100%;
       height: 2px;
@@ -69,6 +104,158 @@
       i:last-child {
         top: 50%;
         transform: rotate(-45deg);
+      }
+    }
+  }
+  &-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    overflow-y: auto;
+    text-align: right;
+    @include media($TABLET) {
+      flex-direction: row;
+      text-align: left;
+      overflow: visible;
+      margin-left: 89px;
+    }
+    &__wrapper {
+      position: absolute;
+      transform: translateY(-100%);
+      left: 0;
+      right: 0;
+      top: 0;
+      height: calc(100vh - 92px);
+      background: black;
+      margin-top: 92px;
+      padding-bottom: 20px;
+      transition-property: opacity, transform;
+      transition-delay: 0.2s, 0s, 0s;
+      transition-duration: 0.2s;
+      opacity: 0;
+      @include media($TABLET) {
+        transform: translateY(0);
+        position: relative;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        opacity: 1;
+        align-items: center;
+      }
+      &.open {
+        transform: translateY(0);
+        opacity: 1;
+        transition-property: opacity, transform;
+        transition-delay: 0s, 0.2s, 0.2s;
+        transition-duration: 0.2s;
+      }
+    }
+    &-item {
+      a, span {
+        display: block;
+        padding: 10px 20px;
+        font-size: 26px;
+        font-weight: 600;
+        transition: 0.2s ease;
+        cursor: pointer;
+        @include media($TABLET) {
+          font-size: 14px;
+          padding: 10px 30px 10px 10px;
+        }
+        &.show {
+          color: $mainColor;
+        }
+        &:hover {
+          color: $mainColor;
+          background: rgba($color: white, $alpha: 0.1);
+          @include media($TABLET) {
+            background: transparent;
+          }
+        }
+      }
+      &_submenu {
+        @include media($TABLET) {
+          position: relative;
+        }
+        &:hover span {
+          color: $mainColor;
+          ~ .header-main-submenu {
+            max-height: 500px;
+            opacity: 1;
+            height: auto;
+            transition: max-height 0.4s ease;
+            a {
+              opacity: 1;
+              transition-property: opacity, color;
+              transition-delay: 0.2s, 0;
+              transition-duration: 0.2s;
+              transition-timing-function: ease;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-submenu {
+    max-height: 0;
+    height: auto;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    @include media($TABLET) {
+      position: absolute;
+      background: #202020;
+      padding: 16px;
+      top: 40px;
+      margin-right: 40px;
+      border-radius: 10px;
+      left: 50%;
+      transform: translateX(-60%);
+      overflow: visible;
+      height: 0;
+      transition: max-height 0.4s ease;
+      &:after {
+        content: "";
+        position: absolute;
+        border: 16px solid transparent;
+        border-bottom: 22px solid #202020;
+        top: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+    }
+    a {
+      display: block;
+      font-size: 18px;
+      padding: 6px 20px;
+      font-weight: 400;
+      opacity: 0;
+      transition-property: opacity, color;
+      transition-delay: 0s, 0.2s;
+      transition-duration: 0.2s;
+      transition-timing-function: ease;
+      @include media($TABLET) {
+        padding: 8px 0;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+    }
+    &:hover{
+      max-height: 500px;
+      opacity: 1;
+      height: 100%;
+      transition: max-height 0.4s ease;
+      a {
+        opacity: 1;
+        transition-property: opacity, color;
+        transition-delay: 0.2s, 0;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
       }
     }
   }

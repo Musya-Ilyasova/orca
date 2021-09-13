@@ -7,6 +7,10 @@
   right: 0;
   background: black;
   z-index: 1000;
+  transition: transform 0.2s linear;
+  &.hide {
+    transform: translateY(-100%);
+  }
   @include media($TABLET) {
     padding: 25px 0 15px;
   }

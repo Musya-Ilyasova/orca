@@ -1,0 +1,75 @@
+.orcaguide-page {
+  background-color: #ffffff;
+  background-image: url('../img/orcaguide-back-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #363636;
+  max-width: 100%;
+  overflow-x: hidden;
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    @include media($TABLET) {
+      font-size: 18px;
+    }
+  }
+  .header-logo {
+    padding-top: 40px;
+    &__link {
+      display: inline-block;
+      width: 100px;
+      height: 30px;
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .btn-primary {
+    background: #00A3FF;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .subscribe {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    .subscribe__form-label {
+      color: #363636;
+      span {
+        font-weight: 700;
+      } 
+    }
+    .subscribe__form {
+      margin: 0 auto;
+    }
+    input {
+      background: #ffffff;
+      color: #363636;
+      font-weight: 400;
+      padding-right: 20px;
+    }
+    .subscribe__input-placeholder {
+      top: 30px;
+      color: #BEBEBE;
+      font-weight: 400;
+    }
+    .subscribe__form-box button {
+      position: static;
+      width: 100%;
+      margin-top: 40px;
+    }
+  }
+}
+
+:root {
+  --title-color: #363636;
+}

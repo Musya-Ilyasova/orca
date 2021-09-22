@@ -1,0 +1,58 @@
+.orcaguide-learn {
+  &__title {
+    margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 32px;
+  }
+  
+  &-list {
+    &-item {
+      padding: 40px 20px 20px;
+      box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.04);
+      border-radius: 30px;
+      margin-bottom: 30px;
+      position: relative;
+      &:before, &:after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: inherit;
+        z-index: 0;
+      }
+      &:before {
+        border-left: 2px solid white;
+        border-top: 2px solid white;
+        background: radial-gradient(75.23% 530.47% at 17.03% 18.3%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.43) 100%);
+      }
+      &:after {
+        border-right: 2px solid rgba($color: white, $alpha: 0.4);
+        border-bottom-right-radius: 0;
+        height: 25%;
+      }
+
+      .btn {
+        margin-top: 30px;
+        position: relative;
+        z-index: 1;
+        border-radius: 20px;
+      }
+      &__title {
+        position: relative;
+        z-index: 1;
+        line-height: 34px;
+        font-size: 28px;
+      }
+      &__text {
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

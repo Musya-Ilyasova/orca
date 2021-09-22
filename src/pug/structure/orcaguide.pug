@@ -1,0 +1,16 @@
+include ../mixins/mixins
+doctype html
+html(lang="ru")
+  include ../components/global/head
+  body.orcaguide-page
+    header.header-logo
+      .container.container--1120
+        a(href="./").header-logo__link 
+          +icon('black-orca')
+    //main
+    main
+      include ../pages/orcaguide/orcaguide-first
+      include ../pages/orcaguide/orcaguide-learn
+      include ../pages/orcaguide/orcaguide-form
+
+    include ../components/global/scripts

@@ -9,6 +9,14 @@ html {
   color: #363636;
   max-width: 100%;
   overflow-x: hidden;
+  h1, h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.2;
+    @include media($TABLET) {
+      font-size: 48px;
+    }
+  }
   p {
     font-size: 16px;
     line-height: 1.5;
@@ -49,7 +57,7 @@ html {
       color: #363636;
       span {
         font-weight: 700;
-      } 
+      }
     }
     .subscribe__form {
       margin: 0 auto;
@@ -59,9 +67,10 @@ html {
       color: #363636;
       font-weight: 400;
       padding-right: 20px;
+      height: 70px;
     }
     .subscribe__input-placeholder {
-      top: 30px;
+      top: 35px;
       color: #BEBEBE;
       font-weight: 400;
     }
@@ -69,6 +78,14 @@ html {
       position: static;
       width: 100%;
       margin-top: 40px;
+      @include media($TABLET) {
+        position: absolute;
+        width: 220px;
+        margin-top: 0;
+        top: 0;
+        right: 0;
+
+      }
     }
   }
 }

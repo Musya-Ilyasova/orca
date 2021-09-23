@@ -1,20 +1,8 @@
 @import "global/helpers/helpers";
-
-
 $mainColor: #8FFF00;
-@import "../pug/pages/faq/_help-centre";
 
 
-@import "../pug/pages/main/main-v2-header";
-
-@import "../pug/pages/main/main-v2-page";
-@import "../pug/pages/main/main-v2-first";
-@import "../pug/pages/main/main-v2-banner";
-@import "../pug/pages/main/main-v2-security";
-@import "../pug/pages/main/main-v2-advantages";
-@import "../pug/pages/main/main-v2-reliability";
-@import "../pug/pages/main/main-v2-invite";
-@import "../pug/pages/main/main-v2-reviews";
-
-
-
+@import "../pug/pages/orcaguide/orcaguide-page";
+@import "../pug/pages/orcaguide/orcaguide-first";
+@import "../pug/pages/orcaguide/orcaguide-learn";
+@import "../pug/pages/orcaguide/orcaguide-form";

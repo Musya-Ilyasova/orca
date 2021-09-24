@@ -1,0 +1,53 @@
+.whiteorca-first {
+  padding-top: 40px;
+  padding-bottom: 30px;
+  @include media($TABLET) {
+    padding-top: 100px;
+  }
+  &__title {
+    max-width: 60%;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    @include media($TABLET) {
+      font-size: 48px;
+      max-width: 510px;
+    }
+    .main {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+  p {
+    max-width: 422px;
+  }
+  &-img {
+    object-fit: contain;
+    margin-top: 20px;
+    @include media($IPHONEX) {
+      width: 60%;
+      float: right;
+      margin-top: -70px;
+    }
+    @include media($TABLET) {
+      width: 50%;
+      max-width: 435px;
+      margin-top: -120px;
+      margin-right: -79px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      position: relative;
+      @include media($IPHONEX) {
+        min-width: 229px;
+        width: 100%;
+        max-height: 448px;
+      }
+      @include media($TABLET) {
+        min-width: 100%;
+      }
+    }
+  }
+}

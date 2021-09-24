@@ -1,0 +1,15 @@
+include ../mixins/mixins
+doctype html
+html(lang="ru")
+  include ../components/global/head
+  body.whiteorca-page
+    header.header-logo
+      .container.container--1120
+        a(href="./").header-logo__link
+          +icon('black-orca')
+    //main
+    main
+      include ../pages/whiteorca/whiteorca-first
+      include ../pages/whiteorca/whiteorca-smart
+
+    include ../components/global/scripts

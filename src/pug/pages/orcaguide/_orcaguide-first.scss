@@ -6,6 +6,11 @@
       grid-template-columns: 1fr 40%;
       grid-template-rows: repeat(6, auto);
     }
+    @include media($DESKTOP) {
+      display: grid;
+      grid-template-columns: 1fr 511;
+      grid-template-rows: repeat(6, auto);
+    }
   }
   &-img {
     width: 80%;

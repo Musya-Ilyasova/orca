@@ -9,6 +9,9 @@ html {
   color: #363636;
   max-width: 100%;
   overflow-x: hidden;
+  @include media($TABLET) {
+    background-image: url('../img/orcaguide-back.svg');
+  }
   h1, h2 {
     font-size: 32px;
     font-weight: 500;
@@ -30,6 +33,10 @@ html {
       display: inline-block;
       width: 100px;
       height: 30px;
+      @include media($TABLET) {
+        width: 133px;
+        height: 40px;
+      }
       .icon {
         width: 100%;
         height: 100%;
@@ -55,14 +62,12 @@ html {
     margin-bottom: 0;
     .subscribe__form-label {
       color: #363636;
+      @include media($TABLET) {
+        max-width: 430px;
+        font-size: 16px;
+      }
       span {
         font-weight: 700;
-      }
-    }
-    .subscribe__form {
-      margin: 0 auto;
-      @include media($TABLET) {
-        margin: 0;
       }
     }
     input {
@@ -71,6 +76,7 @@ html {
       font-weight: 400;
       padding-right: 20px;
       height: 70px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
     }
     .subscribe__input-placeholder {
       top: 35px;
@@ -86,9 +92,16 @@ html {
         width: 220px;
         margin-top: 0;
         top: 0;
-        right: 0;
+        right: -2px;
 
       }
+    }
+  }
+  .subscribe__form {
+    margin: 0 auto;
+    @include media($TABLET) {
+      margin: 0;
+      max-width: 568px;
     }
   }
 }

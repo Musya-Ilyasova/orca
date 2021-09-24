@@ -8,7 +8,7 @@
     }
     @include media($DESKTOP) {
       display: grid;
-      grid-template-columns: 1fr 511;
+      grid-template-columns: 1fr auto;
       grid-template-rows: repeat(6, auto);
     }
   }
@@ -23,7 +23,10 @@
       top: 0;
       grid-area: 1 / 2 / 6 / 3;
       height: 450px;
-      width: 100%;
+      width: 400px;
+    }
+    @include media($DESKTOP) {
+      height: 583px;
     }
     img {
       position: absolute;
@@ -35,7 +38,12 @@
         @include media($TABLET) {
           left: 0;
           width: 226px;
-          max-width: 246px;
+          max-width: none;
+        }
+        @include media($DESKTOP) {
+          width: 340px;
+          left: -68px;
+          top: 26px;
         }
       }
       &:nth-child(2) {
@@ -45,8 +53,17 @@
         max-width: 260px;
         @include media($TABLET) {
           width: 287px;
-          max-width: 337px;
+          max-width: none;
           right: 0;
+        }
+        @include media($DESKTOP) {
+          width: 357px;
+          right: 37px;
+          bottom: 13px;
+        }
+        @include media($HD) {
+          right: -1px;
+          bottom: -40px;
         }
       }
     }
@@ -57,9 +74,16 @@
     font-size: 32px;
     line-height: 1.2;
     position: relative;
+    @include media($DESKTOP) {
+      font-size: 48px;
+      max-width: none;
+    }
+  }
+  &__title {
     margin-top: -131px;
     @include media($TABLET) {
       margin-top: 99px;
+      margin-bottom: 10px;
     }
   }
   &__subtitle {
@@ -69,16 +93,30 @@
       max-width: 100%;
       grid-area: 4 / 1 / 5 / 3;
     }
+    @include media($DESKTOP) {
+      grid-area: 4 / 1 / 5 / 2;
+      margin-top: 70px;
+    }
   }
   &__text {
+    @include media($DESKTOP) {
+      max-width: 643px;
+    }
     &_italic {
       font-style: italic;
       @include media($TABLET) {
         grid-area: 5 / 1 / 6 / 3;
       }
+      @include media($DESKTOP) {
+        grid-area: 5 / 1 / 6 / 2;
+      }
       + .orcaguide-first__text {
         @include media($TABLET) {
           grid-area: 6 / 1 / 7 / 3;
+        }
+        @include media($DESKTOP) {
+          grid-area: 6 / 1 / 7 / 2;
+
         }
       }
     }
@@ -95,6 +133,10 @@
       margin: 0;
       padding: 0;
       margin-top: 60px;
+    }
+    @include media($DESKTOP) {
+      margin-top: 40px;
+
     }
 
   }

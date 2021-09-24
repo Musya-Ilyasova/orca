@@ -1,6 +1,21 @@
 .orcaguide-form {
   padding: 51px 0 87px;
+  @include media($DESKTOP) {
+    padding: 100px 0;
+    text-align: center;
+  }
   .subscribe {
     display: block;
+  }
+  .subscribe__form {
+    @include media($DESKTOP) {
+      margin: 0 auto;
+    }
+  }
+  .subscribe__form-label {
+    @include media($DESKTOP) {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }

@@ -1,17 +1,68 @@
 .orcaguide-learn {
+  @include media($DESKTOP) {
+    padding-top: 30px;
+  }
   &__title {
     margin-bottom: 30px;
+    @include media($DESKTOP) {
+      text-align: center;
+      margin-bottom: 60px;
+    }
   }
   p {
     line-height: 1.6;
+    @include media($DESKTOP) {
+      font-size: 16px;
+    }
   }
   &-list {
+    @include media($DESKTOP) {
+      background: radial-gradient(75.23% 530.47% at 17.03% 18.3%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.43) 100%);
+      box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.04);
+      border-radius: 50px;
+      position: relative;
+      padding: 55px 112px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
+      grid-column-gap: 40px;
+      margin-top: 60px;
+      &:before, &:after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: inherit;
+        z-index: 0;
+      }
+      &:before {
+        border-left: 2px solid white;
+        border-top: 2px solid white;
+        background: radial-gradient(75.23% 530.47% at 17.03% 18.3%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.43) 100%);
+      }
+      &:after {
+        border-right: 2px solid rgba($color: white, $alpha: 0.4);
+        border-bottom-right-radius: 0;
+        height: 44%;
+      }
+    }
     &-item {
       padding: 40px 20px 20px;
       box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.04);
       border-radius: 30px;
       margin-bottom: 30px;
       position: relative;
+      @include media($DESKTOP) {
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 50px;
+        &:before, &:after {
+          display: none;
+        }
+      }
       &:before, &:after {
         content: "";
         height: 100%;
@@ -53,6 +104,9 @@
     border-radius: 30px;
     margin-bottom: 30px;
     position: relative;
+    @include media($DESKTOP) {
+      padding: 45px 152px;
+    }
     &:before, &:after {
       content: "";
       height: 100%;
@@ -77,7 +131,10 @@
       margin-top: 30px;
       position: relative;
       z-index: 1;
-      border-radius: 20px;
+      max-width: 270px;
+      @include media($DESKTOP) {
+        margin-left: 0;
+      }
     }
     &__title {
       position: relative;

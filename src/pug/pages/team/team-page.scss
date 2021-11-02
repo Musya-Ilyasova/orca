@@ -1,0 +1,116 @@
+.team-page {
+  min-height: 100vh;
+  .header-logo {
+    padding-top: 40px;
+    &__link {
+      width: 100px;
+      height: 30px;
+      display: block;
+      @include media($TABLET) {
+        width: 133px;
+        height: 40px;
+      }
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+}
+.team-first {
+  text-align: center;
+  padding-top: 100px;
+  &__title {
+    color: white;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 30px;
+    &_main {
+      color: $mainColor;
+    }
+    @include media($TABLET) {
+      font-size: 50px;
+    }
+    @include media($DESKTOP) {
+      font-size: 60px;
+    }
+  }
+  &__text {
+    line-height: 1.5;
+    &_main {
+      color: $mainColor;
+    }
+  }
+}
+
+.team {
+  .hidden {
+    visibility: hidden;
+    height: 0;
+  }
+  &__title {
+    color: white;
+    margin-top: 100px;
+  }
+  &-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 330px;
+    margin: 60px auto 140px;
+
+    &-item {
+      position: relative;
+      &__face {
+        padding: 18px 20px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #171717;
+        border-radius: 40px;
+        position: relative;
+        z-index: 1;
+      }
+      &__back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #171717;
+        border-radius: 40px;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+
+      &-img {
+        width: 110px;
+        height: 110px;
+        background: #5A5A5A;
+        border-radius: 50%;
+        margin-bottom: 16px;
+      }
+      &__title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      &__post {
+        color: #B8B8B8;
+        font-size: 16px;
+        margin-bottom: 12px;
+        line-height: 1.2;
+      }
+      &__expost {
+        color: #6B6B6B;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+    }
+
+  }
+
+}
+

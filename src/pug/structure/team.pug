@@ -1,0 +1,14 @@
+include ../mixins/mixins
+doctype html
+html(lang="ru")
+  include ../components/global/head
+  body.team-page
+    header.header-logo
+      .container.container--1120
+        a(href="./").header-logo__link
+          +icon('black-orca')
+    //main
+    main
+      include ../pages/team/team-first
+      include ../pages/team/team
+    include ../components/global/scripts

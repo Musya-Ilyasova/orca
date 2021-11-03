@@ -5,3 +5,6 @@ if(document.body.classList.contains("page-main")) {
     scrollPage ();
   }
 }
+
+
+@@include('modules/team.js');

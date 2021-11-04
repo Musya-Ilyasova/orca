@@ -4,7 +4,7 @@ function teamRotate() {
   list.forEach((item) => {
     item.onclick = function (e) {
       let target = e.target;
-      if (target.closest('.team-list-item') && !target.closest('.notBack')){
+      if (target.closest('.team-list-item') && !target.closest('.notBack') && !target.closest('.team-list-item-link')){
         rotateItem(target);
       }
     }
@@ -18,7 +18,7 @@ function teamRotate() {
   }
 }
 function teamMore() {
- let btn = document.querySelectorAll('.team__more');
+ let btn = document.querySelectorAll('.team-more');
  let teamList = document.querySelectorAll('.team-list');
  btn.forEach((i) => {
    i.addEventListener('click', function(e) {

@@ -39,6 +39,12 @@
   }
   &__text {
     line-height: 1.5;
+    max-width: 606px;
+    margin: 30px auto 0;
+
+    @include media($TABLET) {
+      font-size: 18px;
+    }
     &_main {
       color: $mainColor;
     }
@@ -53,18 +59,41 @@
   &__title {
     color: white;
     margin-top: 100px;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: center;
+    @include media($TABLET) {
+      font-size: 38px;
+    }
+    @include media($HD) {
+      text-align: left;
+    }
   }
   &-list {
     display: flex;
     flex-direction: column;
     max-width: 330px;
-    margin: 60px auto 140px;
+    margin: 60px auto 60px;
+    
+    overflow: hidden;
+    &:not(:last-child) {
+      max-height: 768px;
+      transition: max-height 0.6s linear;
+    }
     @include media($TABLET) {
       display: grid;
       grid-template-columns: repeat(2, 330px);
       grid-template-rows: auto;
       grid-column-gap: 26px;
       max-width: 688px;
+    }
+    @include media($HD) {
+      grid-template-columns: repeat(3, 330px);
+      grid-template-rows: auto;
+      grid-column-gap: 60px;
+      max-width: 100%;
+      padding: 20px;
+      transform: translateY(-20px -20px);
     }
 
     &-item {
@@ -77,6 +106,14 @@
       &:not(.notBack) {
         &:hover {
           transform: scale(1.05);
+        }
+      }
+      @include media($HD) {
+        margin-bottom: 60px;
+        &:not(.notBack) {
+          &:hover {
+            transform: scale(1.1);
+          }
         }
       }
       &__face {
@@ -166,5 +203,44 @@
       }
     }
   }
+  &__more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+    cursor: pointer;
+    color: #B8B8B8;
+    transition: color 0.2s ease;
+    font-size: 18px;
+    &:hover {
+      color: lighten($color: #B8B8B8, $amount: 10%);
+      .icon {
+        animation: pulseArrow 0.7s infinite;
+        stroke: white;
+      }
+    }
+    .icon {
+      stroke: #B8B8B8;
+      width: 20px;
+      height: 8px;
+      margin-top: 10px;
+      transition: stroke 0.2s linear;
+    }
+  }
 }
+
+@keyframes pulseArrow {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+
+}
+
 

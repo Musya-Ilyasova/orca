@@ -1,0 +1,14 @@
+section.comiccon-form 
+  h2.hidden Comiccon form 
+  .container 
+    .subscribe.comiccon-subscribe#subscribe
+      .subscribe__form
+        .field-wrapper
+          form(action="#" method="post").subscribe__form-box.js-validate-form
+            input(type="tel" placeholder="loki@gmail.com" name="phone")
+            span.error-request Failed to send an email. Try again later.
+            .comiccon-subscribe-btn
+              button(type="subscribe").btn.btn-primary Send!
+        .success 
+          h3 YOU ROCK!
+

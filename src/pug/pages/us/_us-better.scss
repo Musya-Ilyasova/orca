@@ -1,0 +1,83 @@
+.us-better {
+  margin-top: 49px;
+  padding: 40px 0 60px;
+  background:#171717;
+  @include media($TABLET) {
+    margin-top: 49px;
+    padding: 60px 0 94px;
+  }
+  @include media($HD) {
+    margin-top: 120px;
+  }
+  &__title {
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  &__title {
+    max-width: 244px;
+    @include media($SMARTPHONE) {
+      max-width: 450px;
+    }
+    @include media($TABLET) {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+  &-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    @include media($TABLET) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 60px auto 0;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:nth-last-child(2) {
+        @include media($TABLET) {
+          margin-bottom: 0;
+        }
+      }
+      @include media($TABLET) {
+        width: 45%;
+        margin-bottom: 74px;
+      }
+      
+      &__text {
+        font-size: 18px;
+        line-height: 1.2;
+        font-family: "Gilroy";
+        font-weight: 600;
+        margin: 0  0  0 24px;
+        max-width: 242px;
+        letter-spacing: 0;
+        flex: auto;
+        @include media($SMARTPHONE) {
+          max-width: 342px;
+        }
+        @include media($TABLET) {
+          max-width: 229px;
+          font-size: 20px;
+        }
+      }
+      &-img {
+        width: 54px;
+        height: 54px;
+        flex: none;
+        .icon {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }    
+  }
+}

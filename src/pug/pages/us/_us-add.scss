@@ -1,0 +1,60 @@
+.us-add {
+  padding: 80px 0 0;
+  @include media($TABLET) {
+    text-align: center;
+  }
+  @include media($HD) {
+    padding: 120px 0 0;
+  }
+  &-img {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -20px;
+    max-width: 453px;
+    @include media($TABLET) {
+      max-width: 100%;
+      margin-top: -120px;
+    }
+    @include media($HD) {
+      margin-top: -240px;
+    }
+    img {
+      max-width: 118px;
+      max-height: none;
+      position: relative;
+      transform: translateY(43%);
+      object-fit: contain;
+      @include media($TABLET) {
+        max-width: 265px;
+      }
+      @include media($HD) {
+        transform: translateY(43%);
+      }
+      &:first-child {
+        @include media($HD) {
+          transform: translateY(32%);
+        }
+      }
+    }
+  }
+  &__title {
+    @include media($TABLET) {
+      margin: 0 auto;
+    } 
+  }
+  &__text {
+    max-width: 453px;
+    font-size: 16px;
+    @include media($TABLET) {
+      margin: 20px auto;
+      font-size: 18px;
+    }
+  }
+  .btn {
+    margin-top: 10px;
+    @include media($HD) {
+      margin-top: 47px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+section.us-first 
+  .container.container--1120 
+    h1.us-first__title Enjoy stocks to the fullest
+    p.us-first__text Stocks and shares from NYSE and NASDAQ now on your favourite app
+    ul.us-first-links
+      li
+        a(href="#")
+          img(src="img/AppStoreBadge-2.png", alt="App Store")
+        ul.us-first-links-stars
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star-part-white')
+        span.us-first-links__rating 4,5
+      li
+        a(href="#")
+          img(src="img/GooglePlayBadge-2.png", alt="Google Play")
+        ul.us-first-links-stars
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star-part-white')
+        span.us-first-links__rating 4,5
+      li
+        a(href="#")
+          img(src="img/trustpilot.png", alt="Trustpilot")
+        ul.us-first-links-stars
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star')
+          li
+            +icon('star')
+        span.us-first-links__rating 4,2
+    .us-first-img
+      img(src="img/us-first-img.png", alt="")
+    .subscribe.us-first-subscribe#subscribe
+      .subscribe__form
+        .subscribe__form-label
+          span Enter your phone number and get a link to download the app
+        form(action="#" method="post").subscribe__form-box.js-validate-form
+          .subscribe__input-placeholder +44
+          input(type="tel" placeholder="" name="phone")
+          button(type="subscribe").btn.btn-primary Text Me a Link
+        p.capital-risk Capital at risk 
+
+

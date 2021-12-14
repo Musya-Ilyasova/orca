@@ -6,7 +6,7 @@
   &-list {
     display: flex;
     flex-direction: column;
-    max-width: 343px;
+    max-width: 441px;
     margin: 0 auto;
 
     @include media($TABLET) {
@@ -38,7 +38,7 @@
       p {
         font-size: 16px;
         margin: 10px 0 0;
-        max-width: 389px;
+        padding-right: 30px;
         line-height: 1.5;
         @include media($TABLET) {
           font-size: 18px;

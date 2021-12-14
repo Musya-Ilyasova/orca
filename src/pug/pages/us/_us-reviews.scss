@@ -1,22 +1,45 @@
 .us-reviews {
   padding-top: 40px;
+  padding-bottom: 60px;
   &__title {
-    max-width: 343px;
+    max-width: 535px;
     margin: 0 auto;
     font-weight: 600;
     text-align: center;
+    @include media($TABLET) {
+      max-width: 100%;
+    }
   }
   &-list {
-    max-width: 343px;
+    max-width: 535px;
     margin: 40px auto;
+    @include media($TABLET) {
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, auto);
+      grid-column-gap: 20px;
+      margin: 60px auto;
+    }
+    @include media($HD) {
+      grid-column-gap: 30px;
+    }
     &-item {
       background:#171717;
       border-radius: 15px;
-      padding: 25px 30px;
+      padding: 25px 50px 25px 30px;
       position: relative;
+      margin-bottom: 20px;
       &:after {
         content: "";
         position: absolute;
+        width: 73px;
+        height: 18px;
+        background: url('../img/trustpilot.svg') no-repeat;
+        background-size: contain;
+        top: 20px;
+        right: 20px;
+
       }
       &__foto {
         width: 40px;

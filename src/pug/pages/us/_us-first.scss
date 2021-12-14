@@ -6,6 +6,7 @@
     line-height: 1;
     text-transform: uppercase;
     max-width: 240px;
+    font-weight: 900;
     @include media($SMARTPHONE) {
       max-width: 423px;
     }
@@ -63,7 +64,7 @@
       grid-template-rows: repeat(3, auto);
       grid-auto-flow: column;
     }
-    @include media($TABLET) {    
+    @include media($TABLET) {
       max-width: 1200px;
     }
   }
@@ -115,8 +116,8 @@
   &-links {
     display: flex;
     justify-content: space-between;
-    width: 420px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 420%;
     margin: 0 auto;
     grid-area: 3 / 1 / 4 / 3;
     @include media($SMARTPHONE) {

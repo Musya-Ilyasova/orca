@@ -4,15 +4,8 @@
     @include media($SMARTPHONE) {
       max-width: 535px;
     }
-    @include media($TABLET) {   
-      max-width: 1200px;
-    }
-  }
-  h2 {
-    font-weight: 600;
-    font-size: 28px;
     @include media($TABLET) {
-      font-size: 38px;
+      max-width: 1200px;
     }
   }
   .btn-primary {
@@ -25,8 +18,21 @@
     line-height: 48px;
     font-size: 20px;
   }
+  .hidden {
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+  }
 }
 
-:root {
-  --title-color: white;
+h1, h2, h3 {
+  color: white;
+
+}
+h2 {
+  font-weight: 600;
+  font-size: 28px;
+  @include media($TABLET) {
+    font-size: 38px;
+  }
 }

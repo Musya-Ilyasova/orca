@@ -1,8 +1,6 @@
 .us-add {
   padding: 80px 0 0;
-  @include media($TABLET) {
-    text-align: center;
-  }
+  text-align: center;
   @include media($HD) {
     padding: 120px 0 0;
   }
@@ -41,18 +39,20 @@
   &__title {
     @include media($TABLET) {
       margin: 0 auto;
-    } 
+    }
   }
   &__text {
     max-width: 453px;
     font-size: 16px;
+    margin: 20px auto;
     @include media($TABLET) {
       margin: 20px auto;
       font-size: 18px;
     }
   }
   .btn {
-    margin-top: 10px;
+    margin: 10px auto 0;
+    display: block;
     @include media($HD) {
       margin-top: 47px;
     }

@@ -1,11 +1,32 @@
 .us-page {
-  h2, h3 {
-    color: white;
+  .container {
+    max-width: 430px;
+    @include media($SMARTPHONE) {
+      max-width: 535px;
+    }
+    @include media($TABLET) {   
+      max-width: 1200px;
+    }
   }
-  .hidden {
-    visibility: hidden;
-    font-size: 0;
-    overflow: hidden;
-    height: 0;
+  h2 {
+    font-weight: 600;
+    font-size: 28px;
+    @include media($TABLET) {
+      font-size: 38px;
+    }
   }
+  .btn-primary {
+    background: black;
+    border: 2px solid #FAFAFA;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 453px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 20px;
+  }
+}
+
+:root {
+  --title-color: white;
 }

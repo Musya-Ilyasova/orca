@@ -1,0 +1,50 @@
+.us-advantages {
+  padding-top: 78px;
+  @include media($TABLET) {
+    padding-top: 134px;
+  }
+  &-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 343px;
+    margin: 0 auto;
+
+    @include media($TABLET) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 100%;
+    }
+
+    &-item {
+      margin-bottom: 40px;
+      @include media($TABLET) {
+        width: 45%;
+        margin-bottom: 103px;
+      }
+      .icon {
+        max-height: 90px;
+        max-width: 90px;
+      }
+      h3 {
+        margin-top: 30px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.2;
+        @include media($TABLET) {
+          font-size: 28px;
+        }
+      }
+      p {
+        font-size: 16px;
+        margin: 10px 0 0;
+        max-width: 389px;
+        line-height: 1.5;
+        @include media($TABLET) {
+          font-size: 18px;
+        }
+      }
+
+    }
+  }
+}

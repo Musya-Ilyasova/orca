@@ -2,26 +2,85 @@
   text-align: center;
   background: #171717;
   padding: 52px 0 40px;
+  @include media($TABLET) {
+    text-align: left;
+    padding: 0;
+  }
+  @include media($HD) {
+    height: 444px;
+  }
   &__title {
     font-weight: 700;
     line-height: 1.2;
     font-size: 24px;
     margin-bottom: 20px;
+    @include media($TABLET) {
+      font-size: 28px;
+      line-height: 1.5;
+      padding-top: 60px;
+      max-width: 336px;
+    }
+    @include media($DESKTOP) {
+      max-width: 100%;
+      padding-top: 120px;
+      margin-bottom: 30px;
+    }
   }
   .container {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: repeat(3, auto);
     width: 100%;
+    @include media($TABLET) {
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(2, auto);
+      max-width: 850px;
+      grid-column-gap: 60px;
+    }
   }
   &__img {
-    width: 242px;
+    width: auto;
     margin: 0 auto;
     grid-area: 2 / 1 / 3 / 2;
+    @include media($TABLET) {
+      grid-area: 1 / 2 / 3 / 4;
+      position: relative;
+      display: flex;
+    }
+    @include media($DESKTOP) {
+      height: 100%;
+      width: 209px;
+    }
+    img {
+      width: 242px;
+      margin-top: auto;
+      object-fit: cover;
+      @include media($TABLET) {
+        width: 325px;
+      }
+      @include media($DESKTOP) {
+        position: absolute;
+        top: -20px;
+        width: auto;
+        height: calc(100% + 20px);
+      }
+      @include media($HD) {
+        top: -50px;
+        height: calc(100% + 50px);
+      }
+    }
   }
   .btn {
     margin: 0 auto;
     display: block;
+    @include media($TABLET) {
+      margin-bottom: 80px;
+    }
+    @include media($DESKTOP) {
+      margin-bottom: 120px;
+      margin-left: 0;
+
+    }
   }
 
 

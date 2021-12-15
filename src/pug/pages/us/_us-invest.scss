@@ -1,11 +1,25 @@
 .us-invest {
-  padding: 40px 0;
+  padding: 40px 0 20px;
   width: 100%;
   overflow: hidden;
+  background: #171717;
+  @include media($TABLET) {
+    padding: 80px 0 60px;
+  }
   .container {
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+    @include media($TABLET) {
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto;
+      grid-column-gap: 15px;
+    }
+    @include media($DESKTOP) {
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: repeat(2, auto);
+      grid-column-gap: 33px;
+    }
   }
   &__title {
     font-weight: 900;
@@ -17,19 +31,68 @@
       font-size: 70px;
       width: 220px;
     }
+    @include media($TABLET) {
+      width: 252px;
+      text-align: right;
+    }
+    @include media($DESKTOP) {
+      font-size: 80px;
+      width: 278px;
+      grid-area: 1 / 1 / 3 / 2;
+    }
   }
   &__img {
     width: 112px;
     @include media($SMARTPHONE) {
       width: 142px;
-
+    }
+    @include media($DESKTOP) {
+      width: 203px;
+      grid-area: 1 / 3 / 3 / 4;
     }
   }
-  &__text {
-    grid-area: 2 / 1 / 3 / 3;
-    font-size: 16px;
-  }
   &-list {
-    grid-area: 3 / 1 / 4 / 3;
+    grid-area: 2 / 1 / 3 / 3;
+    @include media($TABLET) {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+    &-item {
+      margin-bottom: 40px;
+      @include media($TABLET) {
+        margin-bottom: 10px;
+      }
+      @include media($DESKTOP) {
+        margin-bottom: 30px;
+      }
+      h3 {
+        font-size: 24px;
+        line-height: 29px;
+        @include media($TABLET) {
+          font-size: 28px;
+          line-height: 34px;
+        }
+      }
+      p {
+        font-size: 16px;
+        margin: 10px 0;
+        @include media($TABLET) {
+          font-size: 18px;
+          line-height: 27px;
+        }
+
+      }
+    }
+  }
+  .btn.btn-primary {
+    display: none;
+    @include media($TABLET) {
+      display: block;
+      margin-top: 20px;
+      grid-area: 2 / 2 / 3 / 3;
+    }
+    @include media($DESKTOP) {
+      grid-area: 2 / 2 / 3 / 3;
+      margin-top: 0;
+    }
   }
 }

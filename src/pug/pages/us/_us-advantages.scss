@@ -6,9 +6,7 @@
   &-list {
     display: flex;
     flex-direction: column;
-    max-width: 441px;
     margin: 0 auto;
-
     @include media($TABLET) {
       flex-direction: row;
       flex-wrap: wrap;

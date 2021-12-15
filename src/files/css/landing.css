@@ -190,6 +190,13 @@ table {
 }
 @font-face {
   font-family: "Gilroy";
+  src: local("-"), url("/fonts/gilroy/semibold/gilroy-semibold.woff") format("woff"), url("/fonts/gilroy/semibold/gilroy-semibold.woff2") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap
+}
+@font-face {
+  font-family: "Gilroy";
   src: local("-"), url("/fonts/gilroy/bold/gilroy-bold.woff") format("woff"), url("/fonts/gilroy/bold/gilroy-bold.woff2") format("woff");
   font-weight: 700;
   font-style: normal;

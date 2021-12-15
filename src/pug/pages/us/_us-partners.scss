@@ -1,5 +1,8 @@
 .us-partners {
   padding-top: 80px;
+  @include media($TABLET) {
+    padding-top: 120px;
+  }
   &__title {
     display: block;
     text-align: center;
@@ -21,14 +24,12 @@
     max-width: 535px;
     margin: 34px auto 0;
     @include media($TABLET) {
-      margin-top: 35px;
-      max-width: 960px;
       width: 100%;
-      margin: 32px auto 0;
+      margin: 32px 0 0;
+      max-width: 100%;
     }
     @include media($DESKTOP) {
       margin-top: 55px;
-      max-width: 1030px;
     }
     li {
       margin-bottom: 20px;

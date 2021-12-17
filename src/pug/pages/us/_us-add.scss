@@ -14,8 +14,8 @@
       margin-top: 70px;
       height: 242px;
     }
-    @include media($HD) {
-      margin-top: -240px;
+     @include media($HD) {
+      margin-top: -81px;
     }
     > img {
       max-width: 118px;
@@ -31,22 +31,22 @@
       display: none;
       @include media($TABLET) {
         display: block;
-        width: 325px;
+        width: 310px;
         position: relative;
       }
       > img {
         @include media($TABLET) {
-          max-width: 190px;
+          max-width: 175px;
           position: relative;
           z-index: 2;
         }
-        @include media($HD) {
-        }
-        &:first-child {
-          @include media($HD) {
-            transform: translateY(32%);
-          }
-        }
+        // @include media($HD) {
+        // }
+        // &:first-child {
+        //   @include media($HD) {
+        //     transform: translateY(32%);
+        //   }
+        // }
       }
       span {
         position: absolute;

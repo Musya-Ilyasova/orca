@@ -1,60 +1,51 @@
 function yellowsEyes() {
   let section = document.querySelector('.us-add');
-  let wrapper = document.querySelector('.us-add-img-1 span:nth-of-type(2)').getBoundingClientRect();
-  let img = document.querySelector('.us-add-img-1 span:nth-of-type(2) i');
-  let startX, startY;
-  section.addEventListener('mouseenter', function(e) {
-    startX = wrapper.top;
-    startY = wrapper.left;
-  });
+  let eyes = document.querySelectorAll('.us-add-img-1 span');
+  let massXY = [];
+  eyes.forEach((e) => {
+    let img = e.querySelector('i');
+    let item = {
+      wrapper: e.getBoundingClientRect(),
+      imgX: - img.offsetLeft,
+      imgY: - img.offsetTop,
+      diffX: e.getBoundingClientRect().width / section.getBoundingClientRect().width,
+      diffY: e.getBoundingClientRect().height / section.getBoundingClientRect().height,
+      wrapperH: e.getBoundingClientRect().height,
+      wrapperW: e.getBoundingClientRect().width,
+      maxX: - img.offsetLeft + e.getBoundingClientRect().width - img.getBoundingClientRect().width,
+      maxY: - img.offsetTop + e.getBoundingClientRect().height - img.getBoundingClientRect().height,
+    }
+    massXY.push(item);
+  })
+
+  let items = document.querySelectorAll(".us-add-img-1 span i");
+  for(let i=0; i<=items.length-1; i++) {
+    items[i].setAttribute("data-count", String(i));
+  }
   section.addEventListener('mousemove', function(e) {
-    let imgX = img.offsetLeft-(img.offsetWidth),
-    imgY = img.offsetTop + (img.offsetHeight);
-    let nextX = e.clientX;
-    let nextY = e.clientY;
-    let fractionX = (nextX - wrapper.top) / section.offsetWidth;
-    let fractionY = (nextY - wrapper.left) / section.offsetHeight;
-    console.log(fractionX, fractionY);
+    var coordX = e.clientX;
+    var coordY = e.clientY - section.getBoundingClientRect().top;
+    eyes.forEach((item) =>  {
+      let img = item.querySelector('i');
+      let imgData = Number(item.querySelector('i').dataset.count);
+      let x = massXY[imgData].imgX + (coordX * massXY[imgData].diffX);
+      let y = massXY[imgData].imgY + (coordY * massXY[imgData].diffY);
 
-    let x = imgX * fractionX;
-    let y = imgY * fractionY;
+      if(x < massXY[imgData].imgX) x = massXY[imgData].imgX;
+      if(y < massXY[imgData].imgY) y = massXY[imgData].imgY;
+      if(x > massXY[imgData].maxX) x = massXY[imgData].maxX;
+      if(y > massXY[imgData].maxY) y = massXY[imgData].maxY;
+      img.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    })
 
-    // if (x < -(img.offsetLeft)) x = -(img.offsetLeft);
-    // if (x > imgX) x = imgX;
-    // if (y < img.offsetTop) y = img.offsetTop;
-    // if (y > imgY) y = imgY+img.offsetHeight;
-    // console.log("startX, startY")
-    // console.log(startX, startY)
-    // console.log("e.clientX, e.clientY")
-    // console.log(e.clientX, e.clientY)
-
-    img.style.transform = `translate3d(${x*2}px, ${y*2}px, 0 )`;
-   console.log(img.style.transform);
-
-    // if (x < minX) x = minX;
-    // if (x > maxX) x = maxX;
-    // if (y < minY) y = minY;
-    // if (y > maxY) y = maxY;
-
-    // img.style.transform = `translate3d(${}px, ${}px, 0 )`;
-    // console.log(img.style.transform);
-    // if(nextX > startX) {
-
-    // }
-    // let x = (e.clientX - imgX)/100;
-    // let y = (e.clientY - imgY)/100;
-    // img.style.transform = `translate3d(${x * 3}px, ${y * 3}px, 0 )`;
-    // console.log(startX, startY,  nextX, nextY);
-
-    // img.forEach(i => {
-    //   i.style.transform = `translate3d(${x * 2}px, ${y * 2}px, 0 )`;
-    // });
-    // document.querySelector('.intro-referral_image_logotypes').style.transform = `translate3d(${x * 3}px, ${y * 3}px, 0 )`;
-    // document.querySelector('.intro-referral_image_gifts').style.transform = `translate3d(${x * 4}px, ${y * 4}px, 0 )`;
   }, true);
+
   section.addEventListener('mouseout', function(e) {
-    img.style.transform = `translate3d(0px, 0px, 0 )`;
+    items.forEach((i) => {
+      i.style.transform = `translate3d(0px, 0px, 0 )`;
+    })
   });
 }
+
 
 yellowsEyes();

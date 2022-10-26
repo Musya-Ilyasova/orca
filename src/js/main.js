@@ -8,8 +8,6 @@ function yellowsEyes() {
       wrapper: e.getBoundingClientRect(),
       imgX: - img.offsetLeft,
       imgY: - img.offsetTop,
-      diffX: e.getBoundingClientRect().width / section.getBoundingClientRect().width,
-      diffY: e.getBoundingClientRect().height / section.getBoundingClientRect().height,
       wrapperH: e.getBoundingClientRect().height,
       wrapperW: e.getBoundingClientRect().width,
       maxX: - img.offsetLeft + e.getBoundingClientRect().width - img.getBoundingClientRect().width,
@@ -22,14 +20,24 @@ function yellowsEyes() {
   for(let i=0; i<=items.length-1; i++) {
     items[i].setAttribute("data-count", String(i));
   }
-  section.addEventListener('mousemove', function(e) {
-    var coordX = e.clientX;
-    var coordY = e.clientY - section.getBoundingClientRect().top;
+  window.addEventListener('mousemove', function(e) {
+    let coordX = e.clientX;
+    let coordY = e.clientY;
     eyes.forEach((item) =>  {
       let img = item.querySelector('i');
       let imgData = Number(item.querySelector('i').dataset.count);
-      let x = massXY[imgData].imgX + (coordX * massXY[imgData].diffX);
-      let y = massXY[imgData].imgY + (coordY * massXY[imgData].diffY);
+
+      let wrapperLeft = item.getBoundingClientRect().left;
+      let wrapperTop = item.getBoundingClientRect().top;
+
+      let diffX = massXY[imgData].wrapperW / window.screen.width;
+      let diffY = massXY[imgData].wrapperH / window.screen.height;
+
+      let deviationX = Math.abs(window.screen.width / 2 - wrapperLeft) / window.screen.width * massXY[imgData].wrapperW - img.getBoundingClientRect().width/2;
+      let deviationY = Math.abs(window.screen.height / 2 - wrapperTop) / window.screen.height * massXY[imgData].wrapperH;
+
+      let x = massXY[imgData].imgX + (coordX * diffX) + deviationX;
+      let y = massXY[imgData].imgY + (coordY * diffY) + deviationY;
 
       if(x < massXY[imgData].imgX) x = massXY[imgData].imgX;
       if(y < massXY[imgData].imgY) y = massXY[imgData].imgY;

@@ -65,18 +65,41 @@
         content: "";
         position: absolute;
         width: 20px;
-        height: 0;
+        height: 20px;
+        max-height: 0;
         background: #FF4C3F;
         top: 224px;
         border-radius: 50%;
         z-index: 3;
         animation: 4s linear 2s infinite blinking-2;
+        @include media($DESKTOP) {
+          top: 187px;
+          width: 27px;
+          height: 27px;
+        }
+        @include media($HD) {
+          top: 225px;
+          width: 27px;
+          height: 27px;
+        }
       }
       &:before {
         left: 112px;
+        @include media($DESKTOP) {
+          left: 161px;
+        }
+        @include media($HD) {
+          left: 155px;
+        }
       }
       &:after {
         right: 96px;
+        @include media($DESKTOP) {
+          right: 139px;
+        }
+        @include media($HD) {
+          right: 135px;
+        }
       }
       @include media($TABLET) {
         display: flex;
@@ -87,12 +110,13 @@
       @include media($DESKTOP) {
         position: absolute;
         top: -20px;
-        width: auto;
+        width: 458px;
         height: calc(100% + 20px);
       }
       @include media($HD) {
         top: -50px;
         height: calc(100% + 50px);
+        width: 444px;
       }
       img[src*="desktop"] {
         width: 100%;
@@ -106,6 +130,7 @@
       z-index: 2;
       @include media($TABLET) {
         display: block;
+
         position: absolute;
         width: 268px;
         left: 27px;
@@ -115,12 +140,12 @@
       @include media($DESKTOP) {
         top: -13px;
         width: 350px;
-        left: 50px;
+        left: 58px;
       }
       @include media($HD) {
-        top: -45px;
-        width: 380px;
-        left: 50px;
+        top: 35px;
+        width: 340px;
+        left: 59px;
       }
     }
   }
@@ -157,12 +182,12 @@
 }
 @keyframes blinking-2 {
    0% {
-   height: 0;
+    max-height: 0;
    }
   5% {
-    height: 20px;
+    max-height: 100%;
   }
   10% {
-   height: 0;
+    max-height: 0;
   }
 }

@@ -79,7 +79,9 @@
           font-size: 18px;
           line-height: 27px;
         }
-
+      }
+      &:not(:last-child) p{
+        max-width: 357px;
       }
     }
   }

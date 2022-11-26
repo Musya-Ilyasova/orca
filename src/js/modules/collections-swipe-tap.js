@@ -204,3 +204,10 @@ function addSwipeMobile() {
     }, false);
   }
 }
+
+
+addSwipeDesktop();
+if(window.innerWidth<=767) {
+  addNewSwipeMobile();
+  addSwipeMobile();
+}

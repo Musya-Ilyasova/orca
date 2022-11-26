@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900 &display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
 * {
   margin: 0;
@@ -1311,7 +1311,7 @@ a.getapp__btn span {
   display: none;
   background: black;
   border: 1px solid var(--headerBtn);
-  color: white
+  color: white;
 }
 .header-main .btn.btn-primary:hover {
   border: 1px solid var(--headerBtn);
@@ -1321,7 +1321,7 @@ a.getapp__btn span {
 @media(min-width: 48em) {
   .header-main .btn.btn-primary {
     display: block;
-    margin-left: 10px;
+    margin-left: auto;
     padding: 0 20px;
     z-index: 999;
     position: relative
@@ -1330,12 +1330,6 @@ a.getapp__btn span {
 @media(min-width: 64em) {
   .header-main .btn.btn-primary {
     padding: 0 61px;
-    margin-left: 35px
-  }
-}
-@media(min-width: 80em) {
-  .header-main .btn.btn-primary {
-    margin-left: 34px
   }
 }
 .header-main-soc {
@@ -1800,7 +1794,8 @@ a.getapp__btn span {
   font-weight: 600;
   transition: 0.2s ease;
   cursor: pointer;
-  transition-delay: 0s
+  transition-delay: 0s;
+  color: white;
 }
 @media(min-width: 48em) {
   .header-main-menu-item a,
@@ -2087,95 +2082,7 @@ a.getapp__btn span {
     display: none
   }
 }
-.footer {
-  padding-bottom: 80px
-}
-@media only screen and(max-height: 830px) {
-  .footer {
-    padding-bottom: 40px
-  }
-}
-@media only screen and(max-width: 992px) {
-  .footer {
-    padding-bottom: 60px
-  }
-}
-@media only screen and(max-width: 767px) {
-  .footer {
-    padding-bottom: 120px
-  }
-}
-@media only screen and(max-width: 480px) {
-  .footer {
-    padding-bottom: 70px
-  }
-}
-.footer__wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 60px -15px -15px;
-}
-@media only screen and(max-width: 992px) {
-  .footer__wrapper--bottom {
-    display: none
-  }
-}
-.footer__col {
-  width: 100%;
-  min-width: 1px;
-  min-height: 0;
-  padding: 15px;
-  margin-top: 0
-}
-@media only screen and(max-width: 992px) {
-  .footer__col {
-    margin-top: 5px
-  }
-}
-.footer__col--5 {
-  flex: 0 0 41.66667%;
-  max-width: 41.66667%
-}
-@media only screen and(max-width: 992px) {
-  .footer__col--5 {
-    flex-basis: 100%;
-    max-width: 100%
-  }
-}
-.footer__col--7 {
-  flex: 0 0 58.33333%;
-  max-width: 58.33333%
-}
-@media only screen and(max-width: 992px) {
-  .footer__col--7 {
-    flex-basis: 100%;
-    max-width: 100%
-  }
-}
-.footer__col--contacts {
-  display: grid;
-  grid-template-columns: 1fr 195px;
-  grid-template-rows: repeat(2, auto);
-  margin-top: -97px
-}
-@media only screen and(max-width: 992px) {
-  .footer__col--contacts {
-    display: flex
-  }
-}
-.footer__col--mobile {
-  display: none
-}
-@media only screen and(max-width: 992px) {
-  .footer__col--mobile {
-    display: block
-  }
-}
-@media only screen and(max-width: 992px) {
-  .footer__col--mobile .footer__col {
-    padding-left: 0
-  }
-}
+
 .footer__logo {
   display: inline-block;
   font-size: 0;
@@ -2307,39 +2214,28 @@ a.getapp__btn span {
   font-size: 0;
   color: rgba(255, 255, 255, 0.4);
   transition: color 0.25s ease-in-out;
-  cursor: pointer
+  cursor: pointer;
 }
-.footer__socials a .ico {
+.footer__socials a .icon {
   font-size: 28px;
   width: 28px;
   height: 28px;
   fill: rgba(255, 255, 255, 0.4);
   transition: fill 0.2s ease
 }
-.footer__socials a.i-insta:hover .ico {
+.footer__socials a:hover .icon-social-insta {
   fill: #bc2a8d
 }
-.footer__socials a.i-facebook:hover .ico {
+.footer__socials a:hover .icon-social-facebook{
   fill: #3b5998
 }
-.footer__socials a.i-twitter:hover .ico {
+.footer__socials a:hover .icon-social-twitter {
   fill: #00aced
 }
-.footer__socials a.i-reddit {
-  width: 28px;
-  height: 28px;
-  display: block
-}
-.footer__socials a.i-reddit:hover .icon {
+.footer__socials a:hover .icon-social-reddit {
   fill: #ff4500
 }
-.footer__socials a.i-reddit .icon {
-  width: 100%;
-  height: 100%;
-  fill: rgba(255, 255, 255, 0.4);
-  transition: fill 0.2s ease
-}
-.footer__socials a.i-linkedin:hover .ico {
+.footer__socials a:hover .icon-social-linkedin{
   fill: #007bb6
 }
 .footer__address {

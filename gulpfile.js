@@ -82,11 +82,11 @@ exports.sass = sass;
 
 function scriptsLibs() {
   return src([
-    // "node_modules/resize-observer-polyfill/dist/ResizeObserver.js",
-    // "node_modules/swiper/swiper-bundle.min.js",
+    "node_modules/resize-observer-polyfill/dist/ResizeObserver.js",
+    "node_modules/swiper/swiper-bundle.min.js",
     // "node_modules/chart.js/dist/chart.min.js",
     // "node_modules/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js",
-    "node_modules/lottie-web/build/player/lottie.min.js",
+    // "node_modules/lottie-web/build/player/lottie.min.js",
     // "node_modules/highcharts/highcharts.js",
     // "node_modules/highcharts/modules/exporting.js",
     // "node_modules/highcharts/modules/export-data.js",
@@ -148,12 +148,12 @@ function scriptsDontmin() {
         presets: ["@babel/env"],
       })
     )
-    // .pipe(glp.uglify())
-    // .pipe(
-    //   glp.rename({
-    //     extname: ".min.js",
-    //   })
-    // )
+    .pipe(glp.uglify())
+    .pipe(
+      glp.rename({
+        extname: ".min.js",
+      })
+    )
     .pipe(strip())
     .pipe(dest("dist/js/"))
     .pipe(

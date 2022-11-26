@@ -61,7 +61,6 @@ function buildCollectionsSwiper() {
 }
 
 
-
 function addRotate() {
   let collectionImg = document.querySelectorAll('.collections-slider-item-img');
   for(let i=0; i<=collectionImg.length-1; i++) {
@@ -74,5 +73,6 @@ function addRotate() {
 };
 
 
+buildCollectionsSwiper();
 
 

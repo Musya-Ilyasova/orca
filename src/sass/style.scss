@@ -2,18 +2,18 @@
 $mainColor: #8FFF00;
 
 
-@import "../pug/pages/orcaguide/orcaguide-page";
-@import "../pug/pages/orcaguide/orcaguide-first";
-@import "../pug/pages/orcaguide/orcaguide-learn";
-@import "../pug/pages/orcaguide/orcaguide-form";
+// @import "../pug/pages/orcaguide/orcaguide-page";
+// @import "../pug/pages/orcaguide/orcaguide-first";
+// @import "../pug/pages/orcaguide/orcaguide-learn";
+// @import "../pug/pages/orcaguide/orcaguide-form";
 
 
 
 
-@import "../pug/pages/whiteorca/whiteorca-page";
-@import "../pug/pages/whiteorca/whiteorca-first";
-@import "../pug/pages/team/team-page";
-@import "../pug/pages/comiccon/comiccon";
+// @import "../pug/pages/whiteorca/whiteorca-page";
+// @import "../pug/pages/whiteorca/whiteorca-first";
+// @import "../pug/pages/team/team-page";
+// @import "../pug/pages/comiccon/comiccon";
 
 
 @import "../pug/pages/us/us-page";
@@ -25,4 +25,14 @@ $mainColor: #8FFF00;
 @import "../pug/pages/us/us-add";
 @import "../pug/pages/us/us-invest";
 @import "../pug/pages/us/us-account";
+
+
+
+@import "../pug/pages/collections/collections-first";
+@import "../pug/pages/collections/collections-bottom";
+@import "../pug/pages/collections/collections-choise";
+@import "../pug/pages/collections/collections-form";
+@import "../pug/pages/collections/collections-new";
+@import "../pug/pages/collections/collections-page";
+@import "../pug/pages/collections/collections";
 

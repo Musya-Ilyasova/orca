@@ -1,0 +1,14 @@
+include ../mixins/mixins
+doctype html
+html(lang="ru")
+  include ../components/global/head
+  body.page-collections
+    include ../pages/main/main-header
+    //main
+    main
+      include ../pages/collections/collections-first
+      include ../pages/collections/collections-new
+      include ../pages/collections/collections
+      include ../pages/collections/collections-choise
+    include ../components/global/footer
+    include ../components/global/scripts

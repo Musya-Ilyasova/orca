@@ -1,0 +1,15 @@
+include ../mixins/mixins
+doctype html
+html(lang="ru")
+  include ../components/global/head
+  body.page-allocation
+    include ../pages/main/main-header
+    //main
+    main
+      include ../pages/sharing/chart
+      include ../pages/sharing/aside
+      include ../pages/sharing/breakdown
+      include ../pages/sharing/stocks
+      include ../pages/sharing/rewarded
+    include ../components/global/footer
+    include ../components/global/scripts

@@ -1,6 +1,6 @@
 function pageShareXhr() {
   var shareXhr = new XMLHttpRequest();
-  shareXhr.open('GET', 'js/json/chart.json', true);
+  shareXhr.open('GET', 'js/json/chart-full.json', true);
   shareXhr.responseType="json";
   shareXhr.send();
   shareXhr.onload = function () {
@@ -18,15 +18,16 @@ function pageShareXhr() {
 
 }
 
-function getShareFromMain() {
-  let main = document.querySelector('main');
-  if (main.dataset && main.dataset.share !== undefined) {
-    let shareObj = JSON.parse(main.dataset.share);
-    renderData(shareObj);
-  } else {
-    pageShareXhr();
-  }
-}
+// function getShareFromMain() {
+//   let main = document.querySelector('main');
+//   if (main.dataset && main.dataset.share !== undefined) {
+//     let shareObj = JSON.parse(main.dataset.share);
+//     renderData(shareObj);
+//   } else {
+//   }
+// }
+
+@@include('copyAllocation.js');
 
 function renderData(shareObj) {
   copyAllocationReferralCode(shareObj);
@@ -454,15 +455,18 @@ function buildRewardedSlider() {
 }
 
 @@include('stocks.js');
+@@include('chart-tooltip.js');
 
 
 if(document.body.classList.contains("page-allocation")) {
   var period;
   var toggle = false;
   var myChart  = {};
-  getShareFromMain();
+  // getShareFromMain();
   buildRewardedSlider();
   chartTooltip();
+  pageShareXhr();
+  console.log('uuu')
 }
 
 

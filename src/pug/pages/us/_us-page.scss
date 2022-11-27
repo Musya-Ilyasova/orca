@@ -9,20 +9,26 @@
       max-width: 1200px;
     }
   }
-  .btn-primary {
+  main .btn-primary{
     background: black;
     border: 2px solid #FAFAFA;
     border-radius: 4px;
-    width: 100%;
-    max-width: 453px;
     height: 48px;
     line-height: 48px;
     font-size: 20px;
+    &:not([type="subscribe"]) {
+      width: 100%;
+      max-width: 453px;
+    }
   }
   .hidden {
     font-size: 0;
     height: 0;
     visibility: hidden;
+  }
+
+  .header-main:before {
+    background: #101010;
   }
 }
 

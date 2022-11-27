@@ -73,6 +73,5 @@ function addRotate() {
 };
 
 
-buildCollectionsSwiper();
 
 

@@ -3,10 +3,7 @@ doctype html
 html(lang="ru")
   include ../components/global/head
   body.us-page
-    header.header-logo
-      .container.container--1120
-        a(href="./").header-logo__link
-          +icon('black-orca')
+    include ../pages/main/main-header
     //main
     main
       include ../pages/us/us-first
@@ -17,4 +14,5 @@ html(lang="ru")
       include ../pages/us/us-advantages
       include ../pages/us/us-reviews
       include ../pages/us/us-account
+    include ../components/global/footer
     include ../components/global/scripts

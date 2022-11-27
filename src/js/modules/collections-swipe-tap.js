@@ -206,8 +206,3 @@ function addSwipeMobile() {
 }
 
 
-addSwipeDesktop();
-if(window.innerWidth<=767) {
-  addNewSwipeMobile();
-  addSwipeMobile();
-}

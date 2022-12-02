@@ -1,28 +1,20 @@
 .page-allocation {
-  margin-top: 200px;
+  --headerBtn: #8346e9;
+  --headerLink: #8346e9;
   .screen {
     position: absolute;
     opacity: 0;
     transition: opacity 0.2s ease;
     z-index: 0;
   }
-  .headerLogo {
-    padding: 46px 0;
-    .logo {
-      width: 110px;
-      height: 58px;
-      display: block;
-      .icon {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .btn-primary {
-      display: none;
-    }
+  .subscribe {
+    display: block;
   }
   .container {
     padding: 0 16px;
+  }
+  .header-main{
+    position: absolute;
   }
   &.lock {
     overflow: hidden;
@@ -89,6 +81,7 @@
       grid-row-start: 1;
       grid-row-end: 2;
       padding-bottom: 145px;
+      margin-top: 130px;
     }
     &__wrapper {
       margin: 0;
@@ -150,21 +143,41 @@
     .rewarded-slider {
       width: auto;
       @include media($TABLET) {
-        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+        grid-template-columns: repeat(3, auto);
         grid-template-rows: auto;
         grid-column-gap: 20px;
+        display: grid;
       }
       &-item {
         height: auto;
         @include media($TABLET) {
           overflow: visible;
+          width: 100%;
         }
       }
-      &-container {
-        @include media($TABLET) {
-          overflow: visible;
-        }
+    }
+    .rewarded__title {
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .rewarded-slider-item__title {
+      line-height: 1.2;
+    }
+    .rewarded-slider-item__circle {
+      display: block;
+      background: linear-gradient(90deg,#5579f7 0,#762fe6 100%);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 20px 0;
+      .icon {
+        width: 100%;
+        height: 100%;
       }
+
     }
   }
   &-error {

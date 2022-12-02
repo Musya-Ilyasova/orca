@@ -6,10 +6,14 @@ html(lang="ru")
     include ../pages/main/main-header
     //main
     main
-      include ../pages/sharing/chart
+      .shares-page__wrapper
+        include ../pages/sharing/chart
+        include ../pages/sharing/breakdown
+        include ../pages/sharing/stocks
+        include ../pages/sharing/rewarded
+      include ../pages/sharing/disclosure
       include ../pages/sharing/aside
-      include ../pages/sharing/breakdown
-      include ../pages/sharing/stocks
-      include ../pages/sharing/rewarded
     include ../components/global/footer
+    .screen
     include ../components/global/scripts
+    //- script(src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0")

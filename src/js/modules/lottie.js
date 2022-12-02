@@ -1,3 +1,4 @@
+@@include('aside.js');
 var svgContainer = document.getElementById('svgContainer');
 
 var animation = bodymovin.loadAnimation({
@@ -43,7 +44,8 @@ function animOut() {
 setTimeout(animPulse, 700);
 
 let generation = document.querySelector('.chart-loading__text');
-generation.addEventListener('click', function() {
+
+setTimeout(function() {
   animOut();
   animation.destroy();
   let content = document.querySelectorAll('.content');
@@ -52,4 +54,15 @@ generation.addEventListener('click', function() {
   if(document.querySelector(".stocks").style.display != "none") {
     asideAnimation();
   };
-})
+}, 2000)
+
+// generation.addEventListener('click', function() {
+//   animOut();
+//   animation.destroy();
+//   let content = document.querySelectorAll('.content');
+//   content.forEach(item=> item.classList.toggle('visibility'))
+//   document.querySelector('.chart-loading').classList.toggle('opacity');
+//   if(document.querySelector(".stocks").style.display != "none") {
+//     asideAnimation();
+//   };
+// })

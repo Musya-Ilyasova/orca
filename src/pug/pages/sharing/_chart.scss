@@ -2,6 +2,9 @@
   font-family: inter, san-serif;
   position: relative;
   min-height: 258px;
+  @include media($TABLET) {
+    margin-top: 120px;
+  }
   .container {
     @include media($TABLET) {
       padding: 0;

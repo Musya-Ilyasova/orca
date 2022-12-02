@@ -1,3 +1,9 @@
+@@include('lottie.js');
+@@include('copyAllocation.js')
+@@include('donut.js');
+@@include('stocks.js');
+@@include('chart-tooltip.js');
+
 function pageShareXhr() {
   var shareXhr = new XMLHttpRequest();
   shareXhr.open('GET', 'js/json/chart-full.json', true);
@@ -17,17 +23,6 @@ function pageShareXhr() {
   };
 
 }
-
-// function getShareFromMain() {
-//   let main = document.querySelector('main');
-//   if (main.dataset && main.dataset.share !== undefined) {
-//     let shareObj = JSON.parse(main.dataset.share);
-//     renderData(shareObj);
-//   } else {
-//   }
-// }
-
-@@include('copyAllocation.js');
 
 function renderData(shareObj) {
   copyAllocationReferralCode(shareObj);
@@ -404,7 +399,7 @@ function addChartBox(shareRequest) {
 };
 
 
-@@include('donut.js');
+
 
 function linkGapToggle(shareRequest) {
   let linkGap = document.querySelectorAll('.chart-results-changes-gap-item__link');
@@ -425,7 +420,7 @@ function linkGapToggle(shareRequest) {
 }
 
 // rewarded-slider
-function buildRewardedSlider() {
+function buildRewardedSlider() { 
   (function () {
     "use strict";
     const breakpoint = window.matchMedia("(min-width:768px)");
@@ -454,19 +449,15 @@ function buildRewardedSlider() {
   })();
 }
 
-@@include('stocks.js');
-@@include('chart-tooltip.js');
 
 
 if(document.body.classList.contains("page-allocation")) {
   var period;
   var toggle = false;
   var myChart  = {};
-  // getShareFromMain();
-  buildRewardedSlider();
   chartTooltip();
   pageShareXhr();
-  console.log('uuu')
+  buildRewardedSlider();
 }
 
 

@@ -27,7 +27,7 @@ function addStocks(listObj, appendList) {
       let li = document.createElement('li');
       li.classList.add('stocks-list-item')
       let img = document.createElement('img');
-      img.src = listObj[i].logo;
+      img.src = 'img/allocation-logo.jpg';
       img.classList.add('stocks-list-item__img');
       let title = document.createElement('span');
       title.classList.add('stocks-list-item__title');

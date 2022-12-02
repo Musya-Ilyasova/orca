@@ -58,3 +58,6 @@ function yellowsEyes() {
   
 
   
+if(document.body.classList.contains('us-page')) {
+  yellowsEyes();
+}

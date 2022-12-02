@@ -1,0 +1,16 @@
+include ../mixins/mixins
+doctype html
+html(lang="ru")
+  include ../components/global/head
+  body.page-calculator
+    include ../pages/main/main-header
+    //main
+    main
+      include ../pages/calculator/calculator-first
+      include ../pages/calculator/calculator-form
+      include ../pages/calculator/calculator
+      include ../pages/calculator/calculator-know
+      include ../pages/calculator/calculator-form-second
+      include ../pages/calculator/calculator-disclosure
+    include ../components/global/footer
+    include ../components/global/scripts

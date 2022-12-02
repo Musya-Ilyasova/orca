@@ -74,4 +74,10 @@ function addRotate() {
 
 
 
+if(document.body.classList.contains('page-collections')) {
+  buildCollectionsSwiper();
+}
+
+
+
 

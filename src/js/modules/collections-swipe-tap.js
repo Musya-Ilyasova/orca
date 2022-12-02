@@ -206,3 +206,10 @@ function addSwipeMobile() {
 }
 
 
+if(document.body.classList.contains('page-collections')) {
+  addSwipeDesktop();
+  if(window.innerWidth<=767) {
+    addNewSwipeMobile();
+    addSwipeMobile();
+  }
+}

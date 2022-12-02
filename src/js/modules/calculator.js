@@ -128,7 +128,6 @@ function addCalculateValues() {
       }
     }
     window.calculate.overRpm = window.calculate.ny * window.calculate.rpm * 12;
-    console.log(window.calculate.dates);
   } else {
     let firstYr = ((window.calculate.sp + window.calculate.rpm) + (window.calculate.sp + window.calculate.rpm) * window.calculate.ypg);
     window.calculate.dates.push([1, firstYr / 1000]);
@@ -326,8 +325,7 @@ function addCalculatorChart() {
   });
 }
 
-
-if (document.body.classList.contains("page-calculator")) {
+if(document.body.classList.contains("page-calculator")) {
   window.calculate = {
     sp: 0,
     rpm: 0,
